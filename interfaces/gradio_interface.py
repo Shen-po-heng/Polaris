@@ -8,7 +8,7 @@ def create_gradio_interface():
         fn=rag_service.answer_query,
         allow_flagging="never",
         inputs=[
-            gr.File(label="Upload PDF File", file_count="single", file_types=['.pdf'], type="filepath"),
+            gr.Files(label="Upload PDF File", file_count="multiple", file_types=['.pdf'], type="filepath"),
             gr.Textbox(label="Input Query", lines=2, placeholder="Type your question here...")
         ],
         outputs=gr.Textbox(label="Output"),

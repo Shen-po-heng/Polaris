@@ -14,25 +14,31 @@ class RAGService:
         self.model_manager = ModelManager()
         self.model_manager.initialize_models()
 
-    def process_document(self, file_path):
+    def process_document(self, file_paths):
         try:
-            loader = PyPDFLoader(file_path)
-            documents = loader.load()
+            all_documents = []
+            for file_path in file_paths:
+                loader = PyPDFLoader(file_path)
+                docs = loader.load()
+                for doc in docs:
+                    doc.metadata["source"] = file_path.split("/")[-1]  # Add filename to metadata
+                    # doc.metadata["page"] = doc.metadata.get("page", "unknown")
+                all_documents.extend(docs)
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=CHUNK_SIZE,
                 chunk_overlap=CHUNK_OVERLAP,
                 length_function=len,
             )
-            chunks = text_splitter.split_documents(documents)
+            chunks = text_splitter.split_documents( all_documents )
             vectordb = Chroma.from_documents(chunks, self.model_manager.embedding_model)
             return vectordb.as_retriever(search_kwargs={"k": SEARCH_K})
         except Exception as e:
             logger.error(f"Error processing document: {str(e)}")
             raise gr.Error("Error processing the document. Please try again.")
 
-    def answer_query(self, file_obj, query):
+    def answer_query(self, file_objs, query):
         try:
-            retriever_obj = self.process_document(file_obj)
+            retriever_obj = self.process_document(file_objs)
             qa = RetrievalQA.from_chain_type(
                 llm=self.model_manager.llm,
                 chain_type="stuff",
