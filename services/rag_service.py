@@ -21,8 +21,9 @@ class RAGService:
                 loader = PyPDFLoader(file_path)
                 docs = loader.load()
                 for doc in docs:
-                    doc.metadata["source"] = file_path.split("/")[-1]  # Add filename to metadata
-                    # doc.metadata["page"] = doc.metadata.get("page", "unknown")
+                    doc.metadata["source"] = file_path.split("\\")[-1]  # Add filename to metadata
+                    doc.metadata["page"] = doc.metadata.get("page", "unknown")
+                    # print(f"[DEBUG] Loaded doc chunk meta: {doc.metadata}")
                 all_documents.extend(docs)
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=CHUNK_SIZE,
@@ -30,6 +31,9 @@ class RAGService:
                 length_function=len,
             )
             chunks = text_splitter.split_documents( all_documents )
+            # # **DEBUG**:
+            # for i, chunk in enumerate(chunks[:3]):
+            #     print(f"[DEBUG] Chunk #{i} meta: {chunk.metadata}")
             vectordb = Chroma.from_documents(chunks, self.model_manager.embedding_model)
             return vectordb.as_retriever(search_kwargs={"k": SEARCH_K})
         except Exception as e:
@@ -43,22 +47,31 @@ class RAGService:
                 llm=self.model_manager.llm,
                 chain_type="stuff",
                 retriever=retriever_obj,
-                return_source_documents=False
+                return_source_documents=True
             )
             response = qa.invoke(query)
-            print(response)
-            # Extract the helpful answer after "Question:" and "Helpful Answer:"
+            # Extract result text
             result_text = response.get('result', '')
-            
-            # Assuming "Helpful Answer:" appears in the response
+            # Extract helpful answer if present
             helpful_answer_start = result_text.find("Helpful Answer:")
-            
             if helpful_answer_start != -1:
-                # Extract the text after "Helpful Answer:"
                 helpful_answer = result_text[helpful_answer_start + len("Helpful Answer:"):].strip()
-                return helpful_answer
             else:
-                return "No helpful answer found."
+                helpful_answer = result_text.strip()
+            print("response:",response)
+            # Extract and format source information
+            source_docs = response.get('source_documents', [])
+            print("[DEBUG] Retrieved source_documents count:", len(source_docs))
+            source_info = []
+            for doc in source_docs:
+                print("[DEBUG] Source doc metadata:", doc.metadata)
+                source = doc.metadata.get("source", "unknown")
+                page = doc.metadata.get("page", "unknown")
+                source_info.append(f"{source} (Page {page})")
+            print("Source:",source_info)
+            # Format the citation text
+            citation_text = "\n\nSources:\n" + "\n".join(sorted(set(source_info))) if source_info else ""
+            return helpful_answer + citation_text
 
         except Exception as e:
             logger.error(f"Error answering query: {str(e)}")
