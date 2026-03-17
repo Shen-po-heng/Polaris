@@ -1,3 +1,54 @@
-my_env
-Legacy
-__pycache__
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+my_env/
+.env/
+venv/
+.venv/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (local knowledge base — never commit)
+data/
+
+# Uploads / test files
+*.pdf
+*.docx
+
+# Logs
+*.log
+logs/
+
+# Legacy (archived)
+Legacy/
+
+# Test / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+
+# Linter
+.ruff_cache/
+
+# Local planning docs (not for public repo)
+Ref/
