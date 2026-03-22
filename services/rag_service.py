@@ -1,14 +1,16 @@
 """RAG service — document indexing and question answering.
 
-Phase 2 rewrite: uses LiteLLM directly (no LangChain LLM wrapper needed),
-LCEL-style retrieval, and persistent ChromaDB.
+Phase 2.5: index and query are now separate operations.
+  - index_documents() — load/chunk/store to ChromaDB, return source names
+  - query()           — retrieve + LLM call with optional source filter + history
 
-Responsibilities:
-  - Accept file paths, delegate loading → chunking → indexing to core/.
-  - Answer user queries with source citations.
+Backward-compat wrappers (process_document, answer_query, answer_with_history)
+are kept for existing tests and callers.
 """
 
 from __future__ import annotations
+
+from pathlib import Path
 
 from langchain_core.documents import Document
 
@@ -18,7 +20,6 @@ from core.embedder import Embedder
 from core.exceptions import DocumentLoadError, IndexingError, QueryError
 from core.llm_provider import LLMProvider
 from core.vector_store import VectorStore
-from config.settings import settings
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -34,6 +35,20 @@ Question: {question}
 
 Answer:"""
 
+_RAG_HISTORY_PROMPT = """\
+Use the following document excerpts to answer the question.
+If the answer is not in the excerpts, say "I don't have enough information."
+
+Context:
+{context}
+
+Conversation so far:
+{history}
+
+Question: {question}
+
+Answer:"""
+
 
 class RAGService:
     """Orchestrates document ingestion and retrieval-augmented generation."""
@@ -44,16 +59,16 @@ class RAGService:
         self._chunker = Chunker()
         self._vector_store = VectorStore(embedder=self._embedder)
 
-    # ── Public API ──────────────────────────────────────────────────────────
+    # ── Indexing ─────────────────────────────────────────────────────────────
 
-    def process_document(self, file_paths: list[str]) -> object:
+    def index_documents(self, file_paths: list[str]) -> list[str]:
         """Load, chunk, and index documents into the persistent vector store.
 
         Args:
             file_paths: Absolute paths to documents (PDF / DOCX / TXT / MD).
 
         Returns:
-            A LangChain retriever ready for similarity search.
+            List of source filenames that were successfully indexed.
 
         Raises:
             IndexingError: If loading or indexing fails.
@@ -66,39 +81,57 @@ class RAGService:
 
             chunks = self._chunker.split(all_docs)
             self._vector_store.add(chunks, self._embedder)
-            return self._vector_store.as_retriever()
+            source_names = sorted({Path(p).name for p in file_paths})
+            logger.info("Indexed %d sources: %s", len(source_names), source_names)
+            return source_names
 
         except (DocumentLoadError, IndexingError):
             raise
         except Exception as exc:
-            logger.exception("Unexpected error during document processing")
-            raise IndexingError(f"Document processing failed: {exc}") from exc
+            logger.exception("Unexpected error during document indexing")
+            raise IndexingError(f"Indexing failed: {exc}") from exc
 
-    def answer_query(self, file_objs: list[str], query: str) -> str:
-        """Answer a query using RAG over the provided documents.
+    # ── Querying ─────────────────────────────────────────────────────────────
+
+    def query(
+        self,
+        question: str,
+        history: list[list[str]] | None = None,
+        selected_sources: list[str] | None = None,
+    ) -> str:
+        """Retrieve relevant chunks and generate an answer.
 
         Args:
-            file_objs: File paths (from Gradio upload or direct call).
-            query: The user's question.
+            question: The user's question.
+            history: List of [user_msg, assistant_msg] pairs (last N turns).
+            selected_sources: If provided, only search within these sources.
 
         Returns:
             Answer text with source citations appended.
 
         Raises:
-            QueryError: If the answer step fails unexpectedly.
+            QueryError: On unexpected failures.
         """
         try:
-            retriever = self.process_document(file_objs)
-
-            # Retrieve relevant chunks
-            source_docs: list[Document] = retriever.invoke(query)
+            retriever = self._vector_store.as_retriever(sources=selected_sources or None)
+            source_docs: list[Document] = retriever.invoke(question)
             context = "\n\n".join(doc.page_content for doc in source_docs)
 
-            # Call LiteLLM directly — no LangChain chain needed
-            prompt = _RAG_PROMPT.format(context=context, question=query)
+            history_text = "\n".join(
+                f"User: {u}\nAssistant: {a}" for u, a in (history or [])
+            )
+
+            if history_text:
+                prompt = _RAG_HISTORY_PROMPT.format(
+                    context=context,
+                    history=history_text,
+                    question=question,
+                )
+            else:
+                prompt = _RAG_PROMPT.format(context=context, question=question)
+
             answer = self._llm.chat(prompt)
 
-            # Build citation list
             source_info: list[str] = []
             for doc in source_docs:
                 source = doc.metadata.get("source", "unknown")
@@ -112,8 +145,72 @@ class RAGService:
             )
             return answer + citation_text
 
+        except Exception as exc:
+            logger.exception("Error answering query")
+            raise QueryError(str(exc)) from exc
+
+    def list_sources(self) -> list[str]:
+        """Return all unique source filenames currently in the vector store."""
+        return self._vector_store.list_sources()
+
+    def get_source_text(self, source: str) -> str:
+        """Return stored chunk text for *source* (for summarisation)."""
+        return self._vector_store.get_source_text(source)
+
+    def delete_sources(self, sources: list[str]) -> int:
+        """Delete all chunks for the given sources. Returns chunk count deleted."""
+        return self._vector_store.delete_by_sources(sources)
+
+    # ── Backward-compat wrappers ──────────────────────────────────────────────
+
+    def process_document(self, file_paths: list[str]) -> object:
+        """[Compat] Index documents and return a retriever."""
+        self.index_documents(file_paths)
+        return self._vector_store.as_retriever()
+
+    def answer_query(self, file_objs: list[str], question: str) -> str:
+        """[Compat] Index files then answer query."""
+        try:
+            retriever = self.process_document(file_objs)
+            source_docs: list[Document] = retriever.invoke(question)
+            context = "\n\n".join(doc.page_content for doc in source_docs)
+            answer = self._llm.chat(_RAG_PROMPT.format(context=context, question=question))
+            source_info = [
+                f"{d.metadata.get('source','?')} (Page {d.metadata.get('page','?')})"
+                for d in source_docs
+            ]
+            citation = "\n\nSources:\n" + "\n".join(sorted(set(source_info))) if source_info else ""
+            return answer + citation
         except (IndexingError, DocumentLoadError):
             raise
         except Exception as exc:
-            logger.exception("Error answering query")
+            raise QueryError(str(exc)) from exc
+
+    def answer_with_history(
+        self,
+        file_objs: list[str],
+        question: str,
+        history: list[tuple[str, str]],
+    ) -> str:
+        """[Compat] Index files then answer query with history."""
+        try:
+            retriever = self.process_document(file_objs)
+            source_docs: list[Document] = retriever.invoke(question)
+            context = "\n\n".join(doc.page_content for doc in source_docs)
+            history_text = "\n".join(f"User: {u}\nAssistant: {a}" for u, a in history)
+            prompt = (
+                _RAG_HISTORY_PROMPT.format(context=context, history=history_text, question=question)
+                if history_text
+                else _RAG_PROMPT.format(context=context, question=question)
+            )
+            answer = self._llm.chat(prompt)
+            source_info = [
+                f"{d.metadata.get('source','?')} (Page {d.metadata.get('page','?')})"
+                for d in source_docs
+            ]
+            citation = "\n\nSources:\n" + "\n".join(sorted(set(source_info))) if source_info else ""
+            return answer + citation
+        except (IndexingError, DocumentLoadError):
+            raise
+        except Exception as exc:
             raise QueryError(str(exc)) from exc

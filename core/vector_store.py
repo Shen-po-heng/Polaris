@@ -75,7 +75,11 @@ class VectorStore:
             logger.error("ChromaDB write failed: %s", exc)
             raise IndexingError(f"ChromaDB write failed: {exc}") from exc
 
-    def as_retriever(self, k: int | None = None) -> VectorStoreRetriever:
+    def as_retriever(
+        self,
+        k: int | None = None,
+        sources: list[str] | None = None,
+    ) -> VectorStoreRetriever:
         """Return a LangChain retriever over the persisted collection.
 
         Args:
@@ -89,7 +93,76 @@ class VectorStore:
             IndexingError: If no documents have been indexed yet.
         """
         chroma = self._get_or_load_chroma()
-        return chroma.as_retriever(search_kwargs={"k": k or settings.search_k})
+        search_kwargs: dict = {"k": k or settings.search_k}
+        if sources:
+            search_kwargs["filter"] = {"source": {"$in": sources}}
+        return chroma.as_retriever(search_kwargs=search_kwargs)
+
+    def get_source_text(self, source: str, max_chunks: int = 20) -> str:
+        """Return concatenated text of stored chunks for *source*.
+
+        Args:
+            source: Filename as stored in metadata (e.g. ``"paper.pdf"``).
+            max_chunks: Maximum number of chunks to include (avoids LLM overflow).
+
+        Returns:
+            Concatenated chunk text, or empty string if not found.
+        """
+        try:
+            client = self._get_client()
+            collection = client.get_collection(_COLLECTION_NAME)
+            results = collection.get(
+                where={"source": source},
+                include=["documents"],
+                limit=max_chunks,
+            )
+            return "\n\n".join(results["documents"])
+        except Exception as exc:
+            logger.warning("get_source_text(%s) failed: %s", source, exc)
+            return ""
+
+    def list_sources(self) -> list[str]:
+        """Return sorted list of unique source filenames in the collection."""
+        try:
+            client = self._get_client()
+            collection = client.get_collection(_COLLECTION_NAME)
+            results = collection.get(include=["metadatas"])
+            sources = {
+                meta["source"]
+                for meta in results["metadatas"]
+                if meta and "source" in meta
+            }
+            return sorted(sources)
+        except Exception:
+            return []
+
+    def delete_by_sources(self, sources: list[str]) -> int:
+        """Delete all chunks whose source is in *sources*.
+
+        Returns:
+            Number of chunks deleted.
+
+        Raises:
+            IndexingError: If the deletion fails.
+        """
+        if not sources:
+            return 0
+        try:
+            client = self._get_client()
+            collection = client.get_collection(_COLLECTION_NAME)
+            results = collection.get(
+                where={"source": {"$in": sources}},
+                include=[],
+            )
+            ids = results["ids"]
+            if ids:
+                collection.delete(ids=ids)
+            self._chroma = None  # invalidate cached Chroma wrapper
+            logger.info("Deleted %d chunks for sources: %s", len(ids), sources)
+            return len(ids)
+        except Exception as exc:
+            logger.error("delete_by_sources failed: %s", exc)
+            raise IndexingError(f"Delete failed: {exc}") from exc
 
     def clear(self) -> None:
         """Delete all documents from the collection (for testing / reset)."""

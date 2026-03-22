@@ -113,3 +113,45 @@ class TestAnswerQuery:
 
             with pytest.raises(QueryError):
                 rag_service.answer_query(["paper.pdf"], "question?")
+
+
+# ── answer_with_history ────────────────────────────────────────────────────────
+
+class TestAnswerWithHistory:
+    def test_includes_history_in_prompt(self, rag_service):
+        source_doc = _make_doc(source="paper.pdf", page=1)
+        mock_retriever = MagicMock()
+        mock_retriever.invoke.return_value = [source_doc]
+
+        history = [("What is GPS?", "GPS is a navigation system.")]
+
+        with patch.object(rag_service, "process_document", return_value=mock_retriever):
+            rag_service._llm.chat.return_value = "Follow-up answer."
+            result = rag_service.answer_with_history(
+                ["paper.pdf"], "How accurate is it?", history
+            )
+
+        assert "Follow-up answer." in result
+        # Verify that the LLM was called with history context
+        prompt_used = rag_service._llm.chat.call_args[0][0]
+        assert "What is GPS?" in prompt_used
+        assert "GPS is a navigation system." in prompt_used
+
+    def test_no_history_uses_simple_prompt(self, rag_service):
+        mock_retriever = MagicMock()
+        mock_retriever.invoke.return_value = []
+
+        with patch.object(rag_service, "process_document", return_value=mock_retriever):
+            rag_service._llm.chat.return_value = "Answer."
+            result = rag_service.answer_with_history(["paper.pdf"], "Question?", [])
+
+        assert result == "Answer."
+        prompt_used = rag_service._llm.chat.call_args[0][0]
+        assert "Conversation so far" not in prompt_used
+
+    def test_raises_query_error_on_failure(self, rag_service):
+        with patch.object(rag_service, "process_document") as mock_process:
+            mock_process.side_effect = Exception("boom")
+
+            with pytest.raises(QueryError):
+                rag_service.answer_with_history(["paper.pdf"], "q?", [])
