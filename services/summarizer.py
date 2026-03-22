@@ -51,6 +51,7 @@ class Summarizer:
                 full_text = "\n\n".join(d.page_content for d in docs)
                 sample = full_text[:_MAX_CHARS]
                 from pathlib import Path
+
                 filename = Path(path).name
                 prompt = _SUMMARY_PROMPT.format(filename=filename, text=sample)
                 summary = self._llm.chat(prompt)

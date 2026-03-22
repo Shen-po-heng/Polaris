@@ -44,7 +44,9 @@ class LLMProvider:
 
     def __init__(self) -> None:
         self.model: str = settings.llm_model
-        self.api_base: str | None = settings.ollama_base_url if self._is_ollama() else None
+        self.api_base: str | None = (
+            settings.ollama_base_url if self._is_ollama() else None
+        )
         self._check_backend()
 
     # ── Public API ──────────────────────────────────────────────────────────
@@ -125,7 +127,11 @@ class LLMProvider:
         url = f"{settings.ollama_base_url}/api/tags"
         try:
             urllib.request.urlopen(url, timeout=3)  # noqa: S310
-            logger.info("Ollama is running at %s — model: %s", settings.ollama_base_url, self.model)
+            logger.info(
+                "Ollama is running at %s — model: %s",
+                settings.ollama_base_url,
+                self.model,
+            )
         except urllib.error.URLError as exc:
             msg = (
                 f"Cannot reach Ollama at {settings.ollama_base_url}.\n"

@@ -62,8 +62,8 @@ def create_gradio_interface() -> gr.Blocks:
         paths = _paths(file_objs)
         if not paths:
             return (
-                gr.update(),          # chat source selector
-                gr.update(),          # library source selector
+                gr.update(),  # chat source selector
+                gr.update(),  # library source selector
                 "⚠️ No files selected.",
             )
         try:
@@ -83,7 +83,9 @@ def create_gradio_interface() -> gr.Blocks:
             return history, history, ""
         sources = selected or _all_sources()
         if not sources:
-            new = history + [[query, "No documents in library. Please upload and index first."]]
+            new = history + [
+                [query, "No documents in library. Please upload and index first."]
+            ]
             return new, new, ""
         try:
             trimmed = history[-_MAX_HISTORY_TURNS:]
@@ -112,7 +114,9 @@ def create_gradio_interface() -> gr.Blocks:
         paths = _paths(file_objs)
 
         if not sources_to_summarise and not paths:
-            return gr.update(value="<p>Select sources or upload files first.</p>", visible=True)
+            return gr.update(
+                value="<p>Select sources or upload files first.</p>", visible=True
+            )
 
         # Build a map: filename → upload path (for freshly uploaded files)
         upload_map = {Path(p).name: p for p in paths}
@@ -203,7 +207,9 @@ def create_gradio_interface() -> gr.Blocks:
                             label="Sources to query (empty = all)",
                         )
 
-                        summarise_btn = gr.Button("📋 Summarize / 摘要", variant="secondary")
+                        summarise_btn = gr.Button(
+                            "📋 Summarize / 摘要", variant="secondary"
+                        )
                         summary_html = gr.HTML(value="", visible=False)
 
                     # Right panel
@@ -225,14 +231,20 @@ def create_gradio_interface() -> gr.Blocks:
                                 scale=5,
                                 show_label=False,
                             )
-                            send_btn = gr.Button("➤ Send / 送出", variant="primary", scale=1)
+                            send_btn = gr.Button(
+                                "➤ Send / 送出", variant="primary", scale=1
+                            )
 
-                        new_chat_btn = gr.Button("🗑 New Chat / 新對話", variant="stop", size="sm")
+                        new_chat_btn = gr.Button(
+                            "🗑 New Chat / 新對話", variant="stop", size="sm"
+                        )
 
             # ── Tab 2: Library ────────────────────────────────────────────────
             with gr.Tab("📚 Library / 文件庫"):
                 with gr.Row():
-                    refresh_lib_btn = gr.Button("🔄 Refresh / 重新整理", variant="secondary")
+                    refresh_lib_btn = gr.Button(
+                        "🔄 Refresh / 重新整理", variant="secondary"
+                    )
                     lib_status = gr.Markdown("Click Refresh to load library.")
 
                 lib_selector = gr.CheckboxGroup(

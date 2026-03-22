@@ -10,5 +10,6 @@ print(f"Document metadata: {docs[0].metadata}")
 # print(f"Document content: {docs[0].page_content}")
 print(f"Document source: {docs[0].metadata['source']}")
 print("Document content preview:")
-pprint.pprint(docs[0].page_content[:1000])  # Print the first 1000 characters of the content
-
+pprint.pprint(
+    docs[0].page_content[:1000]
+)  # Print the first 1000 characters of the content

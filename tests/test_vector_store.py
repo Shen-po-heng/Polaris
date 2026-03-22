@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from core.exceptions import IndexingError
 from core.vector_store import VectorStore
 
-
 # ── Helpers ──────────────────────────────────────────────────────────────────
+
 
 def _make_chunk(content="chunk text"):
     doc = SimpleNamespace()
@@ -27,6 +27,7 @@ def _make_chunk(content="chunk text"):
 
 
 # ── Tests ─────────────────────────────────────────────────────────────────────
+
 
 class TestAdd:
     @patch("core.vector_store.chromadb.PersistentClient")
@@ -65,7 +66,9 @@ class TestAsRetriever:
     def test_returns_retriever_after_add(self, MockChroma, MockClient):
         VectorStore._client = None
         mock_retriever = MagicMock()
-        MockChroma.from_documents.return_value.as_retriever.return_value = mock_retriever
+        MockChroma.from_documents.return_value.as_retriever.return_value = (
+            mock_retriever
+        )
 
         vs = VectorStore()
         vs.add([_make_chunk()], MagicMock())

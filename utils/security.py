@@ -39,9 +39,7 @@ def validate_file(file_path: str | Path) -> Path:
     file_size = path.stat().st_size
     if file_size > settings.max_file_size_bytes:
         limit_mb = settings.max_file_size_bytes // (1024 * 1024)
-        raise SecurityError(
-            f"File '{path.name}' exceeds the {limit_mb} MB size limit."
-        )
+        raise SecurityError(f"File '{path.name}' exceeds the {limit_mb} MB size limit.")
 
     if file_size == 0:
         raise SecurityError(f"File '{path.name}' is empty.")

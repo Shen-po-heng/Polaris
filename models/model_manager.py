@@ -7,15 +7,19 @@ Do NOT use in new code.
 
 import warnings
 
+try:
+    from config import EMBEDDING_MODEL_NAME, MAX_LENGTH, MODEL_ID, REPETITION_PENALTY
+    from utils.logger import get_logger
+except Exception:  # config.py removed in Phase 2
+    get_logger = None  # type: ignore[assignment]
+    MODEL_ID = EMBEDDING_MODEL_NAME = MAX_LENGTH = REPETITION_PENALTY = None  # type: ignore[assignment]
+
 warnings.warn(
     "ModelManager is deprecated and will be removed in Phase 3. "
     "Use core.llm_provider.LLMProvider instead.",
     DeprecationWarning,
     stacklevel=2,
 )
-
-from config import MODEL_ID, EMBEDDING_MODEL_NAME, MAX_LENGTH, REPETITION_PENALTY  # noqa: E402
-from utils.logger import get_logger  # noqa: E402
 
 logger = get_logger(__name__)
 
@@ -57,7 +61,9 @@ class ModelManager:
                 truncation=True,
             )
             self.llm = HuggingFacePipeline(pipeline=pipe)
-            self.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
+            self.embedding_model = HuggingFaceEmbeddings(
+                model_name=EMBEDDING_MODEL_NAME
+            )
             logger.info("Models initialised successfully")
             return True
 

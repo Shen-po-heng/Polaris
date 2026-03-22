@@ -15,8 +15,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from core.document_loader import DocumentLoader
 from core.exceptions import DocumentLoadError
 
-
 # ── Fixtures ─────────────────────────────────────────────────────────────────
+
 
 def _make_doc(content="hello", source="paper.pdf", page=0):
     doc = SimpleNamespace()
@@ -26,6 +26,7 @@ def _make_doc(content="hello", source="paper.pdf", page=0):
 
 
 # ── PDF ───────────────────────────────────────────────────────────────────────
+
 
 class TestLoadPDF:
     @patch("core.document_loader.validate_file")
@@ -54,6 +55,7 @@ class TestLoadPDF:
 
 # ── TXT / MD ─────────────────────────────────────────────────────────────────
 
+
 class TestLoadPlainText:
     @patch("core.document_loader.validate_file")
     def test_loads_txt(self, mock_validate, tmp_path):
@@ -78,6 +80,7 @@ class TestLoadPlainText:
 
 # ── DOCX ─────────────────────────────────────────────────────────────────────
 
+
 class TestLoadDOCX:
     @patch("core.document_loader.validate_file")
     def test_raises_if_python_docx_missing(self, mock_validate, tmp_path):
@@ -91,6 +94,7 @@ class TestLoadDOCX:
 
 
 # ── Unsupported format ───────────────────────────────────────────────────────
+
 
 class TestUnsupportedFormat:
     @patch("core.document_loader.validate_file")

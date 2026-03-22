@@ -14,8 +14,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from core.llm_provider import LLMProvider, LLMProviderError
 
-
 # ── Helpers ─────────────────────────────────────────────────────────────────
+
 
 def _make_litellm_response(text: str) -> MagicMock:
     """Build a mock litellm completion response."""
@@ -28,6 +28,7 @@ def _make_litellm_response(text: str) -> MagicMock:
 
 # ── Fixtures ─────────────────────────────────────────────────────────────────
 
+
 @pytest.fixture()
 def provider():
     """LLMProvider with Ollama health-check bypassed."""
@@ -36,6 +37,7 @@ def provider():
 
 
 # ── Tests ────────────────────────────────────────────────────────────────────
+
 
 class TestLLMProviderInit:
     def test_raises_when_ollama_unreachable(self):
@@ -88,7 +90,9 @@ class TestStream:
             c.choices[0].delta.content = text
             return c
 
-        mock_completion.return_value = iter([_make_chunk("Hello"), _make_chunk(" world")])
+        mock_completion.return_value = iter(
+            [_make_chunk("Hello"), _make_chunk(" world")]
+        )
         chunks = list(provider.stream("Say hello"))
         assert chunks == ["Hello", " world"]
 

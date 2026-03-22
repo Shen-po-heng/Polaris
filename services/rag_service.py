@@ -113,7 +113,9 @@ class RAGService:
             QueryError: On unexpected failures.
         """
         try:
-            retriever = self._vector_store.as_retriever(sources=selected_sources or None)
+            retriever = self._vector_store.as_retriever(
+                sources=selected_sources or None
+            )
             source_docs: list[Document] = retriever.invoke(question)
             context = "\n\n".join(doc.page_content for doc in source_docs)
 
@@ -174,12 +176,18 @@ class RAGService:
             retriever = self.process_document(file_objs)
             source_docs: list[Document] = retriever.invoke(question)
             context = "\n\n".join(doc.page_content for doc in source_docs)
-            answer = self._llm.chat(_RAG_PROMPT.format(context=context, question=question))
+            answer = self._llm.chat(
+                _RAG_PROMPT.format(context=context, question=question)
+            )
             source_info = [
                 f"{d.metadata.get('source','?')} (Page {d.metadata.get('page','?')})"
                 for d in source_docs
             ]
-            citation = "\n\nSources:\n" + "\n".join(sorted(set(source_info))) if source_info else ""
+            citation = (
+                "\n\nSources:\n" + "\n".join(sorted(set(source_info)))
+                if source_info
+                else ""
+            )
             return answer + citation
         except (IndexingError, DocumentLoadError):
             raise
@@ -199,7 +207,9 @@ class RAGService:
             context = "\n\n".join(doc.page_content for doc in source_docs)
             history_text = "\n".join(f"User: {u}\nAssistant: {a}" for u, a in history)
             prompt = (
-                _RAG_HISTORY_PROMPT.format(context=context, history=history_text, question=question)
+                _RAG_HISTORY_PROMPT.format(
+                    context=context, history=history_text, question=question
+                )
                 if history_text
                 else _RAG_PROMPT.format(context=context, question=question)
             )
@@ -208,7 +218,11 @@ class RAGService:
                 f"{d.metadata.get('source','?')} (Page {d.metadata.get('page','?')})"
                 for d in source_docs
             ]
-            citation = "\n\nSources:\n" + "\n".join(sorted(set(source_info))) if source_info else ""
+            citation = (
+                "\n\nSources:\n" + "\n".join(sorted(set(source_info)))
+                if source_info
+                else ""
+            )
             return answer + citation
         except (IndexingError, DocumentLoadError):
             raise

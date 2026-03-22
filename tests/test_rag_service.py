@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from core.exceptions import IndexingError, QueryError
 from services.rag_service import RAGService
 
-
 # ── Helpers ────────────────────────────────────────────────────────────────────
+
 
 def _make_doc(content: str = "mock content", source: str = "paper.pdf", page: int = 1):
     doc = SimpleNamespace()
@@ -27,6 +27,7 @@ def _make_doc(content: str = "mock content", source: str = "paper.pdf", page: in
 
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────
+
 
 @pytest.fixture()
 def rag_service():
@@ -42,6 +43,7 @@ def rag_service():
 
 
 # ── process_document ───────────────────────────────────────────────────────────
+
 
 class TestProcessDocument:
     def test_returns_retriever_on_success(self, rag_service, tmp_path):
@@ -82,6 +84,7 @@ class TestProcessDocument:
 
 # ── answer_query ───────────────────────────────────────────────────────────────
 
+
 class TestAnswerQuery:
     def test_returns_answer_with_citations(self, rag_service):
         source_doc = _make_doc(source="paper.pdf", page=3)
@@ -116,6 +119,7 @@ class TestAnswerQuery:
 
 
 # ── answer_with_history ────────────────────────────────────────────────────────
+
 
 class TestAnswerWithHistory:
     def test_includes_history_in_prompt(self, rag_service):

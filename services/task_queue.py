@@ -52,7 +52,9 @@ class IndexQueue:
         max_workers: Maximum number of concurrent indexing jobs.
     """
 
-    def __init__(self, rag_service: RAGService, max_workers: int = _MAX_WORKERS) -> None:
+    def __init__(
+        self, rag_service: RAGService, max_workers: int = _MAX_WORKERS
+    ) -> None:
         self._rag = rag_service
         self._queue: asyncio.Queue[IndexJob] = asyncio.Queue()
         self._semaphore = asyncio.Semaphore(max_workers)

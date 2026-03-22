@@ -26,6 +26,7 @@ class TestSummarizer:
 
         with patch("services.summarizer.DocumentLoader.load") as mock_load:
             from types import SimpleNamespace
+
             doc = SimpleNamespace(page_content="Some text about GPS.")
             mock_load.return_value = [doc]
             result = summarizer.summarise([str(pdf)])
@@ -40,6 +41,7 @@ class TestSummarizer:
 
         with patch("services.summarizer.DocumentLoader.load") as mock_load:
             from types import SimpleNamespace
+
             mock_load.return_value = [SimpleNamespace(page_content="text")]
             result = summarizer.summarise([str(f) for f in files])
 
@@ -58,6 +60,7 @@ class TestSummarizer:
         long_text = "x" * 20_000
         with patch("services.summarizer.DocumentLoader.load") as mock_load:
             from types import SimpleNamespace
+
             mock_load.return_value = [SimpleNamespace(page_content=long_text)]
             summarizer.summarise(["doc.txt"])
 
