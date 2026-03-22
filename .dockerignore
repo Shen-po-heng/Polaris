@@ -1,0 +1,33 @@
+.git
+.github
+__pycache__
+*.pyc
+*.pyo
+
+# Environment
+.env
+.env.local
+
+# Dev / test artefacts
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# Data (mounted as volume at runtime)
+data/
+logs/
+
+# Raw uploads / test files
+*.pdf
+*.docx
+
+# Docs / planning
+Ref/
+CHANGELOG.md
+CONTRIBUTING.md
+
+# Legacy Docker file
+dockerfile

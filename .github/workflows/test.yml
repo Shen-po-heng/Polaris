@@ -1,31 +1,68 @@
-name: Python CI
+name: CI
 
 on:
   push:
-    branches:
-      - main  # Trigger on pushes to the main branch
+    branches: [main]
   pull_request:
-    branches:
-      - main  # Trigger on PRs targeting the main branch
+    branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest  # Running the job on the latest Ubuntu environment
+  quality:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2  # Check out your code so that the workflow can access it
+      - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'  # Use the Python version required for your project
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements-dev.txt
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt  # Install dependencies from the requirements.txt file
-         
-    - name: Run tests
-      run: |
-          pytest tests/
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Format check (black)
+        run: black --check .
+
+  test:
+    name: Tests & Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests with coverage
+        run: pytest tests/ --cov=. --cov-report=term-missing --cov-fail-under=50
+
+  security:
+    name: Dependency Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Audit dependencies
+        run: pip-audit -r requirements-dev.txt

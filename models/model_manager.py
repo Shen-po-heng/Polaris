@@ -1,27 +1,46 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-from langchain_huggingface import HuggingFacePipeline, HuggingFaceEmbeddings
-import torch
+"""Model initialisation for the HuggingFace-backed LLM and embeddings.
+
+Heavy dependencies (torch, transformers) are imported lazily inside
+``initialize_models`` so that the module can be imported in test
+environments without requiring the full ML stack to be installed.
+
+Note: This module will be superseded by ``core/llm_provider.py``
+      (LiteLLM + Ollama) in Phase 2.
+"""
+
 from config import MODEL_ID, EMBEDDING_MODEL_NAME, MAX_LENGTH, REPETITION_PENALTY
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+
 class ModelManager:
-    def __init__(self):
+    def __init__(self) -> None:
         self.llm = None
         self.embedding_model = None
 
-    def initialize_models(self):
+    def initialize_models(self) -> bool:
+        """Load the LLM pipeline and embedding model.
+
+        Returns:
+            True on success, False on failure.
+        """
         try:
+            # Lazy imports keep test environments lightweight
+            import torch
+            from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+            from langchain_huggingface import HuggingFacePipeline, HuggingFaceEmbeddings
+
             tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
             model = AutoModelForCausalLM.from_pretrained(
                 MODEL_ID,
                 device_map="auto",
-                torch_dtype=torch.float32
+                torch_dtype=torch.float32,
             )
-            # Check if CUDA is available
+
             device = 0 if torch.cuda.is_available() else -1
-            print(f"Using device: {'GPU' if device == 0 else 'CPU'}")
+            logger.info("Using device: %s", "GPU" if device == 0 else "CPU")
+
             pipe = pipeline(
                 "text-generation",
                 model=model,
@@ -29,12 +48,13 @@ class ModelManager:
                 max_length=MAX_LENGTH,
                 repetition_penalty=REPETITION_PENALTY,
                 pad_token_id=tokenizer.eos_token_id,
-                truncation=True  
+                truncation=True,
             )
             self.llm = HuggingFacePipeline(pipeline=pipe)
             self.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
-            logger.info("Models initialized successfully.")
+            logger.info("Models initialised successfully")
             return True
-        except Exception as e:
-            logger.error(f"Error initializing models: {str(e)}")
+
+        except Exception:
+            logger.exception("Error initialising models")
             return False
