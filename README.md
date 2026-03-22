@@ -1,6 +1,6 @@
 # Polaris — Lightweight Local GraphRAG Personal Knowledge Base
 
-[![CI](https://github.com/Shen-po-heng/Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain/actions/workflows/test.yml/badge.svg)](https://github.com/Shen-po-heng/Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain/actions/workflows/test.yml)
+[![CI](https://github.com/Shen-po-heng/Polaris/actions/workflows/test.yml/badge.svg)](https://github.com/Shen-po-heng/Polaris/actions/workflows/test.yml)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -23,15 +23,19 @@
 
 ---
 
-## Features (Phase 2)
+## Features (Phase 2.5)
 
 - **Multi-format ingestion** — PDF, DOCX, TXT, Markdown
 - **100% local LLM** — Ollama (llama3.2, mistral, qwen2.5) — no API key needed
 - **Swap models via `.env`** — switch to OpenAI / Anthropic without changing code
 - **Persistent vector store** — ChromaDB on disk, survives restarts
 - **Source citations** — every answer includes filename + page number
-- **Async indexing queue** — index multiple documents concurrently (max 2 workers)
-- **Secure uploads** — path traversal protection, file size limit (100 MB), extension whitelist
+- **Conversational UI** — two-panel Gradio interface with multi-turn chat
+- **Per-document summaries** — summarise any indexed document on demand
+- **Persistent chat history** — conversation saved to disk, restored on restart
+- **Document library** — view, filter, and delete indexed sources from the UI
+- **Source-level retrieval filter** — choose which documents to query per conversation
+- **Secure uploads** — path traversal protection, 100 MB limit, extension whitelist
 
 ---
 
@@ -47,8 +51,8 @@ ollama pull nomic-embed-text
 
 2. Clone and install:
 ```bash
-git clone https://github.com/Shen-po-heng/Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain.git
-cd Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain
+git clone https://github.com/Shen-po-heng/Polaris.git
+cd Polaris
 pip install -r requirements.txt
 ```
 
@@ -87,24 +91,26 @@ docker compose -f docker-compose.yml -f docker-compose.gpu.yml up
 
 ```
 polaris/
-├── app.py                    # Entry point
+├── app.py                      # Entry point
 ├── config/
-│   └── settings.py           # pydantic-settings, reads from .env
+│   └── settings.py             # pydantic-settings, reads from .env
 ├── core/
-│   ├── llm_provider.py       # LiteLLM wrapper (Ollama / OpenAI / Anthropic)
-│   ├── embedder.py           # Embeddings via LiteLLM
-│   ├── document_loader.py    # PDF / DOCX / TXT / MD loader
-│   ├── chunker.py            # Text splitting
-│   ├── vector_store.py       # ChromaDB persistent store
-│   └── exceptions.py         # Domain exception hierarchy
+│   ├── llm_provider.py         # LiteLLM wrapper (Ollama / OpenAI / Anthropic)
+│   ├── embedder.py             # Embeddings via LiteLLM
+│   ├── document_loader.py      # PDF / DOCX / TXT / MD loader
+│   ├── chunker.py              # Text splitting
+│   ├── vector_store.py         # ChromaDB persistent store
+│   └── exceptions.py           # Domain exception hierarchy
 ├── services/
-│   ├── rag_service.py        # RAG orchestration
-│   └── task_queue.py         # Async indexing queue
+│   ├── rag_service.py          # RAG orchestration + source-filtered retrieval
+│   ├── summarizer.py           # Per-document LLM summarisation
+│   ├── chat_history.py         # JSON-backed conversation persistence
+│   └── task_queue.py           # Async indexing queue
 ├── interfaces/
-│   └── gradio_interface.py   # Gradio UI
+│   └── gradio_interface.py     # Two-tab Gradio UI (Chat + Library)
 └── utils/
-    ├── logger.py             # Structured logging
-    └── security.py           # File validation
+    ├── logger.py               # Structured logging
+    └── security.py             # File validation
 ```
 
 ---
@@ -149,12 +155,11 @@ black --check .
 - [x] Phase 0 — Repository cleanup
 - [x] Phase 1 — Core refactor (bug fixes, security, CI)
 - [x] Phase 2 — Local-first foundation (Ollama, multi-format, persistent ChromaDB)
-- [ ] Phase 2.5 — Conversational UI (per-document summary, multi-turn chat)
-- [ ] Phase 3 — GraphRAG core (knowledge graph, entity extraction)
+- [x] Phase 2.5 — Conversational UI (per-document summary, multi-turn chat, document library)
+- [ ] Phase 3 — GraphRAG core (knowledge graph, entity extraction, pyvis visualisation)
 - [ ] Phase 4 — Document CRUD + SQLite metadata
-- [ ] Phase 5 — Full UI redesign
-- [ ] Phase 6 — REST API + MCP server
-- [ ] Phase 7 — RAGAS benchmark
+- [ ] Phase 5 — REST API + MCP server
+- [ ] Phase 6 — RAGAS benchmark
 
 ---
 
