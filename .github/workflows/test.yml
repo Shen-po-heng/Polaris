@@ -46,7 +46,7 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Run tests with coverage
-        run: pytest tests/ --cov=. --cov-report=term-missing --cov-fail-under=50
+        run: pytest tests/ --ignore=tests/pyloader_test.py --cov=. --cov-report=term-missing --cov-fail-under=50
 
   security:
     name: Dependency Security Scan

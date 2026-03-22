@@ -6,11 +6,16 @@
 # GitHub Actions runner stays fast and cheap.
 # The full runtime stack is in requirements.txt.
 
-# ── LangChain (needed for imports in tests) ────────────────────────────────────
+# ── LangChain stack ────────────────────────────────────────────────────────────
 langchain>=0.3.17
 langchain-core>=0.3.34
 langchain-community>=0.3.16
 langchain-text-splitters>=0.3.6
+langchain-chroma>=0.1.0
+
+# ── LLM / Embedding / Vector store ────────────────────────────────────────────
+litellm>=1.30.0
+chromadb>=0.6.0
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 pydantic-settings>=2.2
@@ -20,6 +25,7 @@ gradio>=5.15.0
 
 # ── Document parsing ───────────────────────────────────────────────────────────
 pypdf>=5.2.0
+python-docx>=1.1.0
 
 # ── Testing ────────────────────────────────────────────────────────────────────
 pytest>=8.3
