@@ -14,8 +14,8 @@ warnings.warn(
     stacklevel=2,
 )
 
-from config import MODEL_ID, EMBEDDING_MODEL_NAME, MAX_LENGTH, REPETITION_PENALTY
-from utils.logger import get_logger
+from config import MODEL_ID, EMBEDDING_MODEL_NAME, MAX_LENGTH, REPETITION_PENALTY  # noqa: E402
+from utils.logger import get_logger  # noqa: E402
 
 logger = get_logger(__name__)
 

@@ -5,9 +5,8 @@ All file-system and library interactions are mocked where needed.
 
 import sys
 import os
-from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 

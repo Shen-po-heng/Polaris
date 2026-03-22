@@ -12,12 +12,14 @@ Tab 2 📚 Library
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import gradio as gr
 
 from core.exceptions import PolarisError
 from services.chat_history import ChatHistoryManager
 from services.rag_service import RAGService
-from services.summarizer import Summarizer
+from services.summarizer import Summarizer, _MAX_CHARS, _SUMMARY_PROMPT
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -113,7 +115,6 @@ def create_gradio_interface() -> gr.Blocks:
             return gr.update(value="<p>Select sources or upload files first.</p>", visible=True)
 
         # Build a map: filename → upload path (for freshly uploaded files)
-        from pathlib import Path
         upload_map = {Path(p).name: p for p in paths}
 
         # If nothing selected but files uploaded, summarise uploaded files
@@ -133,8 +134,6 @@ def create_gradio_interface() -> gr.Blocks:
                     if not text:
                         summary = "[No stored text found — please re-upload.]"
                     else:
-                        from pathlib import Path as _P
-                        from services.summarizer import _SUMMARY_PROMPT, _MAX_CHARS
                         prompt = _SUMMARY_PROMPT.format(
                             filename=src, text=text[:_MAX_CHARS]
                         )
