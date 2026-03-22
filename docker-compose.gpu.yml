@@ -1,0 +1,22 @@
+version: "3.9"
+
+# ── GPU override for Ollama ────────────────────────────────────────────────────
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up
+#
+# Requirements:
+#   - NVIDIA Container Toolkit installed on the host
+#   - nvidia-smi available (driver ≥ 525)
+
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility

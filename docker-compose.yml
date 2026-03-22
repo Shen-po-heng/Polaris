@@ -1,0 +1,50 @@
+version: "3.9"
+
+# ── Polaris — Local Research Assistant ────────────────────────────────────────
+# Usage:
+#   docker compose up             # CPU mode (default)
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up  # GPU mode
+
+services:
+  polaris:
+    build: .
+    image: polaris:latest
+    container_name: polaris
+    ports:
+      - "7860:7860"
+    environment:
+      - LLM_MODEL=ollama/llama3.2
+      - EMBEDDING_MODEL=ollama/nomic-embed-text
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - LOG_LEVEL=INFO
+    volumes:
+      - polaris_data:/app/data       # ChromaDB persistence
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:7860/')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 90s
+      retries: 3
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama  # model weights persistence
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+
+volumes:
+  polaris_data:
+  ollama_models:

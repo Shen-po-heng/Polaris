@@ -1,12 +1,18 @@
-"""Model initialisation for the HuggingFace-backed LLM and embeddings.
+"""[DEPRECATED] HuggingFace-backed model manager.
 
-Heavy dependencies (torch, transformers) are imported lazily inside
-``initialize_models`` so that the module can be imported in test
-environments without requiring the full ML stack to be installed.
-
-Note: This module will be superseded by ``core/llm_provider.py``
-      (LiteLLM + Ollama) in Phase 2.
+Superseded by ``core/llm_provider.py`` (LiteLLM + Ollama) in Phase 2.
+This file is kept for reference only and will be removed in Phase 3.
+Do NOT use in new code.
 """
+
+import warnings
+
+warnings.warn(
+    "ModelManager is deprecated and will be removed in Phase 3. "
+    "Use core.llm_provider.LLMProvider instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 from config import MODEL_ID, EMBEDDING_MODEL_NAME, MAX_LENGTH, REPETITION_PENALTY
 from utils.logger import get_logger

@@ -1,103 +1,167 @@
-# Interactive RAG QA-bot with LLM-Based Document Reader Using LangChain
+# Polaris — Lightweight Local GraphRAG Personal Knowledge Base
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Shen-po-heng/Interactive-QA-bot-with-LLM-based-Document-Reader-using-Langchain)](https://github.com/Shen-po-heng/Interactive-QA-bot-with-LLM-based-Document-Reader-using-Langchain)
-[![GitHub workflow](https://github.com/Shen-po-heng/Interactive-QA-bot-with-LLM-based-Document-Reader-using-Langchain/actions/workflows/test.yml/badge.svg)](https://github.com/Shen-po-heng/Interactive-QA-bot-with-LLM-based-Document-Reader-using-Langchain/actions/workflows/test.yml)
-## Description
-This repository demonstrate a RAG(Retrieval-Augmented Generation) QA-bot with reader can process PDF documents and answer queries based on the content of the documents
+[![CI](https://github.com/Shen-po-heng/Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain/actions/workflows/test.yml/badge.svg)](https://github.com/Shen-po-heng/Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain/actions/workflows/test.yml)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-⭐ If you found this project useful, consider giving it a star!
+> **Simple · Lightweight · Local · Private**
+>
+> A fully local, privacy-first document assistant built for researchers and graduate students.
+> All data stays on your machine — no cloud, no API keys required.
 
-### Built with
-LangChain, HuggingFace transformers, and Gradio.
+---
 
-## Features
-- **PDF Document Upload**: Upload a PDF file, and the chatbot will extract text and split it into manageable chunks.
-- **Question-Answering**: Ask any question related to the document, and the model will retrieve the most relevant information to provide an answer.
-- **Text Generation**: Built on top of a GPT-based model (e.g., GPT-Neo 2.7B) for natural language understanding and generation.
+## Why Polaris?
 
-### UI interface
-![alt text](img-ReadMe/image.png)
+| Feature | NotebookLM | Polaris |
+|---------|-----------|---------|
+| Document limit | 50 sources | Unlimited |
+| Privacy | Google cloud | 100% local |
+| Cost | Free (limited) | Free forever |
+| Offline | No | Yes |
+| Customizable | No | Full source |
 
-### Demo Results
-![alt text](img-ReadMe/image-1.png)
-![alt text](img-ReadMe/image-2.png)
+---
 
-### Structure
-```
-project_root/
-├── app.py             # Entry point to run the app
-├── config.py          # Configuration settings
-├── models/            # Folder for model-related code
-│   ├── __init__.py     
-│   ├── model_manager.py   # Model initialization and handling
-├── services/          # Folder for service-related code
-│   ├── __init__.py     
-│   └── rag_service.py      # RAG service for document processing and query answering
-├── utils/             # Utility functions and helpers
-│   ├── __init__.py     
-│   └── logger.py          # Logging configuration
-└── interfaces/        # Folder for Gradio UI
-│   ├── __init__.py     
-│   └── gradio_interface.py # Gradio interface setup
-└── tests/        # Folder for test
-    └── test_rag_service.py 
-```
+## Features (Phase 2)
 
-## Getting Started -  Installation and Usage
-If you want to play this repo,...
+- **Multi-format ingestion** — PDF, DOCX, TXT, Markdown
+- **100% local LLM** — Ollama (llama3.2, mistral, qwen2.5) — no API key needed
+- **Swap models via `.env`** — switch to OpenAI / Anthropic without changing code
+- **Persistent vector store** — ChromaDB on disk, survives restarts
+- **Source citations** — every answer includes filename + page number
+- **Async indexing queue** — index multiple documents concurrently (max 2 workers)
+- **Secure uploads** — path traversal protection, file size limit (100 MB), extension whitelist
 
-* Step 1: fork this repo, or directly download it (just do as you like)
+---
 
-Remainder: If you are just new to python, remember to set up a <a id=VE href="https://docs.python.org/3/library/venv.html">virtual environment</a> for manage dependencies and keep things tidy. You can check from simple step from <a id = VEsetup href="https://huggingface.co/docs/datasets/en/installation">Hugging face</a>.
+## Quick Start
 
-* Step 2: Check dependency to install necessary libraries
-```bash    
-    pip install -r requirements.txt
-```
-You can install the required dependencies by either using requirements.txt (see below for its contents) or manually installing the following:
+### Prerequisites
 
-transformers
-torch
-gradio
-langchain
-langchain_huggingface
-langchain_community
-
-* step 3: If everything is ready in your IDE, just execute 
+1. Install [Ollama](https://ollama.com/) and pull the required models:
 ```bash
-    python app.py
+ollama pull llama3.2
+ollama pull nomic-embed-text
 ```
-If you want to use specific models, set them up by adjusting parameters in the config.py file. You can modify the model_id and embedding_model_name.
 
-* step 4: Upload a PDF (You can use the one from this repo)
-Click on the "Upload PDF File" button in the Gradio interface and upload any PDF file containing the information you want to query.
-
-* step 5: Query the document
-You can ask a question related to the document you uploaded, and the chatbot will generate a response based on the content. After uploading the document, type your query in the text box and click the "Submit" button. The chatbot will provide an answer based on the document content.
-
-## Alternative way - Use docker
-If you are familiar with docker, you are probably notice the docker file in this repo.
-You can just build and run the docker container.
+2. Clone and install:
 ```bash
-# Build the Docker image
-docker build -t rag-document-qa .
-
-# Run the container
-docker run -p 7860:7860 rag-document-qa
+git clone https://github.com/Shen-po-heng/Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain.git
+cd Interactive-LLM-Based-Document-Reader-QA-Bot-Using-LangChain
+pip install -r requirements.txt
 ```
-and then access your Gradio interface at http://localhost:7860 in your web browser.
 
-## Contact
-If you have any questions, feel free to ask me.
-Also, feel free to open an issue if you encounter any problems. 
-I actually plan to enhance this project step by step, so welcome any idea
+3. Configure (optional — defaults work out of the box):
+```bash
+cp .env.example .env
+# edit .env if you want to change models or settings
+```
 
-## Explaination for building QA bot by LangChain
-For this project, I currently use <a id=ibmcourse href=https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0>TinyLlama/TinyLlama-1.1B-Chat-v1.0 </a>, which is not too huge for running locally and capable of generating high-quality text as well. I utilize the model in combination with the LangChain framework and Retrieval-Augmented Generation (RAG) to create this repo. Absolutely, I think use a large-scale model will have better result, but this project mainly want to show how to build RAG firsly to assist the pretrained model.
+4. Run:
+```bash
+# Make sure Ollama is running first
+ollama serve
+
+# Start Polaris
+python app.py
+```
+
+Open `http://localhost:7860` in your browser.
+
+---
+
+## Docker
+
+```bash
+# CPU
+docker compose up
+
+# GPU (NVIDIA)
+docker compose -f docker-compose.yml -f docker-compose.gpu.yml up
+```
+
+---
+
+## Architecture
+
+```
+polaris/
+├── app.py                    # Entry point
+├── config/
+│   └── settings.py           # pydantic-settings, reads from .env
+├── core/
+│   ├── llm_provider.py       # LiteLLM wrapper (Ollama / OpenAI / Anthropic)
+│   ├── embedder.py           # Embeddings via LiteLLM
+│   ├── document_loader.py    # PDF / DOCX / TXT / MD loader
+│   ├── chunker.py            # Text splitting
+│   ├── vector_store.py       # ChromaDB persistent store
+│   └── exceptions.py         # Domain exception hierarchy
+├── services/
+│   ├── rag_service.py        # RAG orchestration
+│   └── task_queue.py         # Async indexing queue
+├── interfaces/
+│   └── gradio_interface.py   # Gradio UI
+└── utils/
+    ├── logger.py             # Structured logging
+    └── security.py           # File validation
+```
+
+---
+
+## Switching Models
+
+Everything is controlled by `.env` — zero code changes needed:
+
+```env
+# Local (free, no API key)
+LLM_MODEL=ollama/llama3.2
+EMBEDDING_MODEL=ollama/nomic-embed-text
+
+# OpenAI
+LLM_MODEL=openai/gpt-4o-mini
+OPENAI_API_KEY=sk-...
+
+# Anthropic
+LLM_MODEL=anthropic/claude-3-haiku-20240307
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+---
+
+## Development
+
+```bash
+pip install -r requirements-dev.txt
+
+# Run tests
+pytest tests/ -v
+
+# Lint + format check
+ruff check .
+black --check .
+```
+
+---
+
+## Roadmap
+
+- [x] Phase 0 — Repository cleanup
+- [x] Phase 1 — Core refactor (bug fixes, security, CI)
+- [x] Phase 2 — Local-first foundation (Ollama, multi-format, persistent ChromaDB)
+- [ ] Phase 2.5 — Conversational UI (per-document summary, multi-turn chat)
+- [ ] Phase 3 — GraphRAG core (knowledge graph, entity extraction)
+- [ ] Phase 4 — Document CRUD + SQLite metadata
+- [ ] Phase 5 — Full UI redesign
+- [ ] Phase 6 — REST API + MCP server
+- [ ] Phase 7 — RAGAS benchmark
+
+---
 
 ## License
-MIT License
 
-## Acknowledge
-The paper shown in the demo for this repo is from IBM Developer Skills Network.
+MIT License — see [LICENSE](LICENSE)
 
+## Contributing
+
+Issues and PRs welcome. If you find this useful, consider giving it a ⭐

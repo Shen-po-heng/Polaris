@@ -28,9 +28,9 @@ def create_gradio_interface() -> gr.Interface:
         allow_flagging="never",
         inputs=[
             gr.Files(
-                label="Upload PDF",
+                label="Upload Documents (PDF / DOCX / TXT / MD)",
                 file_count="multiple",
-                file_types=[".pdf"],
+                file_types=[".pdf", ".docx", ".txt", ".md"],
                 type="filepath",
             ),
             gr.Textbox(

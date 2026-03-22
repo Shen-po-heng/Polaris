@@ -9,8 +9,8 @@ from pathlib import Path
 from config.settings import settings
 from core.exceptions import SecurityError
 
-# Phase 1: PDF only. Expanded in Phase 2 (DOCX, TXT, MD).
-ALLOWED_EXTENSIONS: frozenset[str] = frozenset({".pdf"})
+# Phase 2: PDF, DOCX, TXT, MD
+ALLOWED_EXTENSIONS: frozenset[str] = frozenset({".pdf", ".docx", ".txt", ".md"})
 
 
 def validate_file(file_path: str | Path) -> Path:

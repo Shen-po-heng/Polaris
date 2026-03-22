@@ -1,40 +1,56 @@
-"""RAG service — document processing and question answering.
+"""RAG service — document indexing and question answering.
+
+Phase 2 rewrite: uses LiteLLM directly (no LangChain LLM wrapper needed),
+LCEL-style retrieval, and persistent ChromaDB.
 
 Responsibilities:
-  - Load and chunk PDF documents.
-  - Build an in-memory vector store from chunks.
+  - Accept file paths, delegate loading → chunking → indexing to core/.
   - Answer user queries with source citations.
-
-Note: the in-memory Chroma instance is rebuilt on every query.
-      Persistent ChromaDB caching is addressed in Phase 2.
 """
 
-from pathlib import Path
+from __future__ import annotations
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.chains import RetrievalQA
+from langchain_core.documents import Document
 
-from config import CHUNK_SIZE, CHUNK_OVERLAP, SEARCH_K
+from core.chunker import Chunker
+from core.document_loader import DocumentLoader
+from core.embedder import Embedder
 from core.exceptions import DocumentLoadError, IndexingError, QueryError
-from models.model_manager import ModelManager
+from core.llm_provider import LLMProvider
+from core.vector_store import VectorStore
+from config.settings import settings
 from utils.logger import get_logger
-from utils.security import validate_file
 
 logger = get_logger(__name__)
 
+_RAG_PROMPT = """\
+Use the following document excerpts to answer the question.
+If the answer is not in the excerpts, say "I don't have enough information."
+
+Context:
+{context}
+
+Question: {question}
+
+Answer:"""
+
 
 class RAGService:
+    """Orchestrates document ingestion and retrieval-augmented generation."""
+
     def __init__(self) -> None:
-        self.model_manager = ModelManager()
-        self.model_manager.initialize_models()
+        self._llm = LLMProvider()
+        self._embedder = Embedder()
+        self._chunker = Chunker()
+        self._vector_store = VectorStore(embedder=self._embedder)
+
+    # ── Public API ──────────────────────────────────────────────────────────
 
     def process_document(self, file_paths: list[str]) -> object:
-        """Load PDFs, chunk text and build a retriever.
+        """Load, chunk, and index documents into the persistent vector store.
 
         Args:
-            file_paths: List of absolute paths to PDF files.
+            file_paths: Absolute paths to documents (PDF / DOCX / TXT / MD).
 
         Returns:
             A LangChain retriever ready for similarity search.
@@ -43,39 +59,26 @@ class RAGService:
             IndexingError: If loading or indexing fails.
         """
         try:
-            all_documents = []
+            all_docs: list[Document] = []
             for raw_path in file_paths:
-                validated = validate_file(raw_path)
-                loader = PyPDFLoader(str(validated))
-                docs = loader.load()
-                for doc in docs:
-                    doc.metadata["source"] = validated.name  # cross-platform filename
-                    doc.metadata["page"] = doc.metadata.get("page", "unknown")
-                all_documents.extend(docs)
-                logger.info("Loaded %d pages from '%s'", len(docs), validated.name)
+                docs = DocumentLoader.load(raw_path)
+                all_docs.extend(docs)
 
-            text_splitter = RecursiveCharacterTextSplitter(
-                chunk_size=CHUNK_SIZE,
-                chunk_overlap=CHUNK_OVERLAP,
-                length_function=len,
-            )
-            chunks = text_splitter.split_documents(all_documents)
-            logger.debug("Split into %d chunks across %d documents", len(chunks), len(file_paths))
-
-            vectordb = Chroma.from_documents(chunks, self.model_manager.embedding_model)
-            return vectordb.as_retriever(search_kwargs={"k": SEARCH_K})
+            chunks = self._chunker.split(all_docs)
+            self._vector_store.add(chunks, self._embedder)
+            return self._vector_store.as_retriever()
 
         except (DocumentLoadError, IndexingError):
             raise
         except Exception as exc:
-            logger.exception("Error processing documents")
-            raise IndexingError("Error processing the document. Please try again.") from exc
+            logger.exception("Unexpected error during document processing")
+            raise IndexingError(f"Document processing failed: {exc}") from exc
 
     def answer_query(self, file_objs: list[str], query: str) -> str:
         """Answer a query using RAG over the provided documents.
 
         Args:
-            file_objs: List of PDF file paths (from Gradio file upload).
+            file_objs: File paths (from Gradio upload or direct call).
             query: The user's question.
 
         Returns:
@@ -86,33 +89,21 @@ class RAGService:
         """
         try:
             retriever = self.process_document(file_objs)
-            qa = RetrievalQA.from_chain_type(
-                llm=self.model_manager.llm,
-                chain_type="stuff",
-                retriever=retriever,
-                return_source_documents=True,
-            )
-            response = qa.invoke(query)
-            logger.debug("RAG response: %s", response)
 
-            result_text: str = response.get("result", "")
+            # Retrieve relevant chunks
+            source_docs: list[Document] = retriever.invoke(query)
+            context = "\n\n".join(doc.page_content for doc in source_docs)
 
-            # Some prompt templates prefix the answer with "Helpful Answer:"
-            marker = "Helpful Answer:"
-            idx = result_text.find(marker)
-            answer = result_text[idx + len(marker):].strip() if idx != -1 else result_text.strip()
+            # Call LiteLLM directly — no LangChain chain needed
+            prompt = _RAG_PROMPT.format(context=context, question=query)
+            answer = self._llm.chat(prompt)
 
-            source_docs = response.get("source_documents", [])
-            logger.debug("Retrieved %d source documents", len(source_docs))
-
+            # Build citation list
             source_info: list[str] = []
             for doc in source_docs:
-                logger.debug("Source metadata: %s", doc.metadata)
                 source = doc.metadata.get("source", "unknown")
                 page = doc.metadata.get("page", "unknown")
                 source_info.append(f"{source} (Page {page})")
-
-            logger.debug("Sources: %s", source_info)
 
             citation_text = (
                 "\n\nSources:\n" + "\n".join(sorted(set(source_info)))

@@ -15,11 +15,21 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # ── LLM ────────────────────────────────────────────────────────────────
+    # ── LLM (Phase 2: LiteLLM / Ollama) ────────────────────────────────────
+    llm_model: str = "ollama/llama3.2"
+    embedding_model: str = "ollama/nomic-embed-text"
+    ollama_base_url: str = "http://localhost:11434"
+    llm_timeout_seconds: int = 120
+
+    # ── LLM (Phase 1 legacy — kept for backward compat, unused in Phase 2+)
     model_id: str = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
     embedding_model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
     max_length: int = 2048
     repetition_penalty: float = 1.15
+
+    # ── API keys (optional — only needed for non-Ollama models) ────────────
+    openai_api_key: str = ""
+    anthropic_api_key: str = ""
 
     # ── Chunking ────────────────────────────────────────────────────────────
     chunk_size: int = 512
