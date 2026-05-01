@@ -1,0 +1,11 @@
+{
+  "paper_id": "1512.03385",
+  "paper_title": "Deep Residual Learning for Image Recognition",
+  "section_heading": "3. Deep Residual Learning",
+  "section_type": "method",
+  "text": "[3.1. Residual Learning] Let us consider H(x) as an underlying mapping to be fit by a few stacked layers (not necessarily the entire net), with x denoting the inputs to the first of these layers. If one hypothesizes that multiple nonlinear layers can asymptotically approximate complicated functions 2 , then it is equivalent to hypothesize that they can asymptotically approximate the residual functions, i.e., H(x)x (assuming that the input and output are of the same dimensions). So rather than expect stacked layers to approximate H(x), we explicitly let these layers approximate a residual function F(x) := H(x)x. The original function thus becomes F(x)+x. Although both forms should be able to asymptotically approximate the desired functions (as hypothesized), the ease of learning might be different. This reformulation is motivated by the counterintuitive phenomena about the degradation problem (Fig. 1, left ). As we discussed in the introduction, if the added layers can be constructed as identity mappings, a deeper model should have training error no greater than its shallower counterpart. The degradation problem suggests that the solvers might have difficulties in approximating identity mappings by multiple nonlinear layers. With the residual learning reformulation, if identity mappings are optimal, the solvers may simply drive the weights of the multiple nonlinear layers toward zero to approach identity mappings. In real cases, it is unlikely that identity mappings are optima...",
+  "verified": false,
+  "note": "Fill in entities and relations, then set verified=true.",
+  "entities": [],
+  "relations": []
+}

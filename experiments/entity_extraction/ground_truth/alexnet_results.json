@@ -1,0 +1,11 @@
+{
+  "paper_id": "NIPS-2012-alexnet",
+  "paper_title": "ImageNet Classification with Deep CNNs (AlexNet)",
+  "section_heading": "6 Results",
+  "section_type": "results",
+  "text": "Our results on ILSVRC-2010 are summarized in Table 1 . Our network achieves top-1 and top-5 test set error rates of 37.5% and 17.0% 5 . The best performance achieved during the ILSVRC-2010 competition was 47.1% and 28.2% with an approach that averages the predictions produced from six sparse-coding models trained on different features [2] , and since then the best published results are 45.7% and 25.7% with an approach that averages the predictions of two classifiers trained on Fisher Vectors (FVs) computed from two types of densely-sampled features [24] .",
+  "verified": false,
+  "note": "Fill in entities and relations, then set verified=true.",
+  "entities": [],
+  "relations": []
+}

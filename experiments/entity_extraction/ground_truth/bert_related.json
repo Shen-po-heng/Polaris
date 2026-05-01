@@ -1,0 +1,11 @@
+{
+  "paper_id": "1810.04805",
+  "paper_title": "BERT: Pre-training of Deep Bidirectional Transformers",
+  "section_heading": "2 Related Work",
+  "section_type": "related_work",
+  "text": "There is a long history of pre-training general language representations, and we briefly review the most widely-used approaches in this section.\n\n[2.1 Unsupervised Feature-based Approaches] Learning widely applicable representations of words has been an active area of research for decades, including non-neural (Brown et al., 1992; Ando and Zhang, 2005; Blitzer et al., 2006) and neural (Mikolov et al., 2013; Pennington et al., 2014) methods. Pre-trained word embeddings are an integral part of modern NLP systems, offering significant improvements over embeddings learned from scratch (Turian et al., 2010) . To pretrain word embedding vectors, left-to-right language modeling objectives have been used (Mnih and Hinton, 2009) , as well as objectives to discriminate correct from incorrect words in left and right context (Mikolov et al., 2013) . These approaches have been generalized to coarser granularities, such as sentence embeddings (Kiros et al., 2015; Logeswaran and Lee, 2018) or paragraph embeddings (Le and Mikolov, 2014) . To train sentence representations, prior work has used objectives to rank candidate next sentences (Jernite et al., 2017; Logeswaran and Lee, 2018) , left-to-right generation of next sentence words given a representation of the previous sentence (Kiros et al., 2015) , or denoising autoencoder derived objectives (Hill et al., 2016) . ELMo and its predecessor (Peters et al., 2017 (Peters et al., , 2018a) ) generalize traditional word embedding research along ...",
+  "verified": false,
+  "note": "Fill in entities and relations, then set verified=true.",
+  "entities": [],
+  "relations": []
+}

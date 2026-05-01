@@ -1,0 +1,11 @@
+{
+  "paper_id": "1412.6980",
+  "paper_title": "Adam: A Method for Stochastic Optimization",
+  "section_heading": "6 EXPERIMENTS",
+  "section_type": "results",
+  "text": "To empirically evaluate the proposed method, we investigated different popular machine learning models, including logistic regression, multilayer fully connected neural networks and deep convolutional neural networks. Using large models and datasets, we demonstrate Adam can efficiently solve practical deep learning problems. We use the same parameter initialization when comparing different optimization algorithms. The hyper-parameters, such as learning rate and momentum, are searched over a dense grid and the results are reported using the best hyper-parameter setting.",
+  "verified": false,
+  "note": "Fill in entities and relations, then set verified=true.",
+  "entities": [],
+  "relations": []
+}
