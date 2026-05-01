@@ -1,0 +1,151 @@
+{
+  "title": "Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. Attention Is All You Need",
+  "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being mor...",
+  "body_sections": [
+    {
+      "n": "1",
+      "heading": "1 Introduction",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2",
+      "heading": "2 Background",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3",
+      "heading": "3 Model Architecture",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.1",
+      "heading": "3.1 Encoder and Decoder Stacks",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2",
+      "heading": "3.2 Attention",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2.1",
+      "heading": "3.2.1 Scaled Dot-Product Attention",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2.2",
+      "heading": "3.2.2 Multi-Head Attention",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2.3",
+      "heading": "3.2.3 Applications of Attention in our Model",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.3",
+      "heading": "3.3 Position-wise Feed-Forward Networks",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.4",
+      "heading": "3.4 Embeddings and Softmax",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.5",
+      "heading": "3.5 Positional Encoding",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4",
+      "heading": "4 Why Self-Attention",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5",
+      "heading": "5 Training",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.1",
+      "heading": "5.1 Training Data and Batching",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.2",
+      "heading": "5.2 Hardware and Schedule",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.3",
+      "heading": "5.3 Optimizer",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.4",
+      "heading": "5.4 Regularization",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "Label Smoothing",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.1",
+      "heading": "6.1 Machine Translation",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.2",
+      "heading": "6.2 Model Variations",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.3",
+      "heading": "6.3 English Constituency Parsing",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "7",
+      "heading": "7 Conclusion",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "Input-Input Layer5",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "Input-Input Layer5",
+      "depth": 0,
+      "subsections": []
+    }
+  ],
+  "has_references": true
+}

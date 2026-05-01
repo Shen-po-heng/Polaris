@@ -1,2 +1,7 @@
 # Experiment 1 dependencies (not in main requirements.txt)
 pdfplumber>=0.11.0
+
+# Approach A: GROBID + SciPDF Parser
+# Requires GROBID service running at localhost:8070
+# docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.8.0
+scipdf-parser>=0.52

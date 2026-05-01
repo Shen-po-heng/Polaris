@@ -1,0 +1,297 @@
+[
+  {
+    "paper_id": "1412.6980",
+    "title": "Adam: A Method for Stochastic Optimization",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 8,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.889,
+      "recall": 0.8,
+      "f1": 0.842,
+      "type_accuracy": 0.625,
+      "missed_sections": [
+        "2 algorithm",
+        "8 conclusion"
+      ],
+      "extra_sections": [
+        "9 acknowledgments"
+      ],
+      "wrong_type": [
+        {
+          "heading": "4 convergence analysis",
+          "gt": "method",
+          "detected": "other"
+        },
+        {
+          "heading": "3 initialization bias correction",
+          "gt": "method",
+          "detected": "other"
+        },
+        {
+          "heading": "7 extensions",
+          "gt": "method",
+          "detected": "other"
+        }
+      ]
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1 INTRODUCTION",
+        "type": "introduction"
+      },
+      {
+        "heading": "3 INITIALIZATION BIAS CORRECTION",
+        "type": "other"
+      },
+      {
+        "heading": "4 CONVERGENCE ANALYSIS",
+        "type": "other"
+      },
+      {
+        "heading": "5 RELATED WORK",
+        "type": "related_work"
+      },
+      {
+        "heading": "6 EXPERIMENTS",
+        "type": "results"
+      },
+      {
+        "heading": "7 EXTENSIONS",
+        "type": "other"
+      },
+      {
+        "heading": "9 ACKNOWLEDGMENTS",
+        "type": "other"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "1512.03385",
+    "title": "Deep Residual Learning for Image Recognition",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "type_accuracy": 1.0,
+      "missed_sections": [],
+      "extra_sections": [],
+      "wrong_type": []
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1. Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2. Related Work",
+        "type": "related_work"
+      },
+      {
+        "heading": "3. Deep Residual Learning",
+        "type": "method"
+      },
+      {
+        "heading": "4. Experiments",
+        "type": "results"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "1706.03762",
+    "title": "Attention Is All You Need",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.889,
+      "f1": 0.941,
+      "type_accuracy": 0.75,
+      "missed_sections": [
+        "6 results"
+      ],
+      "extra_sections": [],
+      "wrong_type": [
+        {
+          "heading": "2 background",
+          "gt": "related_work",
+          "detected": "introduction"
+        },
+        {
+          "heading": "4 why self-attention",
+          "gt": "method",
+          "detected": "other"
+        }
+      ]
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1 Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2 Background",
+        "type": "introduction"
+      },
+      {
+        "heading": "3 Model Architecture",
+        "type": "method"
+      },
+      {
+        "heading": "4 Why Self-Attention",
+        "type": "other"
+      },
+      {
+        "heading": "5 Training",
+        "type": "method"
+      },
+      {
+        "heading": "7 Conclusion",
+        "type": "conclusion"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "1810.04805",
+    "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "type_accuracy": 0.875,
+      "missed_sections": [],
+      "extra_sections": [],
+      "wrong_type": [
+        {
+          "heading": "3 bert",
+          "gt": "method",
+          "detected": "other"
+        }
+      ]
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1 Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2 Related Work",
+        "type": "related_work"
+      },
+      {
+        "heading": "3 BERT",
+        "type": "other"
+      },
+      {
+        "heading": "4 Experiments",
+        "type": "results"
+      },
+      {
+        "heading": "5 Ablation Studies",
+        "type": "results"
+      },
+      {
+        "heading": "6 Conclusion",
+        "type": "conclusion"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "NIPS-2012-alexnet",
+    "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+    "format": "NeurIPS two-column",
+    "metrics": {
+      "tp": 9,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "type_accuracy": 1.0,
+      "missed_sections": [],
+      "extra_sections": [],
+      "wrong_type": []
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1 Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2 The Dataset",
+        "type": "method"
+      },
+      {
+        "heading": "3 The Architecture",
+        "type": "method"
+      },
+      {
+        "heading": "4 Reducing Overfitting",
+        "type": "method"
+      },
+      {
+        "heading": "5 Details of learning",
+        "type": "method"
+      },
+      {
+        "heading": "6 Results",
+        "type": "results"
+      },
+      {
+        "heading": "7 Discussion",
+        "type": "discussion"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  }
+]

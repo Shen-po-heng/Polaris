@@ -2,14 +2,17 @@
 Benchmark runner for Experiment 1: Section Detection.
 
 Usage:
-    python experiments/section_detection/benchmark.py
+    python experiments/section_detection/benchmark.py --approach B
+    python experiments/section_detection/benchmark.py --approach A
+    python experiments/section_detection/benchmark.py --approach both
 
-Compares detected sections (Approach B) against ground truth JSONs.
-Results are printed as a table and saved to experiments/section_detection/results_b.json.
+Compares detected sections against ground truth JSONs.
+Results saved to approach_b/results_b.json or approach_a/results_a.json.
 """
 
 from __future__ import annotations
 
+import argparse
 import io
 import json
 import re
@@ -24,7 +27,7 @@ if hasattr(sys.stdout, "buffer"):
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 GROUND_TRUTH_DIR = REPO_ROOT / "experiments" / "section_detection" / "ground_truth"
 REF_PAPERS_DIR = REPO_ROOT / "ref_papers"
-RESULTS_FILE = REPO_ROOT / "experiments" / "section_detection" / "results_b.json"
+EXP_DIR = REPO_ROOT / "experiments" / "section_detection"
 
 # Map ground-truth paper_id to PDF filename
 PAPER_PDF_MAP = {
@@ -70,7 +73,6 @@ def compute_section_metrics(
     f1        = (2 * precision * recall / (precision + recall)
                  if (precision + recall) > 0 else 0.0)
 
-    # Type accuracy: among correctly detected headings, how many have the right type?
     gt_type_map = {_normalize(s["heading"]): s["type"] for s in gt}
     det_type_map = {_normalize(s["heading"]): s["type"] for s in detected}
     correct_hits = [h for h in (gt_set & det_set)]
@@ -95,17 +97,26 @@ def compute_section_metrics(
     }
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# ── Runner ────────────────────────────────────────────────────────────────────
 
-def run_benchmark():
-    from approach_b_heuristic import detect_sections
+def run_benchmark(approach: str) -> list[dict]:
+    if approach == "A":
+        sys.path.insert(0, str(EXP_DIR / "approach_a"))
+        from approach_a_grobid import detect_sections
+        label = "APPROACH A: GROBID + SciPDF Parser"
+        results_file = EXP_DIR / "approach_a" / "results_a.json"
+    else:
+        sys.path.insert(0, str(EXP_DIR / "approach_b"))
+        from approach_b_heuristic import detect_sections
+        label = "APPROACH B: pdfplumber + regex heuristics"
+        results_file = EXP_DIR / "approach_b" / "results_b.json"
 
     gt_files = sorted(GROUND_TRUTH_DIR.glob("*.json"))
     gt_files = [f for f in gt_files if f.name != "README.md"]
 
     all_results = []
     print("\n" + "=" * 80)
-    print("  EXPERIMENT 1 — APPROACH B: pdfplumber + regex heuristics")
+    print(f"  EXPERIMENT 1 — {label}")
     print("=" * 80)
 
     for gt_file in gt_files:
@@ -162,7 +173,6 @@ def run_benchmark():
             "detected": detected_dicts,
         })
 
-    # ── Summary table ─────────────────────────────────────────────────────────
     if all_results:
         print("\n" + "=" * 80)
         print("  SUMMARY")
@@ -174,22 +184,64 @@ def run_benchmark():
             title_short = r["title"][:38]
             print(f"  {title_short:<40} {m['f1']:>6.1%} {m['recall']:>8.1%} {m['precision']:>10.1%} {m['type_accuracy']:>8.1%}")
 
-        mean_f1       = sum(r["metrics"]["f1"] for r in all_results) / len(all_results)
-        mean_recall   = sum(r["metrics"]["recall"] for r in all_results) / len(all_results)
-        mean_precision= sum(r["metrics"]["precision"] for r in all_results) / len(all_results)
-        mean_type     = sum(r["metrics"]["type_accuracy"] for r in all_results) / len(all_results)
+        mean_f1        = sum(r["metrics"]["f1"] for r in all_results) / len(all_results)
+        mean_recall    = sum(r["metrics"]["recall"] for r in all_results) / len(all_results)
+        mean_precision = sum(r["metrics"]["precision"] for r in all_results) / len(all_results)
+        mean_type      = sum(r["metrics"]["type_accuracy"] for r in all_results) / len(all_results)
         print("  " + "-" * 76)
         print(f"  {'MEAN':<40} {mean_f1:>6.1%} {mean_recall:>8.1%} {mean_precision:>10.1%} {mean_type:>8.1%}")
         print()
 
-        # Save full results
-        with open(RESULTS_FILE, "w", encoding="utf-8") as f:
+        with open(results_file, "w", encoding="utf-8") as f:
             json.dump(all_results, f, indent=2, ensure_ascii=False)
-        print(f"  Full results saved → {RESULTS_FILE.relative_to(REPO_ROOT)}")
+        print(f"  Full results saved → {results_file.relative_to(REPO_ROOT)}")
 
     return all_results
 
 
+def print_comparison(results_b: list[dict], results_a: list[dict]) -> None:
+    print("\n" + "=" * 80)
+    print("  SIDE-BY-SIDE COMPARISON: A vs B")
+    print("=" * 80)
+    print(f"  {'Paper':<38} {'B: F1':>6} {'A: F1':>6} {'Winner':>8}")
+    print("  " + "-" * 62)
+
+    b_map = {r["paper_id"]: r["metrics"] for r in results_b}
+    a_map = {r["paper_id"]: r["metrics"] for r in results_a}
+
+    for paper_id in b_map:
+        bm = b_map[paper_id]
+        am = a_map.get(paper_id)
+        if am is None:
+            continue
+        title = next(r["title"][:36] for r in results_b if r["paper_id"] == paper_id)
+        winner = "A" if am["f1"] > bm["f1"] else ("B" if bm["f1"] > am["f1"] else "tie")
+        print(f"  {title:<38} {bm['f1']:>6.1%} {am['f1']:>6.1%} {winner:>8}")
+
+    print("  " + "-" * 62)
+    b_mean = sum(r["metrics"]["f1"] for r in results_b) / len(results_b)
+    a_mean = sum(r["metrics"]["f1"] for r in results_a) / len(results_a)
+    overall = "A" if a_mean > b_mean else ("B" if b_mean > a_mean else "tie")
+    print(f"  {'MEAN':<38} {b_mean:>6.1%} {a_mean:>6.1%} {overall:>8}")
+    print()
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
 if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).parent))
-    run_benchmark()
+
+    parser = argparse.ArgumentParser(description="Section detection benchmark")
+    parser.add_argument(
+        "--approach", choices=["A", "B", "both"], default="B",
+        help="Which approach to benchmark (default: B)"
+    )
+    args = parser.parse_args()
+
+    if args.approach == "both":
+        results_b = run_benchmark("B")
+        results_a = run_benchmark("A")
+        if results_b and results_a:
+            print_comparison(results_b, results_a)
+    else:
+        run_benchmark(args.approach)
