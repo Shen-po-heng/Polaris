@@ -4,37 +4,19 @@
     "title": "Adam: A Method for Stochastic Optimization",
     "format": "arXiv single-column",
     "metrics": {
-      "tp": 8,
-      "fp": 1,
+      "tp": 16,
+      "fp": 0,
       "fn": 2,
-      "precision": 0.889,
-      "recall": 0.8,
-      "f1": 0.842,
-      "type_accuracy": 0.625,
+      "precision": 1.0,
+      "recall": 0.889,
+      "f1": 0.941,
+      "type_accuracy": 1.0,
       "missed_sections": [
         "2 algorithm",
         "8 conclusion"
       ],
-      "extra_sections": [
-        "9 acknowledgments"
-      ],
-      "wrong_type": [
-        {
-          "heading": "4 convergence analysis",
-          "gt": "method",
-          "detected": "other"
-        },
-        {
-          "heading": "7 extensions",
-          "gt": "method",
-          "detected": "other"
-        },
-        {
-          "heading": "3 initialization bias correction",
-          "gt": "method",
-          "detected": "other"
-        }
-      ]
+      "extra_sections": [],
+      "wrong_type": []
     },
     "detected": [
       {
@@ -44,6 +26,10 @@
       {
         "heading": "1 INTRODUCTION",
         "type": "introduction"
+      },
+      {
+        "heading": "2.1 ADAM'S UPDATE RULE",
+        "type": "other"
       },
       {
         "heading": "3 INITIALIZATION BIAS CORRECTION",
@@ -62,7 +48,31 @@
         "type": "results"
       },
       {
+        "heading": "6.1 EXPERIMENT: LOGISTIC REGRESSION",
+        "type": "other"
+      },
+      {
+        "heading": "6.2 EXPERIMENT: MULTI-LAYER NEURAL NETWORKS",
+        "type": "other"
+      },
+      {
+        "heading": "6.3 EXPERIMENT: CONVOLUTIONAL NEURAL NETWORKS",
+        "type": "other"
+      },
+      {
+        "heading": "6.4 EXPERIMENT: BIAS-CORRECTION TERM",
+        "type": "other"
+      },
+      {
         "heading": "7 EXTENSIONS",
+        "type": "other"
+      },
+      {
+        "heading": "7.1 ADAMAX",
+        "type": "other"
+      },
+      {
+        "heading": "7.2 TEMPORAL AVERAGING",
         "type": "other"
       },
       {
@@ -80,7 +90,7 @@
     "title": "Deep Residual Learning for Image Recognition",
     "format": "arXiv single-column",
     "metrics": {
-      "tp": 6,
+      "tp": 13,
       "fp": 0,
       "fn": 0,
       "precision": 1.0,
@@ -109,8 +119,36 @@
         "type": "method"
       },
       {
+        "heading": "3.1. Residual Learning",
+        "type": "other"
+      },
+      {
+        "heading": "3.2. Identity Mapping by Shortcuts",
+        "type": "other"
+      },
+      {
+        "heading": "3.3. Network Architectures",
+        "type": "other"
+      },
+      {
+        "heading": "3.4. Implementation",
+        "type": "other"
+      },
+      {
         "heading": "4. Experiments",
         "type": "results"
+      },
+      {
+        "heading": "4.1. ImageNet Classification",
+        "type": "other"
+      },
+      {
+        "heading": "4.2. CIFAR-10 and Analysis",
+        "type": "other"
+      },
+      {
+        "heading": "4.3. Object Detection on PASCAL and MS COCO",
+        "type": "other"
       },
       {
         "heading": "References",
@@ -123,29 +161,16 @@
     "title": "Attention Is All You Need",
     "format": "arXiv single-column",
     "metrics": {
-      "tp": 8,
+      "tp": 23,
       "fp": 0,
-      "fn": 1,
+      "fn": 0,
       "precision": 1.0,
-      "recall": 0.889,
-      "f1": 0.941,
-      "type_accuracy": 0.75,
-      "missed_sections": [
-        "6 results"
-      ],
+      "recall": 1.0,
+      "f1": 1.0,
+      "type_accuracy": 1.0,
+      "missed_sections": [],
       "extra_sections": [],
-      "wrong_type": [
-        {
-          "heading": "4 why self-attention",
-          "gt": "method",
-          "detected": "other"
-        },
-        {
-          "heading": "2 background",
-          "gt": "related_work",
-          "detected": "introduction"
-        }
-      ]
+      "wrong_type": []
     },
     "detected": [
       {
@@ -165,12 +190,72 @@
         "type": "method"
       },
       {
+        "heading": "3.1 Encoder and Decoder Stacks",
+        "type": "other"
+      },
+      {
+        "heading": "3.2 Attention",
+        "type": "other"
+      },
+      {
+        "heading": "3.2.1 Scaled Dot-Product Attention",
+        "type": "other"
+      },
+      {
+        "heading": "3.2.2 Multi-Head Attention",
+        "type": "other"
+      },
+      {
+        "heading": "3.2.3 Applications of Attention in our Model",
+        "type": "other"
+      },
+      {
+        "heading": "3.3 Position-wise Feed-Forward Networks",
+        "type": "other"
+      },
+      {
+        "heading": "3.4 Embeddings and Softmax",
+        "type": "other"
+      },
+      {
+        "heading": "3.5 Positional Encoding",
+        "type": "other"
+      },
+      {
         "heading": "4 Why Self-Attention",
         "type": "other"
       },
       {
         "heading": "5 Training",
         "type": "method"
+      },
+      {
+        "heading": "5.1 Training Data and Batching",
+        "type": "other"
+      },
+      {
+        "heading": "5.2 Hardware and Schedule",
+        "type": "other"
+      },
+      {
+        "heading": "5.3 Optimizer",
+        "type": "other"
+      },
+      {
+        "heading": "5.4 Regularization",
+        "type": "other"
+      },
+      {
+        "heading": "6.1 Machine Translation",
+        "type": "other"
+      },
+      {
+        "heading": "6.2 Model Variations",
+        "type": "other"
+      },
+      {
+        "heading": "6.3 English Constituency Parsing",
+        "type": "other"
       },
       {
         "heading": "7 Conclusion",
@@ -187,22 +272,16 @@
     "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
     "format": "arXiv single-column",
     "metrics": {
-      "tp": 8,
+      "tp": 19,
       "fp": 0,
       "fn": 0,
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
-      "type_accuracy": 0.875,
+      "type_accuracy": 1.0,
       "missed_sections": [],
       "extra_sections": [],
-      "wrong_type": [
-        {
-          "heading": "3 bert",
-          "gt": "method",
-          "detected": "other"
-        }
-      ]
+      "wrong_type": []
     },
     "detected": [
       {
@@ -218,7 +297,27 @@
         "type": "related_work"
       },
       {
+        "heading": "2.1 Unsupervised Feature-based Approaches",
+        "type": "other"
+      },
+      {
+        "heading": "2.2 Unsupervised Fine-tuning Approaches",
+        "type": "other"
+      },
+      {
+        "heading": "2.3 Transfer Learning from Supervised Data",
+        "type": "other"
+      },
+      {
         "heading": "3 BERT",
+        "type": "other"
+      },
+      {
+        "heading": "3.1 Pre-training BERT",
+        "type": "other"
+      },
+      {
+        "heading": "3.2 Fine-tuning BERT",
         "type": "other"
       },
       {
@@ -226,8 +325,32 @@
         "type": "results"
       },
       {
+        "heading": "4.1 GLUE",
+        "type": "other"
+      },
+      {
+        "heading": "4.2 SQuAD v1.1",
+        "type": "other"
+      },
+      {
+        "heading": "4.4 SWAG",
+        "type": "other"
+      },
+      {
         "heading": "5 Ablation Studies",
         "type": "results"
+      },
+      {
+        "heading": "5.1 Effect of Pre-training Tasks",
+        "type": "other"
+      },
+      {
+        "heading": "5.2 Effect of Model Size",
+        "type": "other"
+      },
+      {
+        "heading": "5.3 Feature-based Approach with BERT",
+        "type": "other"
       },
       {
         "heading": "6 Conclusion",
@@ -244,7 +367,7 @@
     "title": "ImageNet Classification with Deep Convolutional Neural Networks",
     "format": "NeurIPS two-column",
     "metrics": {
-      "tp": 9,
+      "tp": 17,
       "fp": 0,
       "fn": 0,
       "precision": 1.0,
@@ -273,8 +396,36 @@
         "type": "method"
       },
       {
+        "heading": "3.1 ReLU Nonlinearity",
+        "type": "other"
+      },
+      {
+        "heading": "3.2 Training on Multiple GPUs",
+        "type": "other"
+      },
+      {
+        "heading": "3.3 Local Response Normalization",
+        "type": "other"
+      },
+      {
+        "heading": "3.4 Overlapping Pooling",
+        "type": "other"
+      },
+      {
+        "heading": "3.5 Overall Architecture",
+        "type": "other"
+      },
+      {
         "heading": "4 Reducing Overfitting",
         "type": "method"
+      },
+      {
+        "heading": "4.1 Data Augmentation",
+        "type": "other"
+      },
+      {
+        "heading": "4.2 Dropout",
+        "type": "other"
       },
       {
         "heading": "5 Details of learning",
@@ -283,6 +434,10 @@
       {
         "heading": "6 Results",
         "type": "results"
+      },
+      {
+        "heading": "6.1 Qualitative Evaluations",
+        "type": "other"
       },
       {
         "heading": "7 Discussion",

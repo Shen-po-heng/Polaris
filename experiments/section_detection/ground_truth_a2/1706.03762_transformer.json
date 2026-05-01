@@ -1,0 +1,147 @@
+{
+  "paper_id": "1706.03762",
+  "title": "Attention Is All You Need",
+  "format": "arXiv single-column",
+  "verified": true,
+  "note": "A2 ground truth — includes subsections. Set verified=true after checking.",
+  "sections": [
+    {
+      "heading": "Abstract",
+      "type": "abstract",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "1 Introduction",
+      "type": "introduction",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "2 Background",
+      "type": "introduction",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "3 Model Architecture",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "3.1 Encoder and Decoder Stacks",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 Model Architecture"
+    },
+    {
+      "heading": "3.2 Attention",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 Model Architecture"
+    },
+    {
+      "heading": "3.2.1 Scaled Dot-Product Attention",
+      "type": "other",
+      "depth": 2,
+      "parent": "3.2 Attention"
+    },
+    {
+      "heading": "3.2.2 Multi-Head Attention",
+      "type": "other",
+      "depth": 2,
+      "parent": "3.2 Attention"
+    },
+    {
+      "heading": "3.2.3 Applications of Attention in our Model",
+      "type": "other",
+      "depth": 2,
+      "parent": "3.2 Attention"
+    },
+    {
+      "heading": "3.3 Position-wise Feed-Forward Networks",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 Model Architecture"
+    },
+    {
+      "heading": "3.4 Embeddings and Softmax",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 Model Architecture"
+    },
+    {
+      "heading": "3.5 Positional Encoding",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 Model Architecture"
+    },
+    {
+      "heading": "4 Why Self-Attention",
+      "type": "other",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "5 Training",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "5.1 Training Data and Batching",
+      "type": "other",
+      "depth": 1,
+      "parent": "5 Training"
+    },
+    {
+      "heading": "5.2 Hardware and Schedule",
+      "type": "other",
+      "depth": 1,
+      "parent": "5 Training"
+    },
+    {
+      "heading": "5.3 Optimizer",
+      "type": "other",
+      "depth": 1,
+      "parent": "5 Training"
+    },
+    {
+      "heading": "5.4 Regularization",
+      "type": "other",
+      "depth": 1,
+      "parent": "5 Training"
+    },
+    {
+      "heading": "6.1 Machine Translation",
+      "type": "other",
+      "depth": 1,
+      "parent": null
+    },
+    {
+      "heading": "6.2 Model Variations",
+      "type": "other",
+      "depth": 1,
+      "parent": null
+    },
+    {
+      "heading": "6.3 English Constituency Parsing",
+      "type": "other",
+      "depth": 1,
+      "parent": null
+    },
+    {
+      "heading": "7 Conclusion",
+      "type": "conclusion",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "References",
+      "type": "references",
+      "depth": 0,
+      "parent": null
+    }
+  ]
+}

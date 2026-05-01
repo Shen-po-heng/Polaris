@@ -1,0 +1,111 @@
+{
+  "paper_id": "NIPS-2012-alexnet",
+  "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+  "format": "NeurIPS two-column",
+  "verified": true,
+  "note": "A2 ground truth — includes subsections. Set verified=true after checking.",
+  "sections": [
+    {
+      "heading": "Abstract",
+      "type": "abstract",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "1 Introduction",
+      "type": "introduction",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "2 The Dataset",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "3 The Architecture",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "3.1 ReLU Nonlinearity",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 The Architecture"
+    },
+    {
+      "heading": "3.2 Training on Multiple GPUs",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 The Architecture"
+    },
+    {
+      "heading": "3.3 Local Response Normalization",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 The Architecture"
+    },
+    {
+      "heading": "3.4 Overlapping Pooling",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 The Architecture"
+    },
+    {
+      "heading": "3.5 Overall Architecture",
+      "type": "other",
+      "depth": 1,
+      "parent": "3 The Architecture"
+    },
+    {
+      "heading": "4 Reducing Overfitting",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "4.1 Data Augmentation",
+      "type": "other",
+      "depth": 1,
+      "parent": "4 Reducing Overfitting"
+    },
+    {
+      "heading": "4.2 Dropout",
+      "type": "other",
+      "depth": 1,
+      "parent": "4 Reducing Overfitting"
+    },
+    {
+      "heading": "5 Details of learning",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "6 Results",
+      "type": "results",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "6.1 Qualitative Evaluations",
+      "type": "other",
+      "depth": 1,
+      "parent": "6 Results"
+    },
+    {
+      "heading": "7 Discussion",
+      "type": "discussion",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "References",
+      "type": "references",
+      "depth": 0,
+      "parent": null
+    }
+  ]
+}

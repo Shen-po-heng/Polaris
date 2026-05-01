@@ -1,0 +1,117 @@
+{
+  "paper_id": "1412.6980",
+  "title": "Adam: A Method for Stochastic Optimization",
+  "format": "arXiv single-column",
+  "verified": true,
+  "note": "A2 ground truth — includes subsections. Set verified=true after checking.",
+  "sections": [
+    {
+      "heading": "Abstract",
+      "type": "abstract",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "1 INTRODUCTION",
+      "type": "introduction",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "2 ALGORITHM",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "2.1 ADAM'S UPDATE RULE",
+      "type": "other",
+      "depth": 1,
+      "parent": "2 ALGORITHM"
+    },
+    {
+      "heading": "3 INITIALIZATION BIAS CORRECTION",
+      "type": "other",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "4 CONVERGENCE ANALYSIS",
+      "type": "other",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "5 RELATED WORK",
+      "type": "related_work",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "6 EXPERIMENTS",
+      "type": "results",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "6.1 EXPERIMENT: LOGISTIC REGRESSION",
+      "type": "other",
+      "depth": 1,
+      "parent": "6 EXPERIMENTS"
+    },
+    {
+      "heading": "6.2 EXPERIMENT: MULTI-LAYER NEURAL NETWORKS",
+      "type": "other",
+      "depth": 1,
+      "parent": "6 EXPERIMENTS"
+    },
+    {
+      "heading": "6.3 EXPERIMENT: CONVOLUTIONAL NEURAL NETWORKS",
+      "type": "other",
+      "depth": 1,
+      "parent": "6 EXPERIMENTS"
+    },
+    {
+      "heading": "6.4 EXPERIMENT: BIAS-CORRECTION TERM",
+      "type": "other",
+      "depth": 1,
+      "parent": "6 EXPERIMENTS"
+    },
+    {
+      "heading": "7 EXTENSIONS",
+      "type": "other",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "7.1 ADAMAX",
+      "type": "other",
+      "depth": 1,
+      "parent": "7 EXTENSIONS"
+    },
+    {
+      "heading": "7.2 TEMPORAL AVERAGING",
+      "type": "other",
+      "depth": 1,
+      "parent": "7 EXTENSIONS"
+    },
+    {
+      "heading": "8 CONCLUSION",
+      "type": "conclusion",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "9 ACKNOWLEDGMENTS",
+      "type": "other",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "References",
+      "type": "references",
+      "depth": 0,
+      "parent": null
+    }
+  ]
+}
