@@ -1,0 +1,20 @@
+{
+  "paper_id": "1706.03762",
+  "title": "Attention Is All You Need",
+  "authors": "Vaswani et al.",
+  "year": 2017,
+  "venue": "NeurIPS 2017",
+  "format": "arXiv single-column",
+  "verified": true,
+  "sections": [
+    {"heading": "Abstract",            "type": "abstract"},
+    {"heading": "1 Introduction",      "type": "introduction"},
+    {"heading": "2 Background",        "type": "related_work"},
+    {"heading": "3 Model Architecture","type": "method"},
+    {"heading": "4 Why Self-Attention","type": "method"},
+    {"heading": "5 Training",          "type": "method"},
+    {"heading": "6 Results",           "type": "results"},
+    {"heading": "7 Conclusion",        "type": "conclusion"},
+    {"heading": "References",          "type": "references"}
+  ]
+}

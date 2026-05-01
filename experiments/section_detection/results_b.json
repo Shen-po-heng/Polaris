@@ -1,0 +1,218 @@
+[
+  {
+    "paper_id": "1412.6980",
+    "title": "Adam: A Method for Stochastic Optimization",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 10,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "type_accuracy": 0.0,
+      "missed_sections": [
+        "1 introduction",
+        "2 algorithm",
+        "3 initialization bias correction",
+        "4 convergence analysis",
+        "5 related work",
+        "6 experiments",
+        "7 extensions",
+        "8 conclusion",
+        "abstract",
+        "references"
+      ],
+      "extra_sections": [],
+      "wrong_type": []
+    },
+    "detected": []
+  },
+  {
+    "paper_id": "1512.03385",
+    "title": "Deep Residual Learning for Image Recognition",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.667,
+      "type_accuracy": 1.0,
+      "missed_sections": [
+        "1. introduction",
+        "2. related work",
+        "abstract"
+      ],
+      "extra_sections": [],
+      "wrong_type": []
+    },
+    "detected": [
+      {
+        "heading": "3.DeepResidualLearning",
+        "type": "method"
+      },
+      {
+        "heading": "4.Experiments",
+        "type": "results"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "1706.03762",
+    "title": "Attention Is All You Need",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.889,
+      "f1": 0.941,
+      "type_accuracy": 0.875,
+      "missed_sections": [
+        "4 why self-attention"
+      ],
+      "extra_sections": [],
+      "wrong_type": [
+        {
+          "heading": "2 background",
+          "gt": "related_work",
+          "detected": "introduction"
+        }
+      ]
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2Background",
+        "type": "introduction"
+      },
+      {
+        "heading": "3ModelArchitecture",
+        "type": "method"
+      },
+      {
+        "heading": "5Training",
+        "type": "method"
+      },
+      {
+        "heading": "6Results",
+        "type": "results"
+      },
+      {
+        "heading": "7Conclusion",
+        "type": "conclusion"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "1810.04805",
+    "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "format": "arXiv single-column",
+    "metrics": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.667,
+      "type_accuracy": 1.0,
+      "missed_sections": [
+        "3 bert",
+        "4 experiments",
+        "5 ablation studies",
+        "abstract"
+      ],
+      "extra_sections": [],
+      "wrong_type": []
+    },
+    "detected": [
+      {
+        "heading": "1Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2RelatedWork",
+        "type": "related_work"
+      },
+      {
+        "heading": "6Conclusion",
+        "type": "conclusion"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  },
+  {
+    "paper_id": "NIPS-2012-alexnet",
+    "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+    "format": "NeurIPS two-column",
+    "metrics": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.889,
+      "f1": 0.941,
+      "type_accuracy": 1.0,
+      "missed_sections": [
+        "5 details of learning"
+      ],
+      "extra_sections": [],
+      "wrong_type": []
+    },
+    "detected": [
+      {
+        "heading": "Abstract",
+        "type": "abstract"
+      },
+      {
+        "heading": "1Introduction",
+        "type": "introduction"
+      },
+      {
+        "heading": "2TheDataset",
+        "type": "method"
+      },
+      {
+        "heading": "3TheArchitecture",
+        "type": "method"
+      },
+      {
+        "heading": "4ReducingOverﬁtting",
+        "type": "method"
+      },
+      {
+        "heading": "6Results",
+        "type": "results"
+      },
+      {
+        "heading": "7Discussion",
+        "type": "discussion"
+      },
+      {
+        "heading": "References",
+        "type": "references"
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "paper_id": "1512.03385",
+  "title": "Deep Residual Learning for Image Recognition",
+  "authors": "He et al.",
+  "year": 2015,
+  "venue": "CVPR 2016",
+  "format": "arXiv single-column",
+  "verified": true,
+  "sections": [
+    {"heading": "Abstract",                 "type": "abstract"},
+    {"heading": "1. Introduction",          "type": "introduction"},
+    {"heading": "2. Related Work",          "type": "related_work"},
+    {"heading": "3. Deep Residual Learning","type": "method"},
+    {"heading": "4. Experiments",           "type": "results"},
+    {"heading": "References",              "type": "references"}
+  ]
+}
