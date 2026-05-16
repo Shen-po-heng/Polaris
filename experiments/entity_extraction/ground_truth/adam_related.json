@@ -4,8 +4,70 @@
   "section_heading": "5 RELATED WORK",
   "section_type": "related_work",
   "text": "Optimization methods bearing a direct relation to Adam are RMSProp (Tieleman & Hinton, 2012; Graves, 2013) and AdaGrad (Duchi et al., 2011) ; these relationships are discussed below. Other stochastic optimization methods include vSGD (Schaul et al., 2012) , AdaDelta (Zeiler, 2012) and the natural Newton method from Roux & Fitzgibbon (2010) , all setting stepsizes by estimating curvature from first-order information. The Sum-of-Functions Optimizer (SFO) (Sohl-Dickstein et al., 2014) is a quasi-Newton method based on minibatches, but (unlike Adam) has memory requirements linear in the number of minibatch partitions of a dataset, which is often infeasible on memory-constrained systems such as a GPU. Like natural gradient descent (NGD) (Amari, 1998) , Adam employs a preconditioner that adapts to the geometry of the data, since v t is an approximation to the diagonal of the Fisher information matrix (Pascanu & Bengio, 2013) ; however, Adam's preconditioner (like AdaGrad's) is more conservative in its adaption than vanilla NGD by preconditioning with the square root of the inverse of the diagonal Fisher information matrix approximation. RMSProp: An optimization method closely related to Adam is RMSProp (Tieleman & Hinton, 2012) . A version with momentum has sometimes been used (Graves, 2013) . There are a few important differences between RMSProp with momentum and Adam: RMSProp with momentum generates its parameter updates using a momentum on the rescaled gradient, whereas Adam upd...",
-  "verified": false,
-  "note": "Fill in entities and relations, then set verified=true.",
-  "entities": [],
-  "relations": []
+  "verified": true,
+  "entities": [
+    {
+      "name": "Adam",
+      "type": "Contribution"
+    },
+    {
+      "name": "RMSProp",
+      "type": "Baseline"
+    },
+    {
+      "name": "AdaGrad",
+      "type": "Baseline"
+    },
+    {
+      "name": "vSGD",
+      "type": "Baseline"
+    },
+    {
+      "name": "AdaDelta",
+      "type": "Baseline"
+    },
+    {
+      "name": "Sum-of-Functions Optimizer",
+      "type": "Baseline"
+    },
+    {
+      "name": "natural gradient descent",
+      "type": "Baseline"
+    },
+    {
+      "name": "preconditioner",
+      "type": "Concept"
+    },
+    {
+      "name": "Fisher information matrix",
+      "type": "Concept"
+    }
+  ],
+  "relations": [
+    {
+      "head": "Adam",
+      "tail": "RMSProp",
+      "type": "related_to"
+    },
+    {
+      "head": "Adam",
+      "tail": "AdaGrad",
+      "type": "related_to"
+    },
+    {
+      "head": "Adam",
+      "tail": "natural gradient descent",
+      "type": "related_to"
+    },
+    {
+      "head": "Adam",
+      "tail": "preconditioner",
+      "type": "uses"
+    },
+    {
+      "head": "preconditioner",
+      "tail": "Fisher information matrix",
+      "type": "related_to"
+    }
+  ]
 }

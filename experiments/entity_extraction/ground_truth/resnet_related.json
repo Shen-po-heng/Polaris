@@ -4,8 +4,57 @@
   "section_heading": "2. Related Work",
   "section_type": "related_work",
   "text": "Residual Representations. In image recognition, VLAD [18] is a representation that encodes by the residual vectors with respect to a dictionary, and Fisher Vector [30] can be formulated as a probabilistic version [18] of VLAD. Both of them are powerful shallow representations for image retrieval and classification [4, 48] . For vector quantization, encoding residual vectors [17] is shown to be more effective than encoding original vectors. In low-level vision and computer graphics, for solving Partial Differential Equations (PDEs), the widely used Multigrid method [3] reformulates the system as subproblems at multiple scales, where each subproblem is responsible for the residual solution between a coarser and a finer scale. An alternative to Multigrid is hierarchical basis preconditioning [45, 46] , which relies on variables that represent residual vectors between two scales. It has been shown [3, 45, 46 ] that these solvers converge much faster than standard solvers that are unaware of the residual nature of the solutions. These methods suggest that a good reformulation or preconditioning can simplify the optimization. Shortcut Connections. Practices and theories that lead to shortcut connections [2, 34, 49] have been studied for a long time. An early practice of training multi-layer perceptrons (MLPs) is to add a linear layer connected from the network input to the output [34, 49] . In [44, 24] , a few intermediate layers are directly connected to auxiliary classifiers for ...",
-  "verified": false,
-  "note": "Fill in entities and relations, then set verified=true.",
-  "entities": [],
-  "relations": []
+  "verified": true,
+  "entities": [
+    {
+      "name": "ResNet",
+      "type": "Contribution"
+    },
+    {
+      "name": "shortcut connections",
+      "type": "Contribution"
+    },
+    {
+      "name": "VLAD",
+      "type": "Baseline"
+    },
+    {
+      "name": "Fisher Vector",
+      "type": "Baseline"
+    },
+    {
+      "name": "Multigrid method",
+      "type": "Baseline"
+    },
+    {
+      "name": "highway networks",
+      "type": "Baseline"
+    },
+    {
+      "name": "residual vectors",
+      "type": "Concept"
+    }
+  ],
+  "relations": [
+    {
+      "head": "ResNet",
+      "tail": "shortcut connections",
+      "type": "uses"
+    },
+    {
+      "head": "ResNet",
+      "tail": "highway networks",
+      "type": "related_to"
+    },
+    {
+      "head": "ResNet",
+      "tail": "VLAD",
+      "type": "related_to"
+    },
+    {
+      "head": "ResNet",
+      "tail": "Multigrid method",
+      "type": "related_to"
+    }
+  ]
 }

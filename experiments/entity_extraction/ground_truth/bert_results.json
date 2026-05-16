@@ -4,8 +4,62 @@
   "section_heading": "4.1 GLUE",
   "section_type": "results",
   "text": "The General Language Understanding Evaluation (GLUE) benchmark (Wang et al., 2018a ) is a collection of diverse natural language understanding tasks. Detailed descriptions of GLUE datasets are included in Appendix B.1. To fine-tune on GLUE, we represent the input sequence (for single sentence or sentence pairs) as described in Section 3, and use the final hidden vector C ∈ R H corresponding to the first input token ([CLS]) as the aggregate representation. The only new parameters introduced during fine-tuning are classification layer weights W ∈ R K×H , where K is the number of labels. We compute a standard classification loss with C and W , i.e., log(softmax(CW T )). We use a batch size of 32 and fine-tune for 3 epochs over the data for all GLUE tasks. For each task, we selected the best fine-tuning learning rate (among 5e-5, 4e-5, 3e-5, and 2e-5) on the Dev set. Additionally, for BERT LARGE we found that finetuning was sometimes unstable on small datasets, so we ran several random restarts and selected the best model on the Dev set. With random restarts, we use the same pre-trained checkpoint but perform different fine-tuning data shuffling and classifier layer initialization. 9  Results are presented in Table 1 . Both BERT BASE and BERT LARGE outperform all systems on all tasks by a substantial margin, obtaining 4.5% and 7.0% respective average accuracy improvement over the prior state of the art. Note that BERT BASE and OpenAI GPT are nearly identical in terms of model arc...",
-  "verified": false,
-  "note": "Fill in entities and relations, then set verified=true.",
-  "entities": [],
-  "relations": []
+  "verified": true,
+  "entities": [
+    {
+      "name": "BERT BASE",
+      "type": "Contribution"
+    },
+    {
+      "name": "BERT LARGE",
+      "type": "Contribution"
+    },
+    {
+      "name": "OpenAI GPT",
+      "type": "Baseline"
+    },
+    {
+      "name": "GLUE",
+      "type": "Artifact"
+    },
+    {
+      "name": "accuracy",
+      "type": "Metric"
+    },
+    {
+      "name": "natural language understanding",
+      "type": "Context"
+    },
+    {
+      "name": "fine-tuning",
+      "type": "Concept"
+    }
+  ],
+  "relations": [
+    {
+      "head": "BERT BASE",
+      "tail": "GLUE",
+      "type": "evaluated_on"
+    },
+    {
+      "head": "BERT LARGE",
+      "tail": "GLUE",
+      "type": "evaluated_on"
+    },
+    {
+      "head": "BERT LARGE",
+      "tail": "OpenAI GPT",
+      "type": "outperforms"
+    },
+    {
+      "head": "BERT BASE",
+      "tail": "OpenAI GPT",
+      "type": "outperforms"
+    },
+    {
+      "head": "BERT LARGE",
+      "tail": "accuracy",
+      "type": "measures"
+    }
+  ]
 }

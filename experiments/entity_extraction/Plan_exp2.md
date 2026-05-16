@@ -2,7 +2,40 @@
 
 **Branch**: `feat/exp2-entity-extraction` (to be branched from `feat/phase-3-graphrag`)
 **Date planned**: 2026-05-01
-**Status**: 計畫中
+**Status**: ✅ 完成 — A–F 六種方案評測完畢，選用 Approach F 進入 Phase 3c
+
+---
+
+## Current Status（2026-05-01）
+
+### 已完成
+
+- [x] 實驗架構建立：`approach_a/` `approach_b/` `approach_c/` `approach_d/` + `ground_truth/`
+- [x] `generate_ground_truth.py`：從 GROBID A2 自動提取 15 個 section text
+- [x] 15 個 ground truth 草稿生成（`ground_truth/*.json`）
+  - 每個檔案：text 已填入，entities/relations **由 Claude 預填草稿**，`verified: false`
+  - 使用者需要：**逐一 review、修正、設 `verified: true`**
+
+### 下一步（user 完成審核後）
+
+1. **實作 `approach_a/approach_a_ollama.py`**（Ollama llama3.2:3b plain prompt）
+2. **實作 `approach_b/approach_b_ollama_json.py`**（+ `format: "json"`）
+3. **實作 `benchmark.py`**（統一 runner `--approach A/B/C/D/all`）
+4. 視 A/B 結果決定是否跑 C（OpenAI）/ D（Anthropic）
+
+### Experiment 3 相依性分析
+
+Experiment 3（Deduplication 策略驗證）與 Experiment 2 **部分獨立**：
+
+| 工作 | 相依 Exp 2？ | 可先做？ |
+|------|-----------|---------|
+| 設計測試案例（alias 組） | ❌ | ✅ 可獨立設計 |
+| 實作 3 種 dedup 策略（Prompt/Embedding/Alias） | ❌ | ✅ 可獨立實作 |
+| 正式評測（dedup 前後 unique entity 數量） | ✅（需要 Exp 2 的 entity 輸出） | ❌ 需等 Exp 2 至少跑完一個 approach |
+
+**結論：可以先做 Exp 3 的 setup 階段（設計 + 實作），但正式評測需等 Exp 2 的 LLM 輸出。**
+
+---
 
 ---
 
@@ -217,8 +250,45 @@ Step 5: 寫 Report_exp2.md
 
 ---
 
+## 未來改善方向（已評估，暫不實作）
+
+本實驗 A–F 全部採用 **prompt engineering**，沒有修改模型本身。以下是評估過但尚未嘗試的進階方法，供未來參考：
+
+### 短期（Prompt-level）
+
+| 方向 | 說明 | 預期效益 |
+|------|------|---------|
+| **Chain-of-thought** | 讓模型先 reasoning 再輸出 JSON | 可能提升 CB acc，但 latency 增加 |
+| **Self-consistency** | 同一 chunk 跑 3 次，投票選最常出現的 entity | 降低隨機誤差，cost × 3 |
+| **Negative few-shot** | Few-shot 中加入反例（標錯的例子 + 修正） | 強化邊界條件的學習 |
+
+### 中期（Retrieval-Augmented Generation）
+
+| 方向 | 說明 | 預期效益 |
+|------|------|---------|
+| **跨 section RAG** | 抽 method section 時，把 related_work 已知的 Baseline entity 作為 context 傳入 | 提升一致性，解決同篇論文不同 chunk 命名衝突 |
+| **Paper-level entity memory** | 論文級別的 entity 快取，後續 section 參考前面 chunk 的輸出 | 解決 "ResNet" / "ResNets" 跨 chunk 不一致 |
+
+### 長期（模型層面）
+
+| 方向 | 說明 | 預期效益 | 成本 |
+|------|------|---------|------|
+| **Fine-tuning** | 用人工標注的 (text, entities, relations) 對微調小模型 | 高，需要數百個樣本 | 高（資料 + GPU） |
+| **LoRA** | 在開源模型（Llama / Mistral）上用 LoRA 適配學術 NER | 比 full fine-tuning 便宜，可本地部署 | 中（需要 GPU + 標注資料） |
+| **Specialized model** | 使用學術 NER 專用模型（如 GROBID 的 entity 模組、SciSpaCy） | 對特定 entity type（Method/Dataset）效果好 | 低（開源），但 type schema 需客製化 |
+
+### 評估層面
+
+| 方向 | 說明 |
+|------|------|
+| **擴大 ground truth** | 15 chunk 統計意義有限，擴大至 50+ chunk | 需更多人工標注工時 |
+| **LLM-as-judge** | 用強模型（GPT-4o / Claude Sonnet）評估語意正確性，補充 exact match 的不足 | 解決 "SNR" ≠ "signal-to-noise ratio" 的評估偏差 |
+
+---
+
 ## 參考
 
 - Approach A2 section text 來源：`experiments/section_detection/approach_a/approach_a2_grobid.py`
+- 最終選用方案：`approach_f/approach_f_claude_improved.py`（Claude Haiku 4.5 + prefill + few-shot + 禁止代名詞 + 論文標題）
 - Entity Schema 定義：`Ref/project-plan-v2.md` → Phase 3 通用 Entity Schema
 - LiteLLM 統一介面：`core/llm_provider.py`
