@@ -20,11 +20,11 @@ import time
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-EXP_DIR    = SCRIPT_DIR.parent
-GT_DIR     = EXP_DIR / "ground_truth"
-OUT_FILE   = SCRIPT_DIR / "results_e.json"
+EXP_DIR = SCRIPT_DIR.parent
+GT_DIR = EXP_DIR / "ground_truth"
+OUT_FILE = SCRIPT_DIR / "results_e.json"
 
-MODEL      = "claude-haiku-4-5-20251001"
+MODEL = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 1024
 
 FEW_SHOT = """\
@@ -140,7 +140,7 @@ def main() -> None:
         sys.exit(1)
 
     api_key = _load_api_key()
-    client  = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key)
 
     chunks = _load_ground_truth()
     if not chunks:
@@ -151,7 +151,7 @@ def main() -> None:
     print(f"Chunks: {len(chunks)}")
     print("=" * 60)
 
-    results  = []
+    results = []
     parse_ok = 0
 
     for i, chunk in enumerate(chunks, 1):
@@ -164,47 +164,58 @@ def main() -> None:
                 model=MODEL,
                 max_tokens=MAX_TOKENS,
                 messages=[
-                    {"role": "user", "content": USER_TEMPLATE.format(
-                        section_type=chunk["section_type"],
-                        few_shot=FEW_SHOT,
-                        text=chunk["text"],
-                    )},
+                    {
+                        "role": "user",
+                        "content": USER_TEMPLATE.format(
+                            section_type=chunk["section_type"],
+                            few_shot=FEW_SHOT,
+                            text=chunk["text"],
+                        ),
+                    },
                     {"role": "assistant", "content": "{"},
                 ],
             )
-            raw     = resp.content[0].text
+            raw = resp.content[0].text
             elapsed = time.time() - t0
-            parsed  = _parse_prefilled(raw)
-            ok      = parsed is not None and "entities" in parsed and "relations" in parsed
+            parsed = _parse_prefilled(raw)
+            ok = parsed is not None and "entities" in parsed and "relations" in parsed
         except Exception as e:
-            raw     = f"ERROR: {e}"
-            parsed  = None
-            ok      = False
+            raw = f"ERROR: {e}"
+            parsed = None
+            ok = False
             elapsed = time.time() - t0
 
         if ok:
             parse_ok += 1
-            print(f"OK  ({elapsed:.1f}s, {len(parsed['entities'])}e {len(parsed['relations'])}r)")
+            print(
+                f"OK  ({elapsed:.1f}s, {len(parsed['entities'])}e {len(parsed['relations'])}r)"
+            )
         else:
             print(f"FAIL ({elapsed:.1f}s)")
 
-        results.append({
-            "paper_id":        chunk["paper_id"],
-            "section_heading": chunk["section_heading"],
-            "section_type":    chunk["section_type"],
-            "parse_ok":        ok,
-            "elapsed_s":       round(elapsed, 2),
-            "raw_response":    raw,
-            "extracted":       parsed if ok else None,
-            "ground_truth": {
-                "entities":  chunk["entities"],
-                "relations": chunk["relations"],
-            },
-        })
+        results.append(
+            {
+                "paper_id": chunk["paper_id"],
+                "section_heading": chunk["section_heading"],
+                "section_type": chunk["section_type"],
+                "parse_ok": ok,
+                "elapsed_s": round(elapsed, 2),
+                "raw_response": raw,
+                "extracted": parsed if ok else None,
+                "ground_truth": {
+                    "entities": chunk["entities"],
+                    "relations": chunk["relations"],
+                },
+            }
+        )
 
     print("=" * 60)
-    print(f"JSON parse success: {parse_ok}/{len(chunks)} ({100*parse_ok/len(chunks):.1f}%)")
-    OUT_FILE.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(
+        f"JSON parse success: {parse_ok}/{len(chunks)} ({100*parse_ok/len(chunks):.1f}%)"
+    )
+    OUT_FILE.write_text(
+        json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     print(f"Saved -> {OUT_FILE}")
 
 

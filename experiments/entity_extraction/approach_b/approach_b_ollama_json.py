@@ -18,12 +18,12 @@ import time
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-EXP_DIR    = SCRIPT_DIR.parent
-GT_DIR     = EXP_DIR / "ground_truth"
-OUT_FILE   = SCRIPT_DIR / "results_b.json"
+EXP_DIR = SCRIPT_DIR.parent
+GT_DIR = EXP_DIR / "ground_truth"
+OUT_FILE = SCRIPT_DIR / "results_b.json"
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL      = "llama3.2:latest"
+MODEL = "llama3.2:latest"
 
 PROMPT_TEMPLATE = """\
 You are an academic knowledge graph extractor.
@@ -66,12 +66,14 @@ def _load_ground_truth() -> list[dict]:
 def _call_ollama_json(prompt: str) -> str:
     import urllib.request
 
-    payload = json.dumps({
-        "model":  MODEL,
-        "prompt": prompt,
-        "format": "json",   # token-level JSON constraint
-        "stream": False,
-    }).encode()
+    payload = json.dumps(
+        {
+            "model": MODEL,
+            "prompt": prompt,
+            "format": "json",  # token-level JSON constraint
+            "stream": False,
+        }
+    ).encode()
 
     req = urllib.request.Request(
         OLLAMA_URL,
@@ -108,39 +110,47 @@ def main() -> None:
 
         t0 = time.time()
         try:
-            raw    = _call_ollama_json(prompt)
+            raw = _call_ollama_json(prompt)
             elapsed = time.time() - t0
-            parsed  = json.loads(raw)
-            ok      = "entities" in parsed and "relations" in parsed
+            parsed = json.loads(raw)
+            ok = "entities" in parsed and "relations" in parsed
         except Exception as e:
-            raw     = f"ERROR: {e}"
-            parsed  = None
-            ok      = False
+            raw = f"ERROR: {e}"
+            parsed = None
+            ok = False
             elapsed = time.time() - t0
 
         if ok:
             parse_ok += 1
-            print(f"OK  ({elapsed:.1f}s, {len(parsed['entities'])}e {len(parsed['relations'])}r)")
+            print(
+                f"OK  ({elapsed:.1f}s, {len(parsed['entities'])}e {len(parsed['relations'])}r)"
+            )
         else:
             print(f"FAIL ({elapsed:.1f}s)")
 
-        results.append({
-            "paper_id":       chunk["paper_id"],
-            "section_heading": chunk["section_heading"],
-            "section_type":   chunk["section_type"],
-            "parse_ok":       ok,
-            "elapsed_s":      round(elapsed, 2),
-            "raw_response":   raw,
-            "extracted":      parsed if ok else None,
-            "ground_truth": {
-                "entities":  chunk["entities"],
-                "relations": chunk["relations"],
-            },
-        })
+        results.append(
+            {
+                "paper_id": chunk["paper_id"],
+                "section_heading": chunk["section_heading"],
+                "section_type": chunk["section_type"],
+                "parse_ok": ok,
+                "elapsed_s": round(elapsed, 2),
+                "raw_response": raw,
+                "extracted": parsed if ok else None,
+                "ground_truth": {
+                    "entities": chunk["entities"],
+                    "relations": chunk["relations"],
+                },
+            }
+        )
 
     print("=" * 60)
-    print(f"JSON parse success: {parse_ok}/{len(chunks)} ({100*parse_ok/len(chunks):.1f}%)")
-    OUT_FILE.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(
+        f"JSON parse success: {parse_ok}/{len(chunks)} ({100*parse_ok/len(chunks):.1f}%)"
+    )
+    OUT_FILE.write_text(
+        json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     print(f"Saved → {OUT_FILE}")
 
 

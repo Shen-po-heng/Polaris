@@ -35,6 +35,7 @@ APPROACH_FILES = {
 # Matching helpers
 # ---------------------------------------------------------------------------
 
+
 def _norm(s) -> str:
     if isinstance(s, list):
         s = ", ".join(str(x) for x in s)
@@ -57,8 +58,8 @@ def _prf(pred: set, gold: set) -> tuple[float, float, float]:
     tp = len(pred & gold)
     fp = len(pred - gold)
     fn = len(gold - pred)
-    p  = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-    r  = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    p = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    r = tp / (tp + fn) if (tp + fn) > 0 else 0.0
     f1 = 2 * p * r / (p + r) if (p + r) > 0 else 0.0
     return round(p, 4), round(r, 4), round(f1, 4)
 
@@ -76,10 +77,14 @@ def _type_accuracy(pred_entities: list[dict], gold_entities: list[dict]) -> floa
     return round(correct / total, 4) if total > 0 else 0.0
 
 
-def _fuzzy_entity_prf(pred_entities: list[dict], gold_entities: list[dict]) -> tuple[float, float, float]:
+def _fuzzy_entity_prf(
+    pred_entities: list[dict], gold_entities: list[dict]
+) -> tuple[float, float, float]:
     """Entity P/R/F1 with substring name matching; type must still match exactly."""
     gold_items = [(_norm(e["name"]), _norm(e["type"])) for e in gold_entities]
-    pred_items = [(_norm(e.get("name", "")), _norm(e.get("type", ""))) for e in pred_entities]
+    pred_items = [
+        (_norm(e.get("name", "")), _norm(e.get("type", ""))) for e in pred_entities
+    ]
 
     def _names_match(a: str, b: str) -> bool:
         return a == b or (len(a) > 1 and a in b) or (len(b) > 1 and b in a)
@@ -95,13 +100,15 @@ def _fuzzy_entity_prf(pred_entities: list[dict], gold_entities: list[dict]) -> t
 
     fp = len(pred_items) - tp
     fn = len(gold_items) - len(matched_gold)
-    p  = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-    r  = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    p = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    r = tp / (tp + fn) if (tp + fn) > 0 else 0.0
     f1 = 2 * p * r / (p + r) if (p + r) > 0 else 0.0
     return round(p, 4), round(r, 4), round(f1, 4)
 
 
-def _contrib_baseline_accuracy(pred_entities: list[dict], gold_entities: list[dict]) -> float:
+def _contrib_baseline_accuracy(
+    pred_entities: list[dict], gold_entities: list[dict]
+) -> float:
     """Accuracy specifically on Contribution vs Baseline classification (exact name match)."""
     gold_cb = {
         _norm(e["name"]): _norm(e["type"])
@@ -120,7 +127,9 @@ def _contrib_baseline_accuracy(pred_entities: list[dict], gold_entities: list[di
     return round(correct / len(gold_cb), 4)
 
 
-def _fuzzy_contrib_baseline_accuracy(pred_entities: list[dict], gold_entities: list[dict]) -> float:
+def _fuzzy_contrib_baseline_accuracy(
+    pred_entities: list[dict], gold_entities: list[dict]
+) -> float:
     """CB accuracy with fuzzy name matching (substring containment)."""
     gold_cb = [
         (_norm(e["name"]), _norm(e["type"]))
@@ -154,13 +163,14 @@ def _fuzzy_contrib_baseline_accuracy(pred_entities: list[dict], gold_entities: l
 # Per-chunk evaluation
 # ---------------------------------------------------------------------------
 
-def evaluate_chunk(chunk: dict) -> dict:
-    gt     = chunk.get("ground_truth", {})
-    pred   = chunk.get("extracted") or {}
 
-    gold_entities  = gt.get("entities", [])
+def evaluate_chunk(chunk: dict) -> dict:
+    gt = chunk.get("ground_truth", {})
+    pred = chunk.get("extracted") or {}
+
+    gold_entities = gt.get("entities", [])
     gold_relations = gt.get("relations", [])
-    pred_entities  = pred.get("entities", []) if isinstance(pred, dict) else []
+    pred_entities = pred.get("entities", []) if isinstance(pred, dict) else []
     pred_relations = pred.get("relations", []) if isinstance(pred, dict) else []
 
     gold_e_set = {_entity_key(e) for e in gold_entities}
@@ -168,32 +178,35 @@ def evaluate_chunk(chunk: dict) -> dict:
     gold_r_set = {_relation_key(r) for r in gold_relations}
     pred_r_set = {_relation_key(r) for r in pred_relations}
 
-    ep, er, ef   = _prf(pred_e_set, gold_e_set)
-    rp, rr, rf   = _prf(pred_r_set, gold_r_set)
+    ep, er, ef = _prf(pred_e_set, gold_e_set)
+    rp, rr, rf = _prf(pred_r_set, gold_r_set)
     _fp, _fr, ff = _fuzzy_entity_prf(pred_entities, gold_entities)
 
     return {
-        "paper_id":           chunk["paper_id"],
-        "section_heading":    chunk["section_heading"],
-        "section_type":       chunk["section_type"],
-        "parse_ok":           chunk.get("parse_ok", False),
-        "elapsed_s":          chunk.get("elapsed_s", 0),
-        "entity_P":           ep,
-        "entity_R":           er,
-        "entity_F1":          ef,
-        "fuzzy_entity_F1":    ff,
-        "type_accuracy":      _type_accuracy(pred_entities, gold_entities),
-        "cb_accuracy":        _contrib_baseline_accuracy(pred_entities, gold_entities),
-        "fuzzy_cb_accuracy":  _fuzzy_contrib_baseline_accuracy(pred_entities, gold_entities),
-        "relation_P":         rp,
-        "relation_R":         rr,
-        "relation_F1":        rf,
+        "paper_id": chunk["paper_id"],
+        "section_heading": chunk["section_heading"],
+        "section_type": chunk["section_type"],
+        "parse_ok": chunk.get("parse_ok", False),
+        "elapsed_s": chunk.get("elapsed_s", 0),
+        "entity_P": ep,
+        "entity_R": er,
+        "entity_F1": ef,
+        "fuzzy_entity_F1": ff,
+        "type_accuracy": _type_accuracy(pred_entities, gold_entities),
+        "cb_accuracy": _contrib_baseline_accuracy(pred_entities, gold_entities),
+        "fuzzy_cb_accuracy": _fuzzy_contrib_baseline_accuracy(
+            pred_entities, gold_entities
+        ),
+        "relation_P": rp,
+        "relation_R": rr,
+        "relation_F1": rf,
     }
 
 
 # ---------------------------------------------------------------------------
 # Aggregate
 # ---------------------------------------------------------------------------
+
 
 def aggregate(evals: list[dict]) -> dict:
     n = len(evals)
@@ -206,17 +219,17 @@ def aggregate(evals: list[dict]) -> dict:
     parse_rate = sum(1 for e in evals if e["parse_ok"]) / n
 
     return {
-        "n_chunks":          n,
-        "parse_rate":        round(parse_rate, 4),
-        "entity_P":          avg("entity_P"),
-        "entity_R":          avg("entity_R"),
-        "entity_F1":         avg("entity_F1"),
-        "fuzzy_entity_F1":   avg("fuzzy_entity_F1"),
-        "type_acc":          avg("type_accuracy"),
-        "cb_acc":            avg("cb_accuracy"),
-        "fuzzy_cb_acc":      avg("fuzzy_cb_accuracy"),
-        "relation_F1":       avg("relation_F1"),
-        "avg_elapsed":       avg("elapsed_s"),
+        "n_chunks": n,
+        "parse_rate": round(parse_rate, 4),
+        "entity_P": avg("entity_P"),
+        "entity_R": avg("entity_R"),
+        "entity_F1": avg("entity_F1"),
+        "fuzzy_entity_F1": avg("fuzzy_entity_F1"),
+        "type_acc": avg("type_accuracy"),
+        "cb_acc": avg("cb_accuracy"),
+        "fuzzy_cb_acc": avg("fuzzy_cb_accuracy"),
+        "relation_F1": avg("relation_F1"),
+        "avg_elapsed": avg("elapsed_s"),
     }
 
 
@@ -226,9 +239,9 @@ def aggregate(evals: list[dict]) -> dict:
 
 THRESHOLDS = {
     "parse_rate": 0.90,
-    "entity_F1":  0.60,
-    "type_acc":   0.70,
-    "cb_acc":     0.80,
+    "entity_F1": 0.60,
+    "type_acc": 0.70,
+    "cb_acc": 0.80,
 }
 
 
@@ -244,35 +257,61 @@ def print_summary(label: str, agg: dict) -> None:
     print(f"  Approach {label}")
     print(f"{'─'*50}")
     print(f"  Chunks evaluated : {agg['n_chunks']}")
-    print(f"  JSON parse rate  : {agg['parse_rate']*100:5.1f}%  {_tick(agg['parse_rate'], 'parse_rate')}  (threshold >= 90%)")
-    print(f"  Entity F1 (exact): {agg['entity_F1']*100:5.1f}%  {_tick(agg['entity_F1'],  'entity_F1')}  (threshold >= 60%)")
-    print(f"  Entity F1 (fuzzy): {agg['fuzzy_entity_F1']*100:5.1f}%  (substring match, no threshold)")
-    print(f"  Type accuracy    : {agg['type_acc']*100:5.1f}%  {_tick(agg['type_acc'],    'type_acc')}  (threshold >= 70%)")
-    print(f"  CB acc (exact)   : {agg['cb_acc']*100:5.1f}%  {_tick(agg['cb_acc'],       'cb_acc')}  (threshold >= 80%)")
-    print(f"  CB acc (fuzzy)   : {agg['fuzzy_cb_acc']*100:5.1f}%  (substring name match)")
+    print(
+        f"  JSON parse rate  : {agg['parse_rate']*100:5.1f}%  {_tick(agg['parse_rate'], 'parse_rate')}  (threshold >= 90%)"
+    )
+    print(
+        f"  Entity F1 (exact): {agg['entity_F1']*100:5.1f}%  {_tick(agg['entity_F1'],  'entity_F1')}  (threshold >= 60%)"
+    )
+    print(
+        f"  Entity F1 (fuzzy): {agg['fuzzy_entity_F1']*100:5.1f}%  (substring match, no threshold)"
+    )
+    print(
+        f"  Type accuracy    : {agg['type_acc']*100:5.1f}%  {_tick(agg['type_acc'],    'type_acc')}  (threshold >= 70%)"
+    )
+    print(
+        f"  CB acc (exact)   : {agg['cb_acc']*100:5.1f}%  {_tick(agg['cb_acc'],       'cb_acc')}  (threshold >= 80%)"
+    )
+    print(
+        f"  CB acc (fuzzy)   : {agg['fuzzy_cb_acc']*100:5.1f}%  (substring name match)"
+    )
     print(f"  Relation F1      : {agg['relation_F1']*100:5.1f}%  (observation only)")
     print(f"  Avg latency      : {agg['avg_elapsed']:.1f}s / chunk")
 
 
 def print_comparison(results: dict[str, dict]) -> None:
-    headers = ["Approach", "Parse%", "Exact F1", "Fuzzy F1", "Type acc", "CB acc", "CB(fuz)", "Rel F1", "Latency"]
+    headers = [
+        "Approach",
+        "Parse%",
+        "Exact F1",
+        "Fuzzy F1",
+        "Type acc",
+        "CB acc",
+        "CB(fuz)",
+        "Rel F1",
+        "Latency",
+    ]
     rows = []
     for label, agg in results.items():
-        rows.append([
-            label,
-            f"{agg['parse_rate']*100:.1f}%",
-            f"{agg['entity_F1']*100:.1f}%",
-            f"{agg['fuzzy_entity_F1']*100:.1f}%",
-            f"{agg['type_acc']*100:.1f}%",
-            f"{agg['cb_acc']*100:.1f}%",
-            f"{agg['fuzzy_cb_acc']*100:.1f}%",
-            f"{agg['relation_F1']*100:.1f}%",
-            f"{agg['avg_elapsed']:.1f}s",
-        ])
+        rows.append(
+            [
+                label,
+                f"{agg['parse_rate']*100:.1f}%",
+                f"{agg['entity_F1']*100:.1f}%",
+                f"{agg['fuzzy_entity_F1']*100:.1f}%",
+                f"{agg['type_acc']*100:.1f}%",
+                f"{agg['cb_acc']*100:.1f}%",
+                f"{agg['fuzzy_cb_acc']*100:.1f}%",
+                f"{agg['relation_F1']*100:.1f}%",
+                f"{agg['avg_elapsed']:.1f}s",
+            ]
+        )
 
-    col_w = [max(len(h), max(len(r[i]) for r in rows)) + 2 for i, h in enumerate(headers)]
-    sep   = "+" + "+".join("-" * w for w in col_w) + "+"
-    fmt   = "|" + "|".join(f" {{:<{w-1}}}" for w in col_w) + "|"
+    col_w = [
+        max(len(h), max(len(r[i]) for r in rows)) + 2 for i, h in enumerate(headers)
+    ]
+    sep = "+" + "+".join("-" * w for w in col_w) + "+"
+    fmt = "|" + "|".join(f" {{:<{w-1}}}" for w in col_w) + "|"
 
     print(f"\n{'='*60}")
     print("  Comparison Table")
@@ -288,11 +327,13 @@ def print_comparison(results: dict[str, dict]) -> None:
 # Main
 # ---------------------------------------------------------------------------
 
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate Experiment 2 approaches.")
     parser.add_argument(
-        "--approach", default="all",
-        help="Which approach(es) to evaluate: A, B, C, D, or all (default: all)"
+        "--approach",
+        default="all",
+        help="Which approach(es) to evaluate: A, B, C, D, or all (default: all)",
     )
     args = parser.parse_args()
 
@@ -314,14 +355,16 @@ def main() -> None:
             continue
 
         chunks = json.loads(path.read_text(encoding="utf-8"))
-        evals  = [evaluate_chunk(c) for c in chunks]
-        agg    = aggregate(evals)
+        evals = [evaluate_chunk(c) for c in chunks]
+        agg = aggregate(evals)
         comparison[label] = agg
         print_summary(label, agg)
 
         # save per-chunk eval
         eval_path = path.parent / f"eval_{label.lower()}.json"
-        eval_path.write_text(json.dumps(evals, indent=2, ensure_ascii=False), encoding="utf-8")
+        eval_path.write_text(
+            json.dumps(evals, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
         print(f"  Per-chunk eval → {eval_path}")
 
     if len(comparison) > 1:

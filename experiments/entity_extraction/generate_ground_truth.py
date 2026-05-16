@@ -16,35 +16,34 @@ from __future__ import annotations
 
 import io
 import json
-import re
 import sys
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT   = SCRIPT_DIR.parent.parent
-REF_PAPERS  = REPO_ROOT / "ref_papers"
-GT_DIR      = SCRIPT_DIR / "ground_truth"
+REPO_ROOT = SCRIPT_DIR.parent.parent
+REF_PAPERS = REPO_ROOT / "ref_papers"
+GT_DIR = SCRIPT_DIR / "ground_truth"
 
 sys.path.insert(0, str(REPO_ROOT / "experiments" / "section_detection" / "approach_a"))
 from approach_a2_grobid import detect_sections  # noqa: E402
 
 PAPER_PDF_MAP = {
-    "1412.6980":         "1412.6980v9.pdf",
-    "1512.03385":        "1512.03385v1.pdf",
-    "1706.03762":        "1706.03762v7.pdf",
-    "1810.04805":        "1810.04805v2.pdf",
+    "1412.6980": "1412.6980v9.pdf",
+    "1512.03385": "1512.03385v1.pdf",
+    "1706.03762": "1706.03762v7.pdf",
+    "1810.04805": "1810.04805v2.pdf",
     "NIPS-2012-alexnet": (
         "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf"
     ),
 }
 
 PAPER_TITLE_MAP = {
-    "1412.6980":         "Adam: A Method for Stochastic Optimization",
-    "1512.03385":        "Deep Residual Learning for Image Recognition",
-    "1706.03762":        "Attention Is All You Need",
-    "1810.04805":        "BERT: Pre-training of Deep Bidirectional Transformers",
+    "1412.6980": "Adam: A Method for Stochastic Optimization",
+    "1512.03385": "Deep Residual Learning for Image Recognition",
+    "1706.03762": "Attention Is All You Need",
+    "1810.04805": "BERT: Pre-training of Deep Bidirectional Transformers",
     "NIPS-2012-alexnet": "ImageNet Classification with Deep CNNs (AlexNet)",
 }
 
@@ -53,25 +52,25 @@ PAPER_TITLE_MAP = {
 # contains ALL keywords wins.
 TARGETS: list[tuple[str, list[str], str, str]] = [
     # Adam — method section is 2.1 (GROBID misses "2 ALGORITHM" parent)
-    ("1412.6980",         ["adam", "update rule"],          "method",       "adam_method"),
-    ("1412.6980",         ["experiments"],                   "results",      "adam_results"),
-    ("1412.6980",         ["related work"],                  "related_work", "adam_related"),
+    ("1412.6980", ["adam", "update rule"], "method", "adam_method"),
+    ("1412.6980", ["experiments"], "results", "adam_results"),
+    ("1412.6980", ["related work"], "related_work", "adam_related"),
     # ResNet
-    ("1512.03385",        ["deep residual learning"],        "method",       "resnet_method"),
-    ("1512.03385",        ["imagenet classification"],       "results",      "resnet_results"),
-    ("1512.03385",        ["related work"],                  "related_work", "resnet_related"),
+    ("1512.03385", ["deep residual learning"], "method", "resnet_method"),
+    ("1512.03385", ["imagenet classification"], "results", "resnet_results"),
+    ("1512.03385", ["related work"], "related_work", "resnet_related"),
     # Transformer
-    ("1706.03762",        ["model architecture"],            "method",       "transformer_method"),
-    ("1706.03762",        ["machine translation"],           "results",      "transformer_results"),
-    ("1706.03762",        ["background"],                    "related_work", "transformer_related"),
+    ("1706.03762", ["model architecture"], "method", "transformer_method"),
+    ("1706.03762", ["machine translation"], "results", "transformer_results"),
+    ("1706.03762", ["background"], "related_work", "transformer_related"),
     # BERT
-    ("1810.04805",        ["pre-training bert"],             "method",       "bert_method"),
-    ("1810.04805",        ["glue"],                          "results",      "bert_results"),
-    ("1810.04805",        ["related work"],                  "related_work", "bert_related"),
+    ("1810.04805", ["pre-training bert"], "method", "bert_method"),
+    ("1810.04805", ["glue"], "results", "bert_results"),
+    ("1810.04805", ["related work"], "related_work", "bert_related"),
     # AlexNet
-    ("NIPS-2012-alexnet", ["the architecture"],              "method",       "alexnet_method"),
-    ("NIPS-2012-alexnet", ["results"],                       "results",      "alexnet_results"),
-    ("NIPS-2012-alexnet", ["introduction"],                  "introduction", "alexnet_intro"),
+    ("NIPS-2012-alexnet", ["the architecture"], "method", "alexnet_method"),
+    ("NIPS-2012-alexnet", ["results"], "results", "alexnet_results"),
+    ("NIPS-2012-alexnet", ["introduction"], "introduction", "alexnet_intro"),
 ]
 
 TEXT_MAX_CHARS = 1500
@@ -125,7 +124,7 @@ def main() -> None:
     for paper_id, keywords, section_type, slug in TARGETS:
         pdf_name = PAPER_PDF_MAP[paper_id]
         pdf_path = REF_PAPERS / pdf_name
-        out_path  = GT_DIR / _slug_to_filename(slug)
+        out_path = GT_DIR / _slug_to_filename(slug)
 
         if not pdf_path.exists():
             print(f"\n[SKIP] {paper_id} — PDF not found: {pdf_name}")
@@ -133,7 +132,9 @@ def main() -> None:
 
         # Run GROBID (cached per paper)
         if paper_id not in paper_sections:
-            print(f"\nProcessing {paper_id} ({PAPER_TITLE_MAP[paper_id]}) ...", flush=True)
+            print(
+                f"\nProcessing {paper_id} ({PAPER_TITLE_MAP[paper_id]}) ...", flush=True
+            )
             try:
                 paper_sections[paper_id] = detect_sections(pdf_path)
             except Exception as e:
@@ -158,24 +159,30 @@ def main() -> None:
             text_trimmed += "..."
 
         draft = {
-            "paper_id":       paper_id,
-            "paper_title":    PAPER_TITLE_MAP[paper_id],
+            "paper_id": paper_id,
+            "paper_title": PAPER_TITLE_MAP[paper_id],
             "section_heading": heading,
-            "section_type":   section_type,
-            "text":           text_trimmed,
-            "verified":       False,
-            "note":           "Fill in entities and relations, then set verified=true.",
+            "section_type": section_type,
+            "text": text_trimmed,
+            "verified": False,
+            "note": "Fill in entities and relations, then set verified=true.",
             "entities": [],
             "relations": [],
         }
 
-        out_path.write_text(json.dumps(draft, indent=2, ensure_ascii=False), encoding="utf-8")
+        out_path.write_text(
+            json.dumps(draft, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
 
     print(f"\n{'=' * 70}")
     print(f"  Draft files saved to: {GT_DIR}")
     print()
-    print("  Entity types:  Contribution | Baseline | Concept | Metric | Artifact | Context")
-    print("  Relation types: proposes | outperforms | uses | evaluated_on | measures | related_to")
+    print(
+        "  Entity types:  Contribution | Baseline | Concept | Metric | Artifact | Context"
+    )
+    print(
+        "  Relation types: proposes | outperforms | uses | evaluated_on | measures | related_to"
+    )
     print()
     print("  Next steps:")
     print("   1. Open each JSON in ground_truth/")
