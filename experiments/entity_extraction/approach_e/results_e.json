@@ -1,0 +1,2012 @@
+[
+  {
+    "paper_id": "1412.6980",
+    "section_heading": "2.1 ADAM'S UPDATE RULE",
+    "section_type": "method",
+    "parse_ok": true,
+    "elapsed_s": 1.37,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Adam\", \"type\": \"Baseline\"},\n    {\"name\": \"effective stepsize\", \"type\": \"Concept\"},\n    {\"name\": \"trust region\", \"type\": \"Concept\"},\n    {\"name\": \"signal-to-noise ratio\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Adam\", \"tail\": \"effective stepsize\", \"type\": \"uses\"},\n    {\"head\": \"Adam\", \"tail\": \"trust region\", \"type\": \"related_to\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Adam",
+          "type": "Baseline"
+        },
+        {
+          "name": "effective stepsize",
+          "type": "Concept"
+        },
+        {
+          "name": "trust region",
+          "type": "Concept"
+        },
+        {
+          "name": "signal-to-noise ratio",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Adam",
+          "tail": "effective stepsize",
+          "type": "uses"
+        },
+        {
+          "head": "Adam",
+          "tail": "trust region",
+          "type": "related_to"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "Adam",
+          "type": "Contribution"
+        },
+        {
+          "name": "stepsize α",
+          "type": "Concept"
+        },
+        {
+          "name": "signal-to-noise ratio",
+          "type": "Concept"
+        },
+        {
+          "name": "trust region",
+          "type": "Concept"
+        },
+        {
+          "name": "gradient estimate",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Adam",
+          "tail": "stepsize α",
+          "type": "uses"
+        },
+        {
+          "head": "Adam",
+          "tail": "signal-to-noise ratio",
+          "type": "uses"
+        },
+        {
+          "head": "Adam",
+          "tail": "trust region",
+          "type": "uses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1412.6980",
+    "section_heading": "5 RELATED WORK",
+    "section_type": "related_work",
+    "parse_ok": true,
+    "elapsed_s": 2.88,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Adam\", \"type\": \"Contribution\"},\n    {\"name\": \"RMSProp\", \"type\": \"Baseline\"},\n    {\"name\": \"AdaGrad\", \"type\": \"Baseline\"},\n    {\"name\": \"vSGD\", \"type\": \"Baseline\"},\n    {\"name\": \"AdaDelta\", \"type\": \"Baseline\"},\n    {\"name\": \"natural Newton method\", \"type\": \"Baseline\"},\n    {\"name\": \"SFO\", \"type\": \"Baseline\"},\n    {\"name\": \"natural gradient descent\", \"type\": \"Baseline\"},\n    {\"name\": \"momentum\", \"type\": \"Concept\"},\n    {\"name\": \"preconditioner\", \"type\": \"Concept\"},\n    {\"name\": \"Fisher information matrix\", \"type\": \"Concept\"},\n    {\"name\": \"gradient\", \"type\": \"Concept\"},\n    {\"name\": \"curvature\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Adam\", \"tail\": \"RMSProp\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"AdaGrad\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"vSGD\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"AdaDelta\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"natural Newton method\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"SFO\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"natural gradient descent\", \"type\": \"related_to\"},\n    {\"head\": \"Adam\", \"tail\": \"preconditioner\", \"type\": \"uses\"},\n    {\"head\": \"Adam\", \"tail\": \"Fisher information matrix\", \"type\": \"uses\"},\n    {\"head\": \"RMSProp\", \"tail\": \"momentum\", \"type\": \"uses\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Adam",
+          "type": "Contribution"
+        },
+        {
+          "name": "RMSProp",
+          "type": "Baseline"
+        },
+        {
+          "name": "AdaGrad",
+          "type": "Baseline"
+        },
+        {
+          "name": "vSGD",
+          "type": "Baseline"
+        },
+        {
+          "name": "AdaDelta",
+          "type": "Baseline"
+        },
+        {
+          "name": "natural Newton method",
+          "type": "Baseline"
+        },
+        {
+          "name": "SFO",
+          "type": "Baseline"
+        },
+        {
+          "name": "natural gradient descent",
+          "type": "Baseline"
+        },
+        {
+          "name": "momentum",
+          "type": "Concept"
+        },
+        {
+          "name": "preconditioner",
+          "type": "Concept"
+        },
+        {
+          "name": "Fisher information matrix",
+          "type": "Concept"
+        },
+        {
+          "name": "gradient",
+          "type": "Concept"
+        },
+        {
+          "name": "curvature",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Adam",
+          "tail": "RMSProp",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "AdaGrad",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "vSGD",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "AdaDelta",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "natural Newton method",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "SFO",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "natural gradient descent",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "preconditioner",
+          "type": "uses"
+        },
+        {
+          "head": "Adam",
+          "tail": "Fisher information matrix",
+          "type": "uses"
+        },
+        {
+          "head": "RMSProp",
+          "tail": "momentum",
+          "type": "uses"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "Adam",
+          "type": "Contribution"
+        },
+        {
+          "name": "RMSProp",
+          "type": "Baseline"
+        },
+        {
+          "name": "AdaGrad",
+          "type": "Baseline"
+        },
+        {
+          "name": "vSGD",
+          "type": "Baseline"
+        },
+        {
+          "name": "AdaDelta",
+          "type": "Baseline"
+        },
+        {
+          "name": "Sum-of-Functions Optimizer",
+          "type": "Baseline"
+        },
+        {
+          "name": "natural gradient descent",
+          "type": "Baseline"
+        },
+        {
+          "name": "preconditioner",
+          "type": "Concept"
+        },
+        {
+          "name": "Fisher information matrix",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Adam",
+          "tail": "RMSProp",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "AdaGrad",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "natural gradient descent",
+          "type": "related_to"
+        },
+        {
+          "head": "Adam",
+          "tail": "preconditioner",
+          "type": "uses"
+        },
+        {
+          "head": "preconditioner",
+          "tail": "Fisher information matrix",
+          "type": "related_to"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1412.6980",
+    "section_heading": "6 EXPERIMENTS",
+    "section_type": "results",
+    "parse_ok": true,
+    "elapsed_s": 1.46,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Adam\", \"type\": \"Contribution\"},\n    {\"name\": \"logistic regression\", \"type\": \"Baseline\"},\n    {\"name\": \"multilayer fully connected neural networks\", \"type\": \"Baseline\"},\n    {\"name\": \"deep convolutional neural networks\", \"type\": \"Baseline\"},\n    {\"name\": \"learning rate\", \"type\": \"Concept\"},\n    {\"name\": \"momentum\", \"type\": \"Concept\"},\n    {\"name\": \"parameter initialization\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Adam\", \"tail\": \"logistic regression\", \"type\": \"outperforms\"},\n    {\"head\": \"Adam\", \"tail\": \"multilayer fully connected neural networks\", \"type\": \"outperforms\"},\n    {\"head\": \"Adam\", \"tail\": \"deep convolutional neural networks\", \"type\": \"outperforms\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Adam",
+          "type": "Contribution"
+        },
+        {
+          "name": "logistic regression",
+          "type": "Baseline"
+        },
+        {
+          "name": "multilayer fully connected neural networks",
+          "type": "Baseline"
+        },
+        {
+          "name": "deep convolutional neural networks",
+          "type": "Baseline"
+        },
+        {
+          "name": "learning rate",
+          "type": "Concept"
+        },
+        {
+          "name": "momentum",
+          "type": "Concept"
+        },
+        {
+          "name": "parameter initialization",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Adam",
+          "tail": "logistic regression",
+          "type": "outperforms"
+        },
+        {
+          "head": "Adam",
+          "tail": "multilayer fully connected neural networks",
+          "type": "outperforms"
+        },
+        {
+          "head": "Adam",
+          "tail": "deep convolutional neural networks",
+          "type": "outperforms"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "Adam",
+          "type": "Contribution"
+        },
+        {
+          "name": "logistic regression",
+          "type": "Context"
+        },
+        {
+          "name": "multilayer fully connected neural networks",
+          "type": "Context"
+        },
+        {
+          "name": "deep convolutional neural networks",
+          "type": "Context"
+        },
+        {
+          "name": "deep learning",
+          "type": "Context"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Adam",
+          "tail": "logistic regression",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Adam",
+          "tail": "multilayer fully connected neural networks",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Adam",
+          "tail": "deep convolutional neural networks",
+          "type": "evaluated_on"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "NIPS-2012-alexnet",
+    "section_heading": "1 Introduction",
+    "section_type": "introduction",
+    "parse_ok": true,
+    "elapsed_s": 1.87,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"machine learning\", \"type\": \"Concept\"},\n    {\"name\": \"overfitting prevention\", \"type\": \"Concept\"},\n    {\"name\": \"label-preserving transformations\", \"type\": \"Concept\"},\n    {\"name\": \"NORB\", \"type\": \"Artifact\"},\n    {\"name\": \"Caltech-101\", \"type\": \"Artifact\"},\n    {\"name\": \"Caltech-256\", \"type\": \"Artifact\"},\n    {\"name\": \"CIFAR-10\", \"type\": \"Artifact\"},\n    {\"name\": \"CIFAR-100\", \"type\": \"Artifact\"},\n    {\"name\": \"MNIST\", \"type\": \"Artifact\"},\n    {\"name\": \"LabelMe\", \"type\": \"Artifact\"},\n    {\"name\": \"ImageNet\", \"type\": \"Artifact\"},\n    {\"name\": \"error rate\", \"type\": \"Metric\"}\n  ],\n  \"relations\": [\n    {\"head\": \"machine learning\", \"tail\": \"overfitting prevention\", \"type\": \"related_to\"},\n    {\"head\": \"label-preserving transformations\", \"tail\": \"CIFAR-10\", \"type\": \"uses\"},\n    {\"head\": \"error rate\", \"tail\": \"MNIST\", \"type\": \"evaluated_on\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "machine learning",
+          "type": "Concept"
+        },
+        {
+          "name": "overfitting prevention",
+          "type": "Concept"
+        },
+        {
+          "name": "label-preserving transformations",
+          "type": "Concept"
+        },
+        {
+          "name": "NORB",
+          "type": "Artifact"
+        },
+        {
+          "name": "Caltech-101",
+          "type": "Artifact"
+        },
+        {
+          "name": "Caltech-256",
+          "type": "Artifact"
+        },
+        {
+          "name": "CIFAR-10",
+          "type": "Artifact"
+        },
+        {
+          "name": "CIFAR-100",
+          "type": "Artifact"
+        },
+        {
+          "name": "MNIST",
+          "type": "Artifact"
+        },
+        {
+          "name": "LabelMe",
+          "type": "Artifact"
+        },
+        {
+          "name": "ImageNet",
+          "type": "Artifact"
+        },
+        {
+          "name": "error rate",
+          "type": "Metric"
+        }
+      ],
+      "relations": [
+        {
+          "head": "machine learning",
+          "tail": "overfitting prevention",
+          "type": "related_to"
+        },
+        {
+          "head": "label-preserving transformations",
+          "tail": "CIFAR-10",
+          "type": "uses"
+        },
+        {
+          "head": "error rate",
+          "tail": "MNIST",
+          "type": "evaluated_on"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "AlexNet",
+          "type": "Contribution"
+        },
+        {
+          "name": "deep convolutional neural networks",
+          "type": "Contribution"
+        },
+        {
+          "name": "ImageNet",
+          "type": "Artifact"
+        },
+        {
+          "name": "NORB",
+          "type": "Artifact"
+        },
+        {
+          "name": "CIFAR-10",
+          "type": "Artifact"
+        },
+        {
+          "name": "MNIST",
+          "type": "Artifact"
+        },
+        {
+          "name": "LabelMe",
+          "type": "Artifact"
+        },
+        {
+          "name": "GPU",
+          "type": "Artifact"
+        },
+        {
+          "name": "overfitting",
+          "type": "Concept"
+        },
+        {
+          "name": "object recognition",
+          "type": "Context"
+        }
+      ],
+      "relations": [
+        {
+          "head": "AlexNet",
+          "tail": "deep convolutional neural networks",
+          "type": "uses"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "ImageNet",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "GPU",
+          "type": "uses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "NIPS-2012-alexnet",
+    "section_heading": "3 The Architecture",
+    "section_type": "method",
+    "parse_ok": true,
+    "elapsed_s": 1.76,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"convolutional neural network\", \"type\": \"Contribution\"},\n    {\"name\": \"ReLU\", \"type\": \"Contribution\"},\n    {\"name\": \"tanh\", \"type\": \"Baseline\"},\n    {\"name\": \"saturating nonlinearity\", \"type\": \"Concept\"},\n    {\"name\": \"non-saturating nonlinearity\", \"type\": \"Concept\"},\n    {\"name\": \"gradient descent\", \"type\": \"Concept\"},\n    {\"name\": \"training error rate\", \"type\": \"Metric\"},\n    {\"name\": \"CIFAR-10\", \"type\": \"Artifact\"}\n  ],\n  \"relations\": [\n    {\"head\": \"convolutional neural network\", \"tail\": \"ReLU\", \"type\": \"uses\"},\n    {\"head\": \"ReLU\", \"tail\": \"tanh\", \"type\": \"outperforms\"},\n    {\"head\": \"convolutional neural network\", \"tail\": \"training error rate\", \"type\": \"measures\"},\n    {\"head\": \"convolutional neural network\", \"tail\": \"CIFAR-10\", \"type\": \"evaluated_on\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "convolutional neural network",
+          "type": "Contribution"
+        },
+        {
+          "name": "ReLU",
+          "type": "Contribution"
+        },
+        {
+          "name": "tanh",
+          "type": "Baseline"
+        },
+        {
+          "name": "saturating nonlinearity",
+          "type": "Concept"
+        },
+        {
+          "name": "non-saturating nonlinearity",
+          "type": "Concept"
+        },
+        {
+          "name": "gradient descent",
+          "type": "Concept"
+        },
+        {
+          "name": "training error rate",
+          "type": "Metric"
+        },
+        {
+          "name": "CIFAR-10",
+          "type": "Artifact"
+        }
+      ],
+      "relations": [
+        {
+          "head": "convolutional neural network",
+          "tail": "ReLU",
+          "type": "uses"
+        },
+        {
+          "head": "ReLU",
+          "tail": "tanh",
+          "type": "outperforms"
+        },
+        {
+          "head": "convolutional neural network",
+          "tail": "training error rate",
+          "type": "measures"
+        },
+        {
+          "head": "convolutional neural network",
+          "tail": "CIFAR-10",
+          "type": "evaluated_on"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "AlexNet",
+          "type": "Contribution"
+        },
+        {
+          "name": "ReLU",
+          "type": "Contribution"
+        },
+        {
+          "name": "Local Response Normalization",
+          "type": "Concept"
+        },
+        {
+          "name": "dropout",
+          "type": "Concept"
+        },
+        {
+          "name": "overlapping pooling",
+          "type": "Concept"
+        },
+        {
+          "name": "tanh",
+          "type": "Baseline"
+        },
+        {
+          "name": "CIFAR-10",
+          "type": "Artifact"
+        }
+      ],
+      "relations": [
+        {
+          "head": "AlexNet",
+          "tail": "ReLU",
+          "type": "uses"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "Local Response Normalization",
+          "type": "uses"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "dropout",
+          "type": "uses"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "overlapping pooling",
+          "type": "uses"
+        },
+        {
+          "head": "ReLU",
+          "tail": "tanh",
+          "type": "outperforms"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "NIPS-2012-alexnet",
+    "section_heading": "6 Results",
+    "section_type": "results",
+    "parse_ok": true,
+    "elapsed_s": 1.69,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"our network\", \"type\": \"Contribution\"},\n    {\"name\": \"sparse-coding\", \"type\": \"Baseline\"},\n    {\"name\": \"Fisher Vectors\", \"type\": \"Baseline\"},\n    {\"name\": \"top-1 error rate\", \"type\": \"Metric\"},\n    {\"name\": \"top-5 error rate\", \"type\": \"Metric\"},\n    {\"name\": \"ILSVRC-2010\", \"type\": \"Artifact\"}\n  ],\n  \"relations\": [\n    {\"head\": \"our network\", \"tail\": \"ILSVRC-2010\", \"type\": \"evaluated_on\"},\n    {\"head\": \"our network\", \"tail\": \"top-1 error rate\", \"type\": \"measures\"},\n    {\"head\": \"our network\", \"tail\": \"top-5 error rate\", \"type\": \"measures\"},\n    {\"head\": \"our network\", \"tail\": \"sparse-coding\", \"type\": \"outperforms\"},\n    {\"head\": \"our network\", \"tail\": \"Fisher Vectors\", \"type\": \"outperforms\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "our network",
+          "type": "Contribution"
+        },
+        {
+          "name": "sparse-coding",
+          "type": "Baseline"
+        },
+        {
+          "name": "Fisher Vectors",
+          "type": "Baseline"
+        },
+        {
+          "name": "top-1 error rate",
+          "type": "Metric"
+        },
+        {
+          "name": "top-5 error rate",
+          "type": "Metric"
+        },
+        {
+          "name": "ILSVRC-2010",
+          "type": "Artifact"
+        }
+      ],
+      "relations": [
+        {
+          "head": "our network",
+          "tail": "ILSVRC-2010",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "our network",
+          "tail": "top-1 error rate",
+          "type": "measures"
+        },
+        {
+          "head": "our network",
+          "tail": "top-5 error rate",
+          "type": "measures"
+        },
+        {
+          "head": "our network",
+          "tail": "sparse-coding",
+          "type": "outperforms"
+        },
+        {
+          "head": "our network",
+          "tail": "Fisher Vectors",
+          "type": "outperforms"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "AlexNet",
+          "type": "Contribution"
+        },
+        {
+          "name": "sparse-coding models",
+          "type": "Baseline"
+        },
+        {
+          "name": "Fisher Vector classifiers",
+          "type": "Baseline"
+        },
+        {
+          "name": "ILSVRC-2010",
+          "type": "Artifact"
+        },
+        {
+          "name": "top-1 error",
+          "type": "Metric"
+        },
+        {
+          "name": "top-5 error",
+          "type": "Metric"
+        }
+      ],
+      "relations": [
+        {
+          "head": "AlexNet",
+          "tail": "ILSVRC-2010",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "sparse-coding models",
+          "type": "outperforms"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "Fisher Vector classifiers",
+          "type": "outperforms"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "top-1 error",
+          "type": "measures"
+        },
+        {
+          "head": "AlexNet",
+          "tail": "top-5 error",
+          "type": "measures"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1810.04805",
+    "section_heading": "3.1 Pre-training BERT",
+    "section_type": "method",
+    "parse_ok": true,
+    "elapsed_s": 2.49,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"BERT\", \"type\": \"Contribution\"},\n    {\"name\": \"masked LM\", \"type\": \"Contribution\"},\n    {\"name\": \"left-to-right language model\", \"type\": \"Baseline\"},\n    {\"name\": \"right-to-left language model\", \"type\": \"Baseline\"},\n    {\"name\": \"Peters et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Radford et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Transformer encoder\", \"type\": \"Concept\"},\n    {\"name\": \"Transformer decoder\", \"type\": \"Concept\"},\n    {\"name\": \"bidirectional model\", \"type\": \"Concept\"},\n    {\"name\": \"WordPiece\", \"type\": \"Concept\"},\n    {\"name\": \"Cloze task\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"BERT\", \"tail\": \"masked LM\", \"type\": \"uses\"},\n    {\"head\": \"BERT\", \"tail\": \"left-to-right language model\", \"type\": \"related_to\"},\n    {\"head\": \"BERT\", \"tail\": \"right-to-left language model\", \"type\": \"related_to\"},\n    {\"head\": \"masked LM\", \"tail\": \"Transformer encoder\", \"type\": \"uses\"},\n    {\"head\": \"masked LM\", \"tail\": \"bidirectional model\", \"type\": \"uses\"},\n    {\"head\": \"masked LM\", \"tail\": \"WordPiece\", \"type\": \"uses\"},\n    {\"head\": \"masked LM\", \"tail\": \"Cloze task\", \"type\": \"related_to\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "BERT",
+          "type": "Contribution"
+        },
+        {
+          "name": "masked LM",
+          "type": "Contribution"
+        },
+        {
+          "name": "left-to-right language model",
+          "type": "Baseline"
+        },
+        {
+          "name": "right-to-left language model",
+          "type": "Baseline"
+        },
+        {
+          "name": "Peters et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Radford et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Transformer encoder",
+          "type": "Concept"
+        },
+        {
+          "name": "Transformer decoder",
+          "type": "Concept"
+        },
+        {
+          "name": "bidirectional model",
+          "type": "Concept"
+        },
+        {
+          "name": "WordPiece",
+          "type": "Concept"
+        },
+        {
+          "name": "Cloze task",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "BERT",
+          "tail": "masked LM",
+          "type": "uses"
+        },
+        {
+          "head": "BERT",
+          "tail": "left-to-right language model",
+          "type": "related_to"
+        },
+        {
+          "head": "BERT",
+          "tail": "right-to-left language model",
+          "type": "related_to"
+        },
+        {
+          "head": "masked LM",
+          "tail": "Transformer encoder",
+          "type": "uses"
+        },
+        {
+          "head": "masked LM",
+          "tail": "bidirectional model",
+          "type": "uses"
+        },
+        {
+          "head": "masked LM",
+          "tail": "WordPiece",
+          "type": "uses"
+        },
+        {
+          "head": "masked LM",
+          "tail": "Cloze task",
+          "type": "related_to"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "BERT",
+          "type": "Contribution"
+        },
+        {
+          "name": "Masked LM",
+          "type": "Contribution"
+        },
+        {
+          "name": "ELMo",
+          "type": "Baseline"
+        },
+        {
+          "name": "GPT",
+          "type": "Baseline"
+        },
+        {
+          "name": "bidirectional representation",
+          "type": "Concept"
+        },
+        {
+          "name": "WordPiece",
+          "type": "Concept"
+        },
+        {
+          "name": "Cloze task",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "BERT",
+          "tail": "Masked LM",
+          "type": "uses"
+        },
+        {
+          "head": "BERT",
+          "tail": "ELMo",
+          "type": "related_to"
+        },
+        {
+          "head": "BERT",
+          "tail": "GPT",
+          "type": "related_to"
+        },
+        {
+          "head": "Masked LM",
+          "tail": "Cloze task",
+          "type": "related_to"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1810.04805",
+    "section_heading": "2 Related Work",
+    "section_type": "related_work",
+    "parse_ok": true,
+    "elapsed_s": 2.74,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Word2Vec\", \"type\": \"Baseline\"},\n    {\"name\": \"GloVe\", \"type\": \"Baseline\"},\n    {\"name\": \"ELMo\", \"type\": \"Baseline\"},\n    {\"name\": \"Brown et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Ando and Zhang\", \"type\": \"Baseline\"},\n    {\"name\": \"Blitzer et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Turian et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Mnih and Hinton\", \"type\": \"Baseline\"},\n    {\"name\": \"Kiros et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Logeswaran and Lee\", \"type\": \"Baseline\"},\n    {\"name\": \"Le and Mikolov\", \"type\": \"Baseline\"},\n    {\"name\": \"Jernite et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Hill et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"Peters et al.\", \"type\": \"Baseline\"},\n    {\"name\": \"word embeddings\", \"type\": \"Concept\"},\n    {\"name\": \"sentence embeddings\", \"type\": \"Concept\"},\n    {\"name\": \"paragraph embeddings\", \"type\": \"Concept\"},\n    {\"name\": \"language modeling\", \"type\": \"Concept\"},\n    {\"name\": \"denoising autoencoder\", \"type\": \"Concept\"},\n    {\"name\": \"pre-training\", \"type\": \"Concept\"},\n    {\"name\": \"language representations\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"ELMo\", \"tail\": \"word embeddings\", \"type\": \"related_to\"},\n    {\"head\": \"Word2Vec\", \"tail\": \"language modeling\", \"type\": \"uses\"},\n    {\"head\": \"Kiros et al.\", \"tail\": \"sentence embeddings\", \"type\": \"proposes\"},\n    {\"head\": \"Le and Mikolov\", \"tail\": \"paragraph embeddings\", \"type\": \"proposes\"},\n    {\"head\": \"Hill et al.\", \"tail\": \"denoising autoencoder\", \"type\": \"uses\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Word2Vec",
+          "type": "Baseline"
+        },
+        {
+          "name": "GloVe",
+          "type": "Baseline"
+        },
+        {
+          "name": "ELMo",
+          "type": "Baseline"
+        },
+        {
+          "name": "Brown et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Ando and Zhang",
+          "type": "Baseline"
+        },
+        {
+          "name": "Blitzer et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Turian et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Mnih and Hinton",
+          "type": "Baseline"
+        },
+        {
+          "name": "Kiros et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Logeswaran and Lee",
+          "type": "Baseline"
+        },
+        {
+          "name": "Le and Mikolov",
+          "type": "Baseline"
+        },
+        {
+          "name": "Jernite et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Hill et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "Peters et al.",
+          "type": "Baseline"
+        },
+        {
+          "name": "word embeddings",
+          "type": "Concept"
+        },
+        {
+          "name": "sentence embeddings",
+          "type": "Concept"
+        },
+        {
+          "name": "paragraph embeddings",
+          "type": "Concept"
+        },
+        {
+          "name": "language modeling",
+          "type": "Concept"
+        },
+        {
+          "name": "denoising autoencoder",
+          "type": "Concept"
+        },
+        {
+          "name": "pre-training",
+          "type": "Concept"
+        },
+        {
+          "name": "language representations",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "ELMo",
+          "tail": "word embeddings",
+          "type": "related_to"
+        },
+        {
+          "head": "Word2Vec",
+          "tail": "language modeling",
+          "type": "uses"
+        },
+        {
+          "head": "Kiros et al.",
+          "tail": "sentence embeddings",
+          "type": "proposes"
+        },
+        {
+          "head": "Le and Mikolov",
+          "tail": "paragraph embeddings",
+          "type": "proposes"
+        },
+        {
+          "head": "Hill et al.",
+          "tail": "denoising autoencoder",
+          "type": "uses"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "BERT",
+          "type": "Contribution"
+        },
+        {
+          "name": "ELMo",
+          "type": "Baseline"
+        },
+        {
+          "name": "word2vec",
+          "type": "Baseline"
+        },
+        {
+          "name": "GloVe",
+          "type": "Baseline"
+        },
+        {
+          "name": "pre-trained word embeddings",
+          "type": "Concept"
+        },
+        {
+          "name": "feature-based approach",
+          "type": "Concept"
+        },
+        {
+          "name": "fine-tuning approach",
+          "type": "Concept"
+        },
+        {
+          "name": "transfer learning",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "BERT",
+          "tail": "ELMo",
+          "type": "related_to"
+        },
+        {
+          "head": "ELMo",
+          "tail": "feature-based approach",
+          "type": "related_to"
+        },
+        {
+          "head": "BERT",
+          "tail": "fine-tuning approach",
+          "type": "related_to"
+        },
+        {
+          "head": "ELMo",
+          "tail": "pre-trained word embeddings",
+          "type": "uses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1810.04805",
+    "section_heading": "4.1 GLUE",
+    "section_type": "results",
+    "parse_ok": true,
+    "elapsed_s": 2.37,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"BERT BASE\", \"type\": \"Contribution\"},\n    {\"name\": \"BERT LARGE\", \"type\": \"Contribution\"},\n    {\"name\": \"GLUE\", \"type\": \"Artifact\"},\n    {\"name\": \"OpenAI GPT\", \"type\": \"Baseline\"},\n    {\"name\": \"accuracy\", \"type\": \"Metric\"},\n    {\"name\": \"classification layer\", \"type\": \"Concept\"},\n    {\"name\": \"[CLS]\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"BERT BASE\", \"tail\": \"GLUE\", \"type\": \"evaluated_on\"},\n    {\"head\": \"BERT LARGE\", \"tail\": \"GLUE\", \"type\": \"evaluated_on\"},\n    {\"head\": \"BERT BASE\", \"tail\": \"OpenAI GPT\", \"type\": \"outperforms\"},\n    {\"head\": \"BERT LARGE\", \"tail\": \"OpenAI GPT\", \"type\": \"outperforms\"},\n    {\"head\": \"BERT BASE\", \"tail\": \"accuracy\", \"type\": \"measures\"},\n    {\"head\": \"BERT LARGE\", \"tail\": \"accuracy\", \"type\": \"measures\"},\n    {\"head\": \"BERT BASE\", \"tail\": \"classification layer\", \"type\": \"uses\"},\n    {\"head\": \"BERT LARGE\", \"tail\": \"classification layer\", \"type\": \"uses\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "BERT BASE",
+          "type": "Contribution"
+        },
+        {
+          "name": "BERT LARGE",
+          "type": "Contribution"
+        },
+        {
+          "name": "GLUE",
+          "type": "Artifact"
+        },
+        {
+          "name": "OpenAI GPT",
+          "type": "Baseline"
+        },
+        {
+          "name": "accuracy",
+          "type": "Metric"
+        },
+        {
+          "name": "classification layer",
+          "type": "Concept"
+        },
+        {
+          "name": "[CLS]",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "BERT BASE",
+          "tail": "GLUE",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "GLUE",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "BERT BASE",
+          "tail": "OpenAI GPT",
+          "type": "outperforms"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "OpenAI GPT",
+          "type": "outperforms"
+        },
+        {
+          "head": "BERT BASE",
+          "tail": "accuracy",
+          "type": "measures"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "accuracy",
+          "type": "measures"
+        },
+        {
+          "head": "BERT BASE",
+          "tail": "classification layer",
+          "type": "uses"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "classification layer",
+          "type": "uses"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "BERT BASE",
+          "type": "Contribution"
+        },
+        {
+          "name": "BERT LARGE",
+          "type": "Contribution"
+        },
+        {
+          "name": "OpenAI GPT",
+          "type": "Baseline"
+        },
+        {
+          "name": "GLUE",
+          "type": "Artifact"
+        },
+        {
+          "name": "accuracy",
+          "type": "Metric"
+        },
+        {
+          "name": "natural language understanding",
+          "type": "Context"
+        },
+        {
+          "name": "fine-tuning",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "BERT BASE",
+          "tail": "GLUE",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "GLUE",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "OpenAI GPT",
+          "type": "outperforms"
+        },
+        {
+          "head": "BERT BASE",
+          "tail": "OpenAI GPT",
+          "type": "outperforms"
+        },
+        {
+          "head": "BERT LARGE",
+          "tail": "accuracy",
+          "type": "measures"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1512.03385",
+    "section_heading": "3. Deep Residual Learning",
+    "section_type": "method",
+    "parse_ok": true,
+    "elapsed_s": 1.6,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Residual Learning\", \"type\": \"Contribution\"},\n    {\"name\": \"residual function\", \"type\": \"Concept\"},\n    {\"name\": \"identity mappings\", \"type\": \"Concept\"},\n    {\"name\": \"stacked layers\", \"type\": \"Concept\"},\n    {\"name\": \"nonlinear layers\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Residual Learning\", \"tail\": \"residual function\", \"type\": \"uses\"},\n    {\"head\": \"Residual Learning\", \"tail\": \"identity mappings\", \"type\": \"related_to\"},\n    {\"head\": \"Residual Learning\", \"tail\": \"stacked layers\", \"type\": \"uses\"},\n    {\"head\": \"Residual Learning\", \"tail\": \"nonlinear layers\", \"type\": \"uses\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Residual Learning",
+          "type": "Contribution"
+        },
+        {
+          "name": "residual function",
+          "type": "Concept"
+        },
+        {
+          "name": "identity mappings",
+          "type": "Concept"
+        },
+        {
+          "name": "stacked layers",
+          "type": "Concept"
+        },
+        {
+          "name": "nonlinear layers",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Residual Learning",
+          "tail": "residual function",
+          "type": "uses"
+        },
+        {
+          "head": "Residual Learning",
+          "tail": "identity mappings",
+          "type": "related_to"
+        },
+        {
+          "head": "Residual Learning",
+          "tail": "stacked layers",
+          "type": "uses"
+        },
+        {
+          "head": "Residual Learning",
+          "tail": "nonlinear layers",
+          "type": "uses"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "ResNet",
+          "type": "Contribution"
+        },
+        {
+          "name": "residual learning",
+          "type": "Contribution"
+        },
+        {
+          "name": "shortcut connections",
+          "type": "Concept"
+        },
+        {
+          "name": "identity mapping",
+          "type": "Concept"
+        },
+        {
+          "name": "residual function F(x)",
+          "type": "Concept"
+        },
+        {
+          "name": "degradation problem",
+          "type": "Concept"
+        },
+        {
+          "name": "batch normalization",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "ResNet",
+          "tail": "residual learning",
+          "type": "uses"
+        },
+        {
+          "head": "ResNet",
+          "tail": "shortcut connections",
+          "type": "uses"
+        },
+        {
+          "head": "residual learning",
+          "tail": "identity mapping",
+          "type": "related_to"
+        },
+        {
+          "head": "residual learning",
+          "tail": "residual function F(x)",
+          "type": "uses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1512.03385",
+    "section_heading": "2. Related Work",
+    "section_type": "related_work",
+    "parse_ok": true,
+    "elapsed_s": 2.07,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"VLAD\", \"type\": \"Baseline\"},\n    {\"name\": \"Fisher Vector\", \"type\": \"Baseline\"},\n    {\"name\": \"residual vectors\", \"type\": \"Concept\"},\n    {\"name\": \"vector quantization\", \"type\": \"Concept\"},\n    {\"name\": \"Multigrid method\", \"type\": \"Baseline\"},\n    {\"name\": \"Partial Differential Equations\", \"type\": \"Concept\"},\n    {\"name\": \"hierarchical basis preconditioning\", \"type\": \"Baseline\"},\n    {\"name\": \"shortcut connections\", \"type\": \"Concept\"},\n    {\"name\": \"multi-layer perceptrons\", \"type\": \"Concept\"},\n    {\"name\": \"image retrieval\", \"type\": \"Context\"},\n    {\"name\": \"image classification\", \"type\": \"Context\"}\n  ],\n  \"relations\": [\n    {\"head\": \"VLAD\", \"tail\": \"residual vectors\", \"type\": \"uses\"},\n    {\"head\": \"Fisher Vector\", \"tail\": \"VLAD\", \"type\": \"related_to\"},\n    {\"head\": \"Multigrid method\", \"tail\": \"residual vectors\", \"type\": \"uses\"},\n    {\"head\": \"hierarchical basis preconditioning\", \"tail\": \"residual vectors\", \"type\": \"uses\"},\n    {\"head\": \"VLAD\", \"tail\": \"image retrieval\", \"type\": \"evaluated_on\"},\n    {\"head\": \"VLAD\", \"tail\": \"image classification\", \"type\": \"evaluated_on\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "VLAD",
+          "type": "Baseline"
+        },
+        {
+          "name": "Fisher Vector",
+          "type": "Baseline"
+        },
+        {
+          "name": "residual vectors",
+          "type": "Concept"
+        },
+        {
+          "name": "vector quantization",
+          "type": "Concept"
+        },
+        {
+          "name": "Multigrid method",
+          "type": "Baseline"
+        },
+        {
+          "name": "Partial Differential Equations",
+          "type": "Concept"
+        },
+        {
+          "name": "hierarchical basis preconditioning",
+          "type": "Baseline"
+        },
+        {
+          "name": "shortcut connections",
+          "type": "Concept"
+        },
+        {
+          "name": "multi-layer perceptrons",
+          "type": "Concept"
+        },
+        {
+          "name": "image retrieval",
+          "type": "Context"
+        },
+        {
+          "name": "image classification",
+          "type": "Context"
+        }
+      ],
+      "relations": [
+        {
+          "head": "VLAD",
+          "tail": "residual vectors",
+          "type": "uses"
+        },
+        {
+          "head": "Fisher Vector",
+          "tail": "VLAD",
+          "type": "related_to"
+        },
+        {
+          "head": "Multigrid method",
+          "tail": "residual vectors",
+          "type": "uses"
+        },
+        {
+          "head": "hierarchical basis preconditioning",
+          "tail": "residual vectors",
+          "type": "uses"
+        },
+        {
+          "head": "VLAD",
+          "tail": "image retrieval",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "VLAD",
+          "tail": "image classification",
+          "type": "evaluated_on"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "ResNet",
+          "type": "Contribution"
+        },
+        {
+          "name": "shortcut connections",
+          "type": "Contribution"
+        },
+        {
+          "name": "VLAD",
+          "type": "Baseline"
+        },
+        {
+          "name": "Fisher Vector",
+          "type": "Baseline"
+        },
+        {
+          "name": "Multigrid method",
+          "type": "Baseline"
+        },
+        {
+          "name": "highway networks",
+          "type": "Baseline"
+        },
+        {
+          "name": "residual vectors",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "ResNet",
+          "tail": "shortcut connections",
+          "type": "uses"
+        },
+        {
+          "head": "ResNet",
+          "tail": "highway networks",
+          "type": "related_to"
+        },
+        {
+          "head": "ResNet",
+          "tail": "VLAD",
+          "type": "related_to"
+        },
+        {
+          "head": "ResNet",
+          "tail": "Multigrid method",
+          "type": "related_to"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1512.03385",
+    "section_heading": "4.1. ImageNet Classification",
+    "section_type": "results",
+    "parse_ok": true,
+    "elapsed_s": 2.08,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"ResNets\", \"type\": \"Contribution\"},\n    {\"name\": \"plain nets\", \"type\": \"Baseline\"},\n    {\"name\": \"ImageNet 2012\", \"type\": \"Artifact\"},\n    {\"name\": \"top-1 error\", \"type\": \"Metric\"},\n    {\"name\": \"top-5 error\", \"type\": \"Metric\"},\n    {\"name\": \"training error\", \"type\": \"Metric\"},\n    {\"name\": \"validation error\", \"type\": \"Metric\"},\n    {\"name\": \"BN\", \"type\": \"Concept\"},\n    {\"name\": \"vanishing gradients\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"ResNets\", \"tail\": \"ImageNet 2012\", \"type\": \"evaluated_on\"},\n    {\"head\": \"plain nets\", \"tail\": \"ImageNet 2012\", \"type\": \"evaluated_on\"},\n    {\"head\": \"ResNets\", \"tail\": \"plain nets\", \"type\": \"outperforms\"},\n    {\"head\": \"plain nets\", \"tail\": \"BN\", \"type\": \"uses\"},\n    {\"head\": \"ResNets\", \"tail\": \"top-1 error\", \"type\": \"measures\"},\n    {\"head\": \"ResNets\", \"tail\": \"top-5 error\", \"type\": \"measures\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "ResNets",
+          "type": "Contribution"
+        },
+        {
+          "name": "plain nets",
+          "type": "Baseline"
+        },
+        {
+          "name": "ImageNet 2012",
+          "type": "Artifact"
+        },
+        {
+          "name": "top-1 error",
+          "type": "Metric"
+        },
+        {
+          "name": "top-5 error",
+          "type": "Metric"
+        },
+        {
+          "name": "training error",
+          "type": "Metric"
+        },
+        {
+          "name": "validation error",
+          "type": "Metric"
+        },
+        {
+          "name": "BN",
+          "type": "Concept"
+        },
+        {
+          "name": "vanishing gradients",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "ResNets",
+          "tail": "ImageNet 2012",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "plain nets",
+          "tail": "ImageNet 2012",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "ResNets",
+          "tail": "plain nets",
+          "type": "outperforms"
+        },
+        {
+          "head": "plain nets",
+          "tail": "BN",
+          "type": "uses"
+        },
+        {
+          "head": "ResNets",
+          "tail": "top-1 error",
+          "type": "measures"
+        },
+        {
+          "head": "ResNets",
+          "tail": "top-5 error",
+          "type": "measures"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "ResNet",
+          "type": "Contribution"
+        },
+        {
+          "name": "plain network",
+          "type": "Baseline"
+        },
+        {
+          "name": "ImageNet 2012",
+          "type": "Artifact"
+        },
+        {
+          "name": "top-1 error",
+          "type": "Metric"
+        },
+        {
+          "name": "top-5 error",
+          "type": "Metric"
+        },
+        {
+          "name": "batch normalization",
+          "type": "Concept"
+        },
+        {
+          "name": "image classification",
+          "type": "Context"
+        }
+      ],
+      "relations": [
+        {
+          "head": "ResNet",
+          "tail": "ImageNet 2012",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "ResNet",
+          "tail": "plain network",
+          "type": "outperforms"
+        },
+        {
+          "head": "ResNet",
+          "tail": "top-1 error",
+          "type": "measures"
+        },
+        {
+          "head": "ResNet",
+          "tail": "top-5 error",
+          "type": "measures"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1706.03762",
+    "section_heading": "3 Model Architecture",
+    "section_type": "method",
+    "parse_ok": true,
+    "elapsed_s": 1.8,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Transformer\", \"type\": \"Contribution\"},\n    {\"name\": \"encoder-decoder\", \"type\": \"Concept\"},\n    {\"name\": \"encoder\", \"type\": \"Concept\"},\n    {\"name\": \"decoder\", \"type\": \"Concept\"},\n    {\"name\": \"self-attention\", \"type\": \"Concept\"},\n    {\"name\": \"fully connected layers\", \"type\": \"Concept\"},\n    {\"name\": \"auto-regressive\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Transformer\", \"tail\": \"encoder-decoder\", \"type\": \"uses\"},\n    {\"head\": \"Transformer\", \"tail\": \"self-attention\", \"type\": \"uses\"},\n    {\"head\": \"Transformer\", \"tail\": \"fully connected layers\", \"type\": \"uses\"},\n    {\"head\": \"encoder-decoder\", \"tail\": \"encoder\", \"type\": \"uses\"},\n    {\"head\": \"encoder-decoder\", \"tail\": \"decoder\", \"type\": \"uses\"},\n    {\"head\": \"decoder\", \"tail\": \"auto-regressive\", \"type\": \"related_to\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Transformer",
+          "type": "Contribution"
+        },
+        {
+          "name": "encoder-decoder",
+          "type": "Concept"
+        },
+        {
+          "name": "encoder",
+          "type": "Concept"
+        },
+        {
+          "name": "decoder",
+          "type": "Concept"
+        },
+        {
+          "name": "self-attention",
+          "type": "Concept"
+        },
+        {
+          "name": "fully connected layers",
+          "type": "Concept"
+        },
+        {
+          "name": "auto-regressive",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Transformer",
+          "tail": "encoder-decoder",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "self-attention",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "fully connected layers",
+          "type": "uses"
+        },
+        {
+          "head": "encoder-decoder",
+          "tail": "encoder",
+          "type": "uses"
+        },
+        {
+          "head": "encoder-decoder",
+          "tail": "decoder",
+          "type": "uses"
+        },
+        {
+          "head": "decoder",
+          "tail": "auto-regressive",
+          "type": "related_to"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "Transformer",
+          "type": "Contribution"
+        },
+        {
+          "name": "encoder-decoder",
+          "type": "Concept"
+        },
+        {
+          "name": "self-attention",
+          "type": "Concept"
+        },
+        {
+          "name": "encoder",
+          "type": "Concept"
+        },
+        {
+          "name": "decoder",
+          "type": "Concept"
+        },
+        {
+          "name": "neural sequence transduction",
+          "type": "Context"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Transformer",
+          "tail": "encoder-decoder",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "self-attention",
+          "type": "uses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1706.03762",
+    "section_heading": "2 Background",
+    "section_type": "related_work",
+    "parse_ok": true,
+    "elapsed_s": 2.59,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Extended Neural GPU\", \"type\": \"Baseline\"},\n    {\"name\": \"ByteNet\", \"type\": \"Baseline\"},\n    {\"name\": \"ConvS2S\", \"type\": \"Baseline\"},\n    {\"name\": \"Transformer\", \"type\": \"Contribution\"},\n    {\"name\": \"convolutional neural networks\", \"type\": \"Concept\"},\n    {\"name\": \"Multi-Head Attention\", \"type\": \"Contribution\"},\n    {\"name\": \"Self-attention\", \"type\": \"Concept\"},\n    {\"name\": \"attention mechanism\", \"type\": \"Concept\"},\n    {\"name\": \"End-to-end memory networks\", \"type\": \"Baseline\"},\n    {\"name\": \"recurrent attention mechanism\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Extended Neural GPU\", \"tail\": \"convolutional neural networks\", \"type\": \"uses\"},\n    {\"head\": \"ByteNet\", \"tail\": \"convolutional neural networks\", \"type\": \"uses\"},\n    {\"head\": \"ConvS2S\", \"tail\": \"convolutional neural networks\", \"type\": \"uses\"},\n    {\"head\": \"Transformer\", \"tail\": \"Multi-Head Attention\", \"type\": \"uses\"},\n    {\"head\": \"Transformer\", \"tail\": \"Extended Neural GPU\", \"type\": \"related_to\"},\n    {\"head\": \"Transformer\", \"tail\": \"ByteNet\", \"type\": \"related_to\"},\n    {\"head\": \"Transformer\", \"tail\": \"ConvS2S\", \"type\": \"related_to\"},\n    {\"head\": \"Transformer\", \"tail\": \"Self-attention\", \"type\": \"uses\"},\n    {\"head\": \"Transformer\", \"tail\": \"End-to-end memory networks\", \"type\": \"related_to\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Extended Neural GPU",
+          "type": "Baseline"
+        },
+        {
+          "name": "ByteNet",
+          "type": "Baseline"
+        },
+        {
+          "name": "ConvS2S",
+          "type": "Baseline"
+        },
+        {
+          "name": "Transformer",
+          "type": "Contribution"
+        },
+        {
+          "name": "convolutional neural networks",
+          "type": "Concept"
+        },
+        {
+          "name": "Multi-Head Attention",
+          "type": "Contribution"
+        },
+        {
+          "name": "Self-attention",
+          "type": "Concept"
+        },
+        {
+          "name": "attention mechanism",
+          "type": "Concept"
+        },
+        {
+          "name": "End-to-end memory networks",
+          "type": "Baseline"
+        },
+        {
+          "name": "recurrent attention mechanism",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Extended Neural GPU",
+          "tail": "convolutional neural networks",
+          "type": "uses"
+        },
+        {
+          "head": "ByteNet",
+          "tail": "convolutional neural networks",
+          "type": "uses"
+        },
+        {
+          "head": "ConvS2S",
+          "tail": "convolutional neural networks",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "Multi-Head Attention",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "Extended Neural GPU",
+          "type": "related_to"
+        },
+        {
+          "head": "Transformer",
+          "tail": "ByteNet",
+          "type": "related_to"
+        },
+        {
+          "head": "Transformer",
+          "tail": "ConvS2S",
+          "type": "related_to"
+        },
+        {
+          "head": "Transformer",
+          "tail": "Self-attention",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "End-to-end memory networks",
+          "type": "related_to"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "Transformer",
+          "type": "Contribution"
+        },
+        {
+          "name": "Multi-Head Attention",
+          "type": "Contribution"
+        },
+        {
+          "name": "Extended Neural GPU",
+          "type": "Baseline"
+        },
+        {
+          "name": "ByteNet",
+          "type": "Baseline"
+        },
+        {
+          "name": "ConvS2S",
+          "type": "Baseline"
+        },
+        {
+          "name": "End-to-end memory networks",
+          "type": "Baseline"
+        },
+        {
+          "name": "self-attention",
+          "type": "Concept"
+        },
+        {
+          "name": "convolutional neural networks",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Transformer",
+          "tail": "Multi-Head Attention",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer",
+          "tail": "ByteNet",
+          "type": "related_to"
+        },
+        {
+          "head": "Transformer",
+          "tail": "ConvS2S",
+          "type": "related_to"
+        },
+        {
+          "head": "Transformer",
+          "tail": "Extended Neural GPU",
+          "type": "related_to"
+        },
+        {
+          "head": "self-attention",
+          "tail": "End-to-end memory networks",
+          "type": "related_to"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "1706.03762",
+    "section_heading": "6.1 Machine Translation",
+    "section_type": "results",
+    "parse_ok": true,
+    "elapsed_s": 2.33,
+    "raw_response": "\n  \"entities\": [\n    {\"name\": \"Transformer (big)\", \"type\": \"Contribution\"},\n    {\"name\": \"base model\", \"type\": \"Contribution\"},\n    {\"name\": \"BLEU\", \"type\": \"Metric\"},\n    {\"name\": \"WMT 2014 English-to-German\", \"type\": \"Artifact\"},\n    {\"name\": \"WMT 2014 English-to-French\", \"type\": \"Artifact\"},\n    {\"name\": \"beam search\", \"type\": \"Concept\"},\n    {\"name\": \"dropout\", \"type\": \"Concept\"},\n    {\"name\": \"checkpoint averaging\", \"type\": \"Concept\"}\n  ],\n  \"relations\": [\n    {\"head\": \"Transformer (big)\", \"tail\": \"WMT 2014 English-to-German\", \"type\": \"evaluated_on\"},\n    {\"head\": \"Transformer (big)\", \"tail\": \"WMT 2014 English-to-French\", \"type\": \"evaluated_on\"},\n    {\"head\": \"Transformer (big)\", \"tail\": \"BLEU\", \"type\": \"measures\"},\n    {\"head\": \"base model\", \"tail\": \"WMT 2014 English-to-German\", \"type\": \"evaluated_on\"},\n    {\"head\": \"Transformer (big)\", \"tail\": \"beam search\", \"type\": \"uses\"},\n    {\"head\": \"Transformer (big)\", \"tail\": \"dropout\", \"type\": \"uses\"},\n    {\"head\": \"base model\", \"tail\": \"checkpoint averaging\", \"type\": \"uses\"},\n    {\"head\": \"Transformer (big)\", \"tail\": \"checkpoint averaging\", \"type\": \"uses\"}\n  ]\n}",
+    "extracted": {
+      "entities": [
+        {
+          "name": "Transformer (big)",
+          "type": "Contribution"
+        },
+        {
+          "name": "base model",
+          "type": "Contribution"
+        },
+        {
+          "name": "BLEU",
+          "type": "Metric"
+        },
+        {
+          "name": "WMT 2014 English-to-German",
+          "type": "Artifact"
+        },
+        {
+          "name": "WMT 2014 English-to-French",
+          "type": "Artifact"
+        },
+        {
+          "name": "beam search",
+          "type": "Concept"
+        },
+        {
+          "name": "dropout",
+          "type": "Concept"
+        },
+        {
+          "name": "checkpoint averaging",
+          "type": "Concept"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Transformer (big)",
+          "tail": "WMT 2014 English-to-German",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "WMT 2014 English-to-French",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "BLEU",
+          "type": "measures"
+        },
+        {
+          "head": "base model",
+          "tail": "WMT 2014 English-to-German",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "beam search",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "dropout",
+          "type": "uses"
+        },
+        {
+          "head": "base model",
+          "tail": "checkpoint averaging",
+          "type": "uses"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "checkpoint averaging",
+          "type": "uses"
+        }
+      ]
+    },
+    "ground_truth": {
+      "entities": [
+        {
+          "name": "Transformer (big)",
+          "type": "Contribution"
+        },
+        {
+          "name": "Transformer (base)",
+          "type": "Contribution"
+        },
+        {
+          "name": "BLEU",
+          "type": "Metric"
+        },
+        {
+          "name": "WMT 2014",
+          "type": "Artifact"
+        },
+        {
+          "name": "P100 GPUs",
+          "type": "Artifact"
+        },
+        {
+          "name": "beam search",
+          "type": "Concept"
+        },
+        {
+          "name": "machine translation",
+          "type": "Context"
+        }
+      ],
+      "relations": [
+        {
+          "head": "Transformer (big)",
+          "tail": "WMT 2014",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "BLEU",
+          "type": "measures"
+        },
+        {
+          "head": "Transformer (base)",
+          "tail": "WMT 2014",
+          "type": "evaluated_on"
+        },
+        {
+          "head": "Transformer (big)",
+          "tail": "beam search",
+          "type": "uses"
+        }
+      ]
+    }
+  }
+]

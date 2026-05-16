@@ -1,0 +1,115 @@
+{
+  "title": "Deep Residual Learning for Image Recognition",
+  "abstract": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the...",
+  "body_sections": [
+    {
+      "n": "1.",
+      "heading": "1. Introduction",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2.",
+      "heading": "2. Related Work",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.",
+      "heading": "3. Deep Residual Learning",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.1.",
+      "heading": "3.1. Residual Learning",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2.",
+      "heading": "3.2. Identity Mapping by Shortcuts",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.3.",
+      "heading": "3.3. Network Architectures",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "(middle).",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.4.",
+      "heading": "3.4. Implementation",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.",
+      "heading": "4. Experiments",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.1.",
+      "heading": "4.1. ImageNet Classification",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.2.",
+      "heading": "4.2. CIFAR-10 and Analysis",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.3.",
+      "heading": "4.3. Object Detection on PASCAL and MS COCO",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "A. Object Detection Baselines",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "PASCAL VOC",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "MS COCO",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "B. Object Detection Improvements",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "PASCAL VOC",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "ImageNet Detection",
+      "depth": 0,
+      "subsections": []
+    }
+  ],
+  "has_references": true
+}

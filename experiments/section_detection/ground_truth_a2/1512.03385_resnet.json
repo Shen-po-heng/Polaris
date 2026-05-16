@@ -1,0 +1,87 @@
+{
+  "paper_id": "1512.03385",
+  "title": "Deep Residual Learning for Image Recognition",
+  "format": "arXiv single-column",
+  "verified": true,
+  "note": "A2 ground truth — includes subsections. Set verified=true after checking.",
+  "sections": [
+    {
+      "heading": "Abstract",
+      "type": "abstract",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "1. Introduction",
+      "type": "introduction",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "2. Related Work",
+      "type": "related_work",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "3. Deep Residual Learning",
+      "type": "method",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "3.1. Residual Learning",
+      "type": "other",
+      "depth": 1,
+      "parent": "3. Deep Residual Learning"
+    },
+    {
+      "heading": "3.2. Identity Mapping by Shortcuts",
+      "type": "other",
+      "depth": 1,
+      "parent": "3. Deep Residual Learning"
+    },
+    {
+      "heading": "3.3. Network Architectures",
+      "type": "other",
+      "depth": 1,
+      "parent": "3. Deep Residual Learning"
+    },
+    {
+      "heading": "3.4. Implementation",
+      "type": "other",
+      "depth": 1,
+      "parent": "3. Deep Residual Learning"
+    },
+    {
+      "heading": "4. Experiments",
+      "type": "results",
+      "depth": 0,
+      "parent": null
+    },
+    {
+      "heading": "4.1. ImageNet Classification",
+      "type": "other",
+      "depth": 1,
+      "parent": "4. Experiments"
+    },
+    {
+      "heading": "4.2. CIFAR-10 and Analysis",
+      "type": "other",
+      "depth": 1,
+      "parent": "4. Experiments"
+    },
+    {
+      "heading": "4.3. Object Detection on PASCAL and MS COCO",
+      "type": "other",
+      "depth": 1,
+      "parent": "4. Experiments"
+    },
+    {
+      "heading": "References",
+      "type": "references",
+      "depth": 0,
+      "parent": null
+    }
+  ]
+}

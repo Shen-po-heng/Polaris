@@ -1,0 +1,20 @@
+{
+  "paper_id": "NIPS-2012-alexnet",
+  "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+  "authors": "Krizhevsky, Sutskever & Hinton",
+  "year": 2012,
+  "venue": "NeurIPS 2012",
+  "format": "NeurIPS two-column",
+  "verified": true,
+  "sections": [
+    {"heading": "Abstract",                  "type": "abstract"},
+    {"heading": "1 Introduction",            "type": "introduction"},
+    {"heading": "2 The Dataset",             "type": "method"},
+    {"heading": "3 The Architecture",        "type": "method"},
+    {"heading": "4 Reducing Overfitting",    "type": "method"},
+    {"heading": "5 Details of Learning",     "type": "method"},
+    {"heading": "6 Results",                 "type": "results"},
+    {"heading": "7 Discussion",              "type": "discussion"},
+    {"heading": "References",               "type": "references"}
+  ]
+}

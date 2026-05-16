@@ -1,0 +1,91 @@
+{
+  "title": "Published as a conference paper at ICLR 2015 ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION",
+  "abstract": "We introduce Adam, an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally efficient, has little memory requirements, is invariant to diagonal rescaling of the gradients, and is well suited for problems that are large in terms of data and/or parameters. The method is also appropriate for non-stationary objectives and problems with very noisy and/o...",
+  "body_sections": [
+    {
+      "n": "1",
+      "heading": "1 INTRODUCTION",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2.1",
+      "heading": "2.1 ADAM'S UPDATE RULE",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3",
+      "heading": "3 INITIALIZATION BIAS CORRECTION",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4",
+      "heading": "4 CONVERGENCE ANALYSIS",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5",
+      "heading": "5 RELATED WORK",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6",
+      "heading": "6 EXPERIMENTS",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.1",
+      "heading": "6.1 EXPERIMENT: LOGISTIC REGRESSION",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.2",
+      "heading": "6.2 EXPERIMENT: MULTI-LAYER NEURAL NETWORKS",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.3",
+      "heading": "6.3 EXPERIMENT: CONVOLUTIONAL NEURAL NETWORKS",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.4",
+      "heading": "6.4 EXPERIMENT: BIAS-CORRECTION TERM",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "7",
+      "heading": "7 EXTENSIONS",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "7.1",
+      "heading": "7.1 ADAMAX",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "7.2",
+      "heading": "7.2 TEMPORAL AVERAGING",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "9",
+      "heading": "9 ACKNOWLEDGMENTS",
+      "depth": 0,
+      "subsections": []
+    }
+  ],
+  "has_references": true
+}

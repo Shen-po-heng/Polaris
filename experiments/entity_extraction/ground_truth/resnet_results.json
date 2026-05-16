@@ -1,0 +1,60 @@
+{
+  "paper_id": "1512.03385",
+  "paper_title": "Deep Residual Learning for Image Recognition",
+  "section_heading": "4.1. ImageNet Classification",
+  "section_type": "results",
+  "text": "We evaluate our method on the ImageNet 2012 classification dataset [36] that consists of 1000 classes. The models are trained on the 1.28 million training images, and evaluated on the 50k validation images. We also obtain a final result on the 100k test images, reported by the test server. We evaluate both top-1 and top-5 error rates. Plain Networks. We first evaluate 18-layer and 34-layer plain nets. The 34-layer plain net is in Fig. 3 (middle). The 18-layer plain net is of a similar form. See Table 1 for detailed architectures. The results in Table 2 show that the deeper 34-layer plain net has higher validation error than the shallower 18-layer plain net. To reveal the reasons, in Fig. 4 (left) we compare their training/validation errors during the training procedure. We have observed the degradation problem -the Here the ResNets have no extra parameter compared to their plain counterparts. Fig. 4 shows the training procedures. 34-layer plain net has higher training error throughout the whole training procedure, even though the solution space of the 18-layer plain network is a subspace of that of the 34-layer one. We argue that this optimization difficulty is unlikely to be caused by vanishing gradients. These plain networks are trained with BN [16] , which ensures forward propagated signals to have non-zero variances. We also verify that the backward propagated gradients exhibit healthy norms with BN. So neither forward nor backward signals vanish. In fact, the 34-layer pl...",
+  "verified": true,
+  "entities": [
+    {
+      "name": "ResNet",
+      "type": "Contribution"
+    },
+    {
+      "name": "plain network",
+      "type": "Baseline"
+    },
+    {
+      "name": "ImageNet 2012",
+      "type": "Artifact"
+    },
+    {
+      "name": "top-1 error",
+      "type": "Metric"
+    },
+    {
+      "name": "top-5 error",
+      "type": "Metric"
+    },
+    {
+      "name": "batch normalization",
+      "type": "Concept"
+    },
+    {
+      "name": "image classification",
+      "type": "Context"
+    }
+  ],
+  "relations": [
+    {
+      "head": "ResNet",
+      "tail": "ImageNet 2012",
+      "type": "evaluated_on"
+    },
+    {
+      "head": "ResNet",
+      "tail": "plain network",
+      "type": "outperforms"
+    },
+    {
+      "head": "ResNet",
+      "tail": "top-1 error",
+      "type": "measures"
+    },
+    {
+      "head": "ResNet",
+      "tail": "top-5 error",
+      "type": "measures"
+    }
+  ]
+}

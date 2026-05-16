@@ -1,0 +1,103 @@
+{
+  "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+  "abstract": "We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images in the ImageNet LSVRC-2010 contest into the 1000 different classes. On the test data, we achieved top-1 and top-5 error rates of 37.5% and 17.0% which is considerably better than the previous state-of-the-art. The neural network, which has 60 million parameters and 650,000 neurons, consists of five convolutional layers, some of which are followed by max-pooling layers, and three fully-connect...",
+  "body_sections": [
+    {
+      "n": "1",
+      "heading": "1 Introduction",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2",
+      "heading": "2 The Dataset",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3",
+      "heading": "3 The Architecture",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.1",
+      "heading": "3.1 ReLU Nonlinearity",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2",
+      "heading": "3.2 Training on Multiple GPUs",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.3",
+      "heading": "3.3 Local Response Normalization",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.4",
+      "heading": "3.4 Overlapping Pooling",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.5",
+      "heading": "3.5 Overall Architecture",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4",
+      "heading": "4 Reducing Overfitting",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.1",
+      "heading": "4.1 Data Augmentation",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.2",
+      "heading": "4.2 Dropout",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5",
+      "heading": "5 Details of learning",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6",
+      "heading": "6 Results",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "Model",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6.1",
+      "heading": "6.1 Qualitative Evaluations",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "7",
+      "heading": "7 Discussion",
+      "depth": 0,
+      "subsections": []
+    }
+  ],
+  "has_references": true
+}

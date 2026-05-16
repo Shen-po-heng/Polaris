@@ -1,0 +1,169 @@
+{
+  "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+  "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018) , BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-...",
+  "body_sections": [
+    {
+      "n": "1",
+      "heading": "1 Introduction",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2",
+      "heading": "2 Related Work",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2.1",
+      "heading": "2.1 Unsupervised Feature-based Approaches",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2.2",
+      "heading": "2.2 Unsupervised Fine-tuning Approaches",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "2.3",
+      "heading": "2.3 Transfer Learning from Supervised Data",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3",
+      "heading": "3 BERT",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.1",
+      "heading": "3.1 Pre-training BERT",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "Pre-training data",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "3.2",
+      "heading": "3.2 Fine-tuning BERT",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4",
+      "heading": "4 Experiments",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.1",
+      "heading": "4.1 GLUE",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.2",
+      "heading": "4.2 SQuAD v1.1",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "System",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "4.4",
+      "heading": "4.4 SWAG",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5",
+      "heading": "5 Ablation Studies",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.1",
+      "heading": "5.1 Effect of Pre-training Tasks",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "LTR & No NSP:",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.2",
+      "heading": "5.2 Effect of Model Size",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "5.3",
+      "heading": "5.3 Feature-based Approach with BERT",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "6",
+      "heading": "6 Conclusion",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "A.3 Fine-tuning Procedure",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "A.5 Illustrations of Fine-tuning on Different Tasks",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "BERT E",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "SST-2",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "STS-B",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "C Additional Ablation Studies",
+      "depth": 0,
+      "subsections": []
+    },
+    {
+      "n": "",
+      "heading": "C.2 Ablation for Different Masking Procedures",
+      "depth": 0,
+      "subsections": []
+    }
+  ],
+  "has_references": true
+}

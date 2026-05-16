@@ -1,0 +1,21 @@
+{
+  "paper_id": "1412.6980",
+  "title": "Adam: A Method for Stochastic Optimization",
+  "authors": "Kingma & Ba",
+  "year": 2014,
+  "venue": "ICLR 2015",
+  "format": "arXiv single-column",
+  "verified": true,
+  "sections": [
+    {"heading": "Abstract",                        "type": "abstract"},
+    {"heading": "1 Introduction",                  "type": "introduction"},
+    {"heading": "2 Algorithm",                     "type": "method"},
+    {"heading": "3 Initialization Bias Correction","type": "method"},
+    {"heading": "4 Convergence Analysis",          "type": "method"},
+    {"heading": "5 Related Work",                  "type": "related_work"},
+    {"heading": "6 Experiments",                   "type": "results"},
+    {"heading": "7 Extensions",                    "type": "method"},
+    {"heading": "8 Conclusion",                    "type": "conclusion"},
+    {"heading": "References",                      "type": "references"}
+  ]
+}

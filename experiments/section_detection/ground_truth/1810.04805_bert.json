@@ -1,0 +1,19 @@
+{
+  "paper_id": "1810.04805",
+  "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+  "authors": "Devlin et al.",
+  "year": 2018,
+  "venue": "NAACL 2019",
+  "format": "arXiv single-column",
+  "verified": true,
+  "sections": [
+    {"heading": "Abstract",                                  "type": "abstract"},
+    {"heading": "1 Introduction",                           "type": "introduction"},
+    {"heading": "2 Related Work",                           "type": "related_work"},
+    {"heading": "3 BERT",                                   "type": "method"},
+    {"heading": "4 Experiments",                            "type": "results"},
+    {"heading": "5 Ablation Studies",                       "type": "results"},
+    {"heading": "6 Conclusion",                             "type": "conclusion"},
+    {"heading": "References",                               "type": "references"}
+  ]
+}

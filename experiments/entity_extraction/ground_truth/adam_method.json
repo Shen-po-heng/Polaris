@@ -1,0 +1,47 @@
+{
+  "paper_id": "1412.6980",
+  "paper_title": "Adam: A Method for Stochastic Optimization",
+  "section_heading": "2.1 ADAM'S UPDATE RULE",
+  "section_type": "method",
+  "text": "An important property of Adam's update rule is its careful choice of stepsizes. Assuming = 0, the effective step taken in parameter space at timestep t is The effective stepsize has two upper bounds: otherwise. The first case only happens in the most severe case of sparsity: when a gradient has been zero at all timesteps except at the current timestep. For less sparse cases, the effective stepsize will be smaller. When (1 - In more common scenarios, we will have that The effective magnitude of the steps taken in parameter space at each timestep are approximately bounded by the stepsize setting α, i.e., |∆ t | α. This can be understood as establishing a trust region around the current parameter value, beyond which the current gradient estimate does not provide sufficient information. This typically makes it relatively easy to know the right scale of α in advance. For many machine learning models, for instance, we often know in advance that good optima are with high probability within some set region in parameter space; it is not uncommon, for example, to have a prior distribution over the parameters. Since α sets (an upper bound of) the magnitude of steps in parameter space, we can often deduce the right order of magnitude of α such that optima can be reached from θ 0 within some number of iterations. With a slight abuse of terminology, we will call the ratio m t / √ v t the signal-to-noise ratio (SN R). With a smaller SNR the effective stepsize ∆ t will be closer to zero. Thi...",
+  "verified": true,
+  "entities": [
+    {
+      "name": "Adam",
+      "type": "Contribution"
+    },
+    {
+      "name": "stepsize α",
+      "type": "Concept"
+    },
+    {
+      "name": "signal-to-noise ratio",
+      "type": "Concept"
+    },
+    {
+      "name": "trust region",
+      "type": "Concept"
+    },
+    {
+      "name": "gradient estimate",
+      "type": "Concept"
+    }
+  ],
+  "relations": [
+    {
+      "head": "Adam",
+      "tail": "stepsize α",
+      "type": "uses"
+    },
+    {
+      "head": "Adam",
+      "tail": "signal-to-noise ratio",
+      "type": "uses"
+    },
+    {
+      "head": "Adam",
+      "tail": "trust region",
+      "type": "uses"
+    }
+  ]
+}
