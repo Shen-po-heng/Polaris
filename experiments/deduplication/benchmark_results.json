@@ -1,0 +1,55 @@
+{
+  "gold_clusters": 14,
+  "gold_pairs": 20,
+  "results": [
+    {
+      "strategy": "A (exact match)",
+      "unique_nodes": 118,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571
+    },
+    {
+      "strategy": "C (alias dict)",
+      "unique_nodes": 112,
+      "precision": 0.8636,
+      "recall": 0.95,
+      "f1": 0.9048
+    },
+    {
+      "strategy": "B (emb t=0.80)",
+      "unique_nodes": 105,
+      "precision": 0.5667,
+      "recall": 0.85,
+      "f1": 0.68
+    },
+    {
+      "strategy": "B (emb t=0.85)",
+      "unique_nodes": 109,
+      "precision": 0.68,
+      "recall": 0.85,
+      "f1": 0.7556
+    },
+    {
+      "strategy": "B (emb t=0.90)",
+      "unique_nodes": 113,
+      "precision": 0.85,
+      "recall": 0.85,
+      "f1": 0.85
+    },
+    {
+      "strategy": "B (emb t=0.92)",
+      "unique_nodes": 114,
+      "precision": 0.8421,
+      "recall": 0.8,
+      "f1": 0.8205
+    },
+    {
+      "strategy": "B (emb t=0.95)",
+      "unique_nodes": 115,
+      "precision": 0.8889,
+      "recall": 0.8,
+      "f1": 0.8421
+    }
+  ]
+}

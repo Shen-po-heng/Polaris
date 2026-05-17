@@ -1,0 +1,131 @@
+[
+  {
+    "canonical_name": "Adam",
+    "canonical_type": "Contribution",
+    "note": "同一篇論文，3 個 section 各出現一次，應合併為單一 node",
+    "instances": [
+      {"name": "Adam", "paper_id": "1412.6980", "section_type": "method"},
+      {"name": "Adam", "paper_id": "1412.6980", "section_type": "related_work"},
+      {"name": "Adam", "paper_id": "1412.6980", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "momentum",
+    "canonical_type": "Concept",
+    "note": "同一篇論文，method 和 results section 各出現一次",
+    "instances": [
+      {"name": "momentum", "paper_id": "1412.6980", "section_type": "related_work"},
+      {"name": "momentum", "paper_id": "1412.6980", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "ResNet",
+    "canonical_type": "Contribution",
+    "note": "同一篇論文，method 和 results section 各出現一次",
+    "instances": [
+      {"name": "ResNet", "paper_id": "1512.03385", "section_type": "method"},
+      {"name": "ResNet", "paper_id": "1512.03385", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "Transformer",
+    "canonical_type": "Contribution",
+    "note": "同一篇論文，3 個 section 各出現一次",
+    "instances": [
+      {"name": "Transformer", "paper_id": "1706.03762", "section_type": "method"},
+      {"name": "Transformer", "paper_id": "1706.03762", "section_type": "related_work"},
+      {"name": "Transformer", "paper_id": "1706.03762", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "self-attention",
+    "canonical_type": "Concept",
+    "note": "同一篇論文，method 和 related_work section 各出現一次",
+    "instances": [
+      {"name": "self-attention", "paper_id": "1706.03762", "section_type": "method"},
+      {"name": "self-attention", "paper_id": "1706.03762", "section_type": "related_work"}
+    ]
+  },
+  {
+    "canonical_name": "BERT",
+    "canonical_type": "Contribution",
+    "note": "同一篇論文，method 和 results section 各出現一次",
+    "instances": [
+      {"name": "BERT", "paper_id": "1810.04805", "section_type": "method"},
+      {"name": "BERT", "paper_id": "1810.04805", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "ELMo",
+    "canonical_type": "Baseline",
+    "note": "同一篇論文，method 和 related_work section 各出現一次",
+    "instances": [
+      {"name": "ELMo", "paper_id": "1810.04805", "section_type": "method"},
+      {"name": "ELMo", "paper_id": "1810.04805", "section_type": "related_work"}
+    ]
+  },
+  {
+    "canonical_name": "AlexNet",
+    "canonical_type": "Contribution",
+    "note": "同一篇論文，3 個 section 各出現一次",
+    "instances": [
+      {"name": "AlexNet", "paper_id": "NIPS-2012-alexnet", "section_type": "introduction"},
+      {"name": "AlexNet", "paper_id": "NIPS-2012-alexnet", "section_type": "method"},
+      {"name": "AlexNet", "paper_id": "NIPS-2012-alexnet", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "CIFAR-10",
+    "canonical_type": "Artifact",
+    "note": "同一篇論文，introduction 和 method section 各出現一次",
+    "instances": [
+      {"name": "CIFAR-10", "paper_id": "NIPS-2012-alexnet", "section_type": "introduction"},
+      {"name": "CIFAR-10", "paper_id": "NIPS-2012-alexnet", "section_type": "method"}
+    ]
+  },
+  {
+    "canonical_name": "ImageNet",
+    "canonical_type": "Artifact",
+    "note": "跨論文：AlexNet 用 'ImageNet'，ResNet 用 'ImageNet 2012'，同一個資料集",
+    "instances": [
+      {"name": "ImageNet", "paper_id": "NIPS-2012-alexnet", "section_type": "introduction"},
+      {"name": "ImageNet 2012", "paper_id": "1512.03385", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "Fisher Vector",
+    "canonical_type": "Baseline",
+    "note": "跨論文：AlexNet 用 'Fisher Vectors'（複數），ResNet 用 'Fisher Vector'",
+    "instances": [
+      {"name": "Fisher Vectors", "paper_id": "NIPS-2012-alexnet", "section_type": "results"},
+      {"name": "Fisher Vector", "paper_id": "1512.03385", "section_type": "related_work"}
+    ]
+  },
+  {
+    "canonical_name": "top-1 error rate",
+    "canonical_type": "Metric",
+    "note": "跨論文：ResNet 用 'top-1 error'，AlexNet 用 'top-1 error rate'",
+    "instances": [
+      {"name": "top-1 error", "paper_id": "1512.03385", "section_type": "results"},
+      {"name": "top-1 error rate", "paper_id": "NIPS-2012-alexnet", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "top-5 error rate",
+    "canonical_type": "Metric",
+    "note": "跨論文：ResNet 用 'top-5 error'，AlexNet 用 'top-5 error rate'",
+    "instances": [
+      {"name": "top-5 error", "paper_id": "1512.03385", "section_type": "results"},
+      {"name": "top-5 error rate", "paper_id": "NIPS-2012-alexnet", "section_type": "results"}
+    ]
+  },
+  {
+    "canonical_name": "convolutional neural networks",
+    "canonical_type": "Concept",
+    "note": "【已確認移除】ResNet related_work 並未抽出此 entity（誤標），只有 Transformer 有此 entity，無法構成跨論文 pair",
+    "_disabled": true,
+    "instances": [
+      {"name": "convolutional neural networks", "paper_id": "1706.03762", "section_type": "related_work"}
+    ]
+  }
+]

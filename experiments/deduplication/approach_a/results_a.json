@@ -1,0 +1,1366 @@
+{
+  "strategy": "A_exact_match",
+  "unique_before": 130,
+  "unique_after": 118,
+  "merged_count": 9,
+  "clusters": [
+    {
+      "canonical_name": "Adam",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "Adam",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        },
+        {
+          "name": "Adam",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        },
+        {
+          "name": "Adam",
+          "paper_id": "1412.6980",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "stepsize",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "stepsize",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "gradient",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "gradient",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "trust region",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "trust region",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "signal-to-noise ratio",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "signal-to-noise ratio",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "parameter space",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "parameter space",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "timestep",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "timestep",
+          "paper_id": "1412.6980",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "RMSProp",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "RMSProp",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "AdaGrad",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "AdaGrad",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "vSGD",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "vSGD",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "AdaDelta",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "AdaDelta",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "natural Newton method",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "natural Newton method",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Sum-of-Functions Optimizer",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Sum-of-Functions Optimizer",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "natural gradient descent",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "natural gradient descent",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "preconditioner",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "preconditioner",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Fisher information matrix",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "Fisher information matrix",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "momentum",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "momentum",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        },
+        {
+          "name": "momentum",
+          "paper_id": "1412.6980",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "stochastic optimization",
+      "canonical_type": "Context",
+      "instances": [
+        {
+          "name": "stochastic optimization",
+          "paper_id": "1412.6980",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "logistic regression",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "logistic regression",
+          "paper_id": "1412.6980",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "multilayer fully connected neural networks",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "multilayer fully connected neural networks",
+          "paper_id": "1412.6980",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "deep convolutional neural networks",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "deep convolutional neural networks",
+          "paper_id": "1412.6980",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "learning rate",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "learning rate",
+          "paper_id": "1412.6980",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "AlexNet",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "AlexNet",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        },
+        {
+          "name": "AlexNet",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        },
+        {
+          "name": "AlexNet",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "machine learning",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "machine learning",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "overfitting",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "overfitting",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "label-preserving transformations",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "label-preserving transformations",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "NORB",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "NORB",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Caltech-101",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "Caltech-101",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Caltech-256",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "Caltech-256",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "CIFAR-10",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "CIFAR-10",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        },
+        {
+          "name": "CIFAR-10",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "CIFAR-100",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "CIFAR-100",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "MNIST",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "MNIST",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "LabelMe",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "LabelMe",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ImageNet",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "ImageNet",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "error rate",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "error rate",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "introduction"
+        }
+      ]
+    },
+    {
+      "canonical_name": "convolutional layer",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "convolutional layer",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "fully-connected layer",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "fully-connected layer",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ReLU",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "ReLU",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "tanh",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "tanh",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "training error rate",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "training error rate",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "gradient descent",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "gradient descent",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "top-1 error rate",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "top-1 error rate",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "top-5 error rate",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "top-5 error rate",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "sparse-coding",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "sparse-coding",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Fisher Vectors",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Fisher Vectors",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ILSVRC-2010",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "ILSVRC-2010",
+          "paper_id": "NIPS-2012-alexnet",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "BERT",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "BERT",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        },
+        {
+          "name": "BERT",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "masked LM",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "masked LM",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ELMo",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "ELMo",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        },
+        {
+          "name": "ELMo",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "GPT",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "GPT",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "left-to-right language model",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "left-to-right language model",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "right-to-left language model",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "right-to-left language model",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Transformer encoder",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "Transformer encoder",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Transformer decoder",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "Transformer decoder",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "bidirectional conditioning",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "bidirectional conditioning",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "WordPiece",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "WordPiece",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Cloze task",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "Cloze task",
+          "paper_id": "1810.04805",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "word embeddings",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "word embeddings",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Word2Vec",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Word2Vec",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "GloVe",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "GloVe",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "language modeling",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "language modeling",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "sentence embeddings",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "sentence embeddings",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "paragraph embeddings",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "paragraph embeddings",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Skip-Thought",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Skip-Thought",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "InferSent",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "InferSent",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "denoising autoencoder",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "denoising autoencoder",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "BiLSTM",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "BiLSTM",
+          "paper_id": "1810.04805",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "BERT BASE",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "BERT BASE",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "BERT LARGE",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "BERT LARGE",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "GLUE",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "GLUE",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "OpenAI GPT",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "OpenAI GPT",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "accuracy",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "accuracy",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "classification loss",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "classification loss",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "fine-tuning",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "fine-tuning",
+          "paper_id": "1810.04805",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ResNet",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "ResNet",
+          "paper_id": "1512.03385",
+          "section_type": "method"
+        },
+        {
+          "name": "ResNet",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "residual learning",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "residual learning",
+          "paper_id": "1512.03385",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "identity mapping",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "identity mapping",
+          "paper_id": "1512.03385",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "residual function",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "residual function",
+          "paper_id": "1512.03385",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "degradation problem",
+      "canonical_type": "Context",
+      "instances": [
+        {
+          "name": "degradation problem",
+          "paper_id": "1512.03385",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "VLAD",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "VLAD",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Fisher Vector",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Fisher Vector",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Multigrid method",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Multigrid method",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "hierarchical basis preconditioning",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "hierarchical basis preconditioning",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "shortcut connections",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "shortcut connections",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "multi-layer perceptrons",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "multi-layer perceptrons",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "residual vectors",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "residual vectors",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "vector quantization",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "vector quantization",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "image retrieval",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "image retrieval",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "image classification",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "image classification",
+          "paper_id": "1512.03385",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "plain network",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "plain network",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ImageNet 2012",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "ImageNet 2012",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "top-1 error",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "top-1 error",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "top-5 error",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "top-5 error",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "training error",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "training error",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "validation error",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "validation error",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "batch normalization",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "batch normalization",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "18-layer plain net",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "18-layer plain net",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "34-layer plain net",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "34-layer plain net",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "vanishing gradients",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "vanishing gradients",
+          "paper_id": "1512.03385",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Transformer",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "Transformer",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        },
+        {
+          "name": "Transformer",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        },
+        {
+          "name": "Transformer",
+          "paper_id": "1706.03762",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "encoder-decoder",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "encoder-decoder",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "encoder",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "encoder",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "decoder",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "decoder",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "self-attention",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "self-attention",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        },
+        {
+          "name": "self-attention",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "fully connected layers",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "fully connected layers",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "auto-regressive",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "auto-regressive",
+          "paper_id": "1706.03762",
+          "section_type": "method"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Extended Neural GPU",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "Extended Neural GPU",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ByteNet",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "ByteNet",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "ConvS2S",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "ConvS2S",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "convolutional neural networks",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "convolutional neural networks",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "Multi-Head Attention",
+      "canonical_type": "Contribution",
+      "instances": [
+        {
+          "name": "Multi-Head Attention",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "recurrent attention mechanism",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "recurrent attention mechanism",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "end-to-end memory networks",
+      "canonical_type": "Baseline",
+      "instances": [
+        {
+          "name": "end-to-end memory networks",
+          "paper_id": "1706.03762",
+          "section_type": "related_work"
+        }
+      ]
+    },
+    {
+      "canonical_name": "BLEU",
+      "canonical_type": "Metric",
+      "instances": [
+        {
+          "name": "BLEU",
+          "paper_id": "1706.03762",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "WMT 2014 English-to-German",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "WMT 2014 English-to-German",
+          "paper_id": "1706.03762",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "WMT 2014 English-to-French",
+      "canonical_type": "Artifact",
+      "instances": [
+        {
+          "name": "WMT 2014 English-to-French",
+          "paper_id": "1706.03762",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "beam search",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "beam search",
+          "paper_id": "1706.03762",
+          "section_type": "results"
+        }
+      ]
+    },
+    {
+      "canonical_name": "dropout",
+      "canonical_type": "Concept",
+      "instances": [
+        {
+          "name": "dropout",
+          "paper_id": "1706.03762",
+          "section_type": "results"
+        }
+      ]
+    }
+  ]
+}
